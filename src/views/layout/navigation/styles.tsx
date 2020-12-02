@@ -12,7 +12,15 @@ export const NavBar = styled.nav`
 export const NavMenu = styled.ul``;
 
 export const NavItem = styled.li`
-    ${tw`text-lg mx-2 font-semibold text-gray-500`}
+    ${tw`text-lg mx-2 font-semibold text-gray-500 p-2`}
     list-style-type: none;
     display: inline;
+
+    &:hover {
+        ${tw`text-gray-700`}
+    }
+
+    &:active {
+        ${tw`text-gray-900 shadow`}
+    }
 `;

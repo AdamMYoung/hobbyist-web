@@ -31,7 +31,9 @@
         "build": "craco build",
         "test": "craco test",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "build-storybook": "build-storybook -s public",
+        "pre:storybook": "build-tailwind",
+        "pre:build-storybook": "build-tailwind"
     },
     "eslintConfig": {
         "extends": [

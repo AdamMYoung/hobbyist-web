@@ -6,7 +6,7 @@ const Layout = () => {
     return (
         <>
             <Navigation />
-            <main className="container">
+            <main className="container min-h-screen mt-8">
                 <Routes />
             </main>
             <Footer />

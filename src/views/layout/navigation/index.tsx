@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Button from '../../../components/button';
 import UserProfile from '../../../components/user-profile';
 import { Logo, NavBar, NavMenu, NavItem } from './styles';
 
@@ -9,7 +10,7 @@ const Navigation = () => {
                 <Logo>hobbyist</Logo>
             </Link>
 
-            <NavMenu className="ml-auto">
+            <NavMenu className="ml-auto mr-6">
                 <NavItem>
                     <Link to="/home">Home</Link>
                 </NavItem>
