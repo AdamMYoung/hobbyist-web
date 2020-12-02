@@ -13,7 +13,7 @@ const UserProfile = (props: Props) => {
 
     return (
         <UserContainer>
-            <ProfileIcon active size="sm" {...rest} />
+            <ProfileIcon size="sm" {...rest} />
             <p className="text-lg">{name}</p>
         </UserContainer>
     );
