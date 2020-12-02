@@ -17,7 +17,7 @@ const WizardCard: React.FC<Props> = (props) => {
 
     return (
         <Card active onClick={onClick} className={`${color ? colors[color] : 'bg-gray-100'} w-full m-1`}>
-            <p className="text-3xl font-semibold text-center">{title}</p>
+            <p className="text-2xl font-semibold text-center">{title}</p>
             <p className="text-center text-lg my-6">{children}</p>
         </Card>
     );

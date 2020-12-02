@@ -11,6 +11,7 @@ const Home = () => {
                     Use our wizard below and we'll pick out some communities we think you'll love!
                 </p>
             </div>
+
             <Wizard />
         </div>
     );

@@ -24,7 +24,7 @@ const Wizard = () => {
 
     return (
         <div>
-            <p className="mt-8 text-xl font-bold text-center">{`${questionNumber + 1}. ${question.question}`}</p>
+            <p className="mt-8 mb-4 text-2xl font-bold text-center">{`${questionNumber + 1}. ${question.question}`}</p>
             <div className="my-2 flex">
                 <WizardCard
                     onClick={() => answerQuestion(0)}
