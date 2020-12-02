@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 export const Card = styled.div<{ active?: boolean }>`
     transition: filter 0.2s;
-    ${tw`shadow-inner p-8`}
+    ${tw`shadow p-8 rounded-lg`}
 
     ${(props) =>
         props.active &&
