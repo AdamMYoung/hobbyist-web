@@ -1,0 +1,9 @@
+# Deploy Preview context:
+[context.deploy-preview.environment]
+  NODE_ENV = "staging"
+
+[[redirects]]
+from = "/"
+to = "/index.html"
+
+status = 200
