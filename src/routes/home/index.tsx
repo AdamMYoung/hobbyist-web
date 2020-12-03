@@ -7,7 +7,7 @@ import Button from '../../components/button';
 import Drawer from '../../components/drawer';
 import HobbyCard from '../../components/hobby-card';
 import Feed from '../../views/feed';
-import Wizard from '../../views/wizard';
+// import Wizard from '../../views/wizard';
 
 const Growing = () => {
     return (
@@ -44,21 +44,21 @@ const Growing = () => {
     );
 };
 
-const WizardCard = () => {
-    return (
-        <>
-            <div className="text-center">
-                <h1 className="text-4xl font-bold">Find yourself a new hobby.</h1>
-                <p className="text-gray-400 mt-2">
-                    Use our wizard below and we'll pick out some hobbies we think you'll love!
-                </p>
-            </div>
-            <div className="mt-6">
-                <Wizard />
-            </div>
-        </>
-    );
-};
+// const WizardCard = () => {
+//     return (
+//         <>
+//             <div className="text-center">
+//                 <h1 className="text-4xl font-bold">Find yourself a new hobby.</h1>
+//                 <p className="text-gray-400 mt-2">
+//                     Use our wizard below and we'll pick out some hobbies we think you'll love!
+//                 </p>
+//             </div>
+//             <div className="mt-6">
+//                 <Wizard />
+//             </div>
+//         </>
+//     );
+// };
 
 const Local = () => {
     return (

@@ -18,7 +18,7 @@ const Navigation = () => {
             <div className="lg:container">
                 <NavBar>
                     <Link to="/">
-                        <Logo>hobbyist</Logo>
+                        <Logo>hobbyist.</Logo>
                     </Link>
 
                     <Input type="text" className="mx-4 md:max-w-sm flex-grow" placeholder="Search" />
