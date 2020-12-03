@@ -13,7 +13,7 @@ const WizardCard = (props: Props) => {
         <div className=" shadow w-full">
             <div className="flex">
                 <div className="mr-4 flex-1">
-                    <img className="w-auto h-auto mx-auto" src={question.image} />
+                    <img className="w-auto h-auto mx-auto" src={question.image} alt="" />
                 </div>
 
                 <div className="p-4 flex-1">

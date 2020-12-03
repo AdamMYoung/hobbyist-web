@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../../../components/button';
+
 import UserProfile from '../../../components/user-profile';
 import { Logo, NavBar, NavMenu, NavItem } from './styles';
 
