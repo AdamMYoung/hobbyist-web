@@ -10,8 +10,8 @@ const Navigation = () => {
                 <Logo>hobbyist</Logo>
             </Link>
 
-            <div className="flex sm:ml-auto w-full sm:w-auto items-center mt-4 sm:mt-0">
-                <NavMenu className="mr-6">
+            <div className="flex flex-wrap sm:ml-auto w-full sm:w-auto items-center  sm:mt-0">
+                <NavMenu className="mx-auto mt-4">
                     <NavItem>
                         <Link to="/home">Home</Link>
                     </NavItem>
@@ -19,7 +19,7 @@ const Navigation = () => {
                     <NavItem>Meetups</NavItem>
                 </NavMenu>
 
-                <div className="ml-auto sm:ml-0">
+                <div className="mx-auto sm:ml-0 mt-4">
                     <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
                 </div>
             </div>
