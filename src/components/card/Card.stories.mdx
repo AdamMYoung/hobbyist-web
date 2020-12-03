@@ -1,0 +1,18 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Card from './';
+
+<Meta title="Components/Atom/Card" component={Card} />
+
+# Card
+
+Generic Card Component
+
+export const Template = (args) => <Card {...args}>Card Content</Button>;
+
+### Default
+
+<Canvas>
+    <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable for={Card} />

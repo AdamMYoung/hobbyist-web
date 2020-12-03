@@ -1,0 +1,112 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import ProfileIcon from './';
+
+<Meta title="Components/Molecule/Profile Icon" component={ProfileIcon} />
+
+# Profile Icon
+
+Clickable icon with optional status indicator
+
+export const Template = (args) => <ProfileIcon {...args} />;
+
+### Default
+
+<Canvas>
+    <Story
+        name="Small"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            size: 'sm',
+            hasNotification: false,
+            active: false,
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: ['sm', 'md', 'lg'],
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Medium"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            size: 'md',
+            hasNotification: false,
+            active: false,
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: ['sm', 'md', 'lg'],
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Large"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            size: 'lg',
+            hasNotification: false,
+            active: false,
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: ['sm', 'md', 'lg'],
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="With Notification"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            size: 'lg',
+            hasNotification: true,
+            active: false,
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: ['sm', 'md', 'lg'],
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="With Interaction"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            size: 'lg',
+            hasNotification: false,
+            active: true,
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: ['sm', 'md', 'lg'],
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable for={ProfileIcon} />

@@ -1,6 +1,7 @@
 # Deploy Preview context:
 [context.deploy-preview.environment]
   NODE_ENV = "staging"
+  REACT_APP_GOOGLE_MAPS_KEY = "AIzaSyA2caSz6-xP3Lu87qLQKExMHLB7yohoAPA"
 
 [[redirects]]
 from = "/"

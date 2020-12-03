@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import UserProfile from './';
+
+<Meta title="Components/Molecule/User Profile" component={UserProfile} />
+
+# User Profile
+
+Profile image with user name alongisde
+
+export const Template = (args) => <UserProfile {...args} />;
+
+### Default
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            src: 'https://via.placeholder.com/150',
+            name: 'John Doe',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable for={UserProfile} />
