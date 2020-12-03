@@ -1,24 +1,33 @@
+import { WizardQuestion } from '../../types';
 import Card from '../card';
+import List from '../list';
 
 type Props = {
-    title: string;
-    onClick: () => void;
-    color?: 'green' | 'red' | 'blue' | 'yellow';
+    onAnswerSelected: (index: number) => void;
+    question: WizardQuestion;
 };
 
-const WizardCard: React.FC<Props> = (props) => {
-    const { color, title, onClick, children } = props;
-    const colors = {
-        green: 'bg-green-200',
-        red: 'bg-red-200',
-        blue: 'bg-blue-200',
-        yellow: 'bg-yellow-200',
-    };
+const WizardCard = (props: Props) => {
+    const { question, onAnswerSelected } = props;
 
     return (
-        <Card active onClick={onClick} className={`${color ? colors[color] : 'bg-gray-100'} w-full m-1`}>
-            <p className="text-2xl font-semibold text-center">{title}</p>
-            {children && <p className="text-center text-lg my-6">{children}</p>}
+        <Card className="w-full lg:w-1/2 lg:mx-auto">
+            <div className="flex">
+                <div className="mr-4 flex-1">
+                    <img className="rounded w-48 h-48 mx-auto" src={question.image} />
+                </div>
+
+                <div className="flex-1">
+                    <p className="text-xl font-bold text-center mb-4">{question.question}</p>
+                    <List active>
+                        {question.options.map((option, index) => (
+                            <List.Item key={option.title} onClick={() => onAnswerSelected(index)}>
+                                {option.title}
+                            </List.Item>
+                        ))}
+                    </List>
+                </div>
+            </div>
         </Card>
     );
 };

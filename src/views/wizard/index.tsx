@@ -23,29 +23,8 @@ const Wizard = () => {
     }
 
     return (
-        <div>
-            <p className="mt-8 mb-4 text-2xl font-bold text-center">{`${questionNumber + 1}. ${question.question}`}</p>
-            <div className="my-2 flex">
-                <WizardCard
-                    onClick={() => answerQuestion(0)}
-                    color={questionNumber % 2 === 0 ? 'blue' : 'yellow'}
-                    title={question.optionOne.title}
-                >
-                    {question.optionOne.description}
-                </WizardCard>
-                <WizardCard
-                    onClick={() => answerQuestion(0)}
-                    color={questionNumber % 2 === 0 ? 'green' : 'red'}
-                    title={question.optionTwo.title}
-                >
-                    {question.optionTwo.description}
-                </WizardCard>
-            </div>
-            {question.optionThree && (
-                <WizardCard onClick={() => answerQuestion(0)} title={question.optionThree.title}>
-                    {question.optionThree.description}
-                </WizardCard>
-            )}
+        <div className="mt-8">
+            <WizardCard onAnswerSelected={() => answerQuestion(0)} question={question} />
         </div>
     );
 };
