@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-export const ThemedButton = styled.button<{ variant: 'primary' | 'secondary' }>`
+export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' }>`
     ${tw`px-4 py-2 rounded-full`}
     cursor: pointer;
     transition: filter 0.1s;
