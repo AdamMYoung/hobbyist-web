@@ -10,7 +10,7 @@ const Navigation = () => {
                 <Logo>hobbyist</Logo>
             </Link>
 
-            <NavMenu className="ml-auto mr-6">
+            <NavMenu className="mt-4 lg:mt-0 lg:ml-auto mr-6 order-1 lg:order-none w-full lg:w-auto">
                 <NavItem>
                     <Link to="/home">Home</Link>
                 </NavItem>
@@ -18,7 +18,9 @@ const Navigation = () => {
                 <NavItem>Meetups</NavItem>
             </NavMenu>
 
-            <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
+            <div className="ml-auto lg:ml-0 ">
+                <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
+            </div>
         </NavBar>
     );
 };

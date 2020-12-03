@@ -7,8 +7,6 @@ const Wizard = () => {
     const [answers, setAnswers] = useState<{ [id: string]: number }>({});
     const question = questionNumber > answers.length - 1 ? null : Questions[questionNumber];
 
-    console.log(answers);
-
     const answerQuestion = (answer: number) => {
         setAnswers({ ...answers, questionNumber: answer });
         setQuestionNumber(questionNumber + 1);
@@ -22,11 +20,7 @@ const Wizard = () => {
         );
     }
 
-    return (
-        <div className="mt-8">
-            <WizardCard onAnswerSelected={() => answerQuestion(0)} question={question} />
-        </div>
-    );
+    return <WizardCard onAnswerSelected={() => answerQuestion(0)} question={question} />;
 };
 
 export default Wizard;

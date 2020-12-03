@@ -13,10 +13,11 @@ const HobbyCard = (props: Props) => {
 
     return (
         <Card active className="items-center">
-            <article className="flex items-center">
-                <ProfileIcon size="md" src={src} />
-
+            <article className="block lg:flex items-center">
                 <div className="mx-auto">
+                    <ProfileIcon size="md" src={src} />
+                </div>
+                <div className="mx-auto mt-4 lg:mt-0">
                     <p className=" text-xl font-semibold">{title}</p>
                     <p className="text-gray-500 ">{`${memberCount} members`}</p>
                     <p className="text-gray-400 mt-2">{description}</p>

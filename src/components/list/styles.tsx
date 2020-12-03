@@ -10,6 +10,6 @@ export const ListGroup = styled.ul<{ active?: boolean }>`
 `;
 
 export const ListItem = styled.li`
-    ${tw`p-3`}
+    ${tw`py-3 px-1`}
     list-style-type: none;
 `;
