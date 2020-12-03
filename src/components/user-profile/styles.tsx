@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 export const UserContainer = styled.div`
     transition: filter 0.2s, text-decoration 0.2s;
 
-    ${tw`flex  items-center`}
+    ${tw`flex items-center`}
 
     p {
         ${tw`ml-2 font-semibold`}

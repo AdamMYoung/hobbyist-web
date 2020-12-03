@@ -6,7 +6,7 @@ export const ProfileContainer = styled.div<{ active?: boolean; size: 'sm' | 'md'
     ${tw`relative`}    
 
     ${(props) => props.size === 'sm' && tw`w-12 h-12`}
-    ${(props) => props.size === 'md' && tw`w-24 h-12`}
+    ${(props) => props.size === 'md' && tw`w-24 h-24`}
     ${(props) => props.size === 'lg' && tw`w-36 h-36`}
 
     ${(props) =>
@@ -26,11 +26,7 @@ export const ProfileContainer = styled.div<{ active?: boolean; size: 'sm' | 'md'
 `;
 
 export const Image = styled.img<{ size: 'sm' | 'md' | 'lg' }>`
-    ${tw`rounded-full absolute`}
-
-    ${(props) => props.size === 'sm' && tw`w-12 h-12`}
-    ${(props) => props.size === 'md' && tw`w-24 h-24`}
-    ${(props) => props.size === 'lg' && tw`w-36 h-36`}
+    ${tw`rounded-full absolute h-full w-full`}
 `;
 
 export const Notification = styled.circle<{ size: 'sm' | 'md' | 'lg' }>`
