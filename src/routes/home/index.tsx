@@ -9,11 +9,11 @@ import HobbyCard from '../../components/hobby-card';
 import Feed from '../../views/feed';
 import Wizard from '../../views/wizard';
 
-const RecentActivity = () => {
+const Growing = () => {
     return (
-        <div className="text-center">
-            <h2 className="text-xl font-bold">Recently Active.</h2>
-            <p className="text-gray-400 mt-2">Below are some recently active communities.</p>
+        <div className="">
+            <h2 className="text-4xl font-bold">Trending.</h2>
+            <p className="text-gray-400 mt-2">Here are some communities that have been gaining popularity.</p>
             <div className="mt-4">
                 <div className="my-2">
                     <HobbyCard
@@ -62,9 +62,9 @@ const WizardCard = () => {
 
 const Local = () => {
     return (
-        <div className="text-center">
-            <h2 className="text-xl font-bold">Local Meetups.</h2>
-            <p className="text-gray-400 mt-2">Find out what communities around you are up to.</p>
+        <div className="">
+            <h2 className="text-4xl font-bold">Local.</h2>
+            <p className="text-gray-400 mt-2">Find out what communities near you are up to.</p>
             <div className="rounded h-48 w-full mt-4">
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_KEY ?? '' }}
@@ -93,12 +93,12 @@ const Home = () => {
                 </Button>
             </div>
             <div className="flex pt-2">
-                <div className="lg:mt-0 px-2 hidden sm:block md:w-1/3 lg:w-1/6 px-2">
-                    <RecentActivity />
+                <div className="sticky lg:mt-0 px-2 hidden sm:block md:w-1/3 lg:w-1/6 px-2">
+                    <Growing />
                 </div>
 
-                <div className="w-full px-2 md:w-2/3 lg:w-4/6 px-2">
-                    <WizardCard />
+                <div className="w-full px-2 md:w-2/3 lg:w-4/6">
+                    {/* <WizardCard /> */}
                     <Feed />
                 </div>
 
@@ -107,7 +107,7 @@ const Home = () => {
                 </div>
             </div>
             <Drawer side="left" open={recentDrawerOpen} onClose={() => setRecentDrawerOpen(false)}>
-                <RecentActivity />
+                <Growing />
             </Drawer>
 
             <Drawer open={localDrawerOpen} onClose={() => setLocalDrawerOpen(false)}>
