@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 export const ProfileContainer = styled.div<{ active?: boolean; size: 'sm' | 'md' | 'lg' }>`
     transition: filter 0.2s;    
-    ${tw`relative mx-auto lg:mx-0`}    
+    ${tw`relative p-0 lg:mx-0`}    
 
     ${(props) => props.size === 'sm' && tw`w-12 h-12`}
     ${(props) => props.size === 'md' && tw`w-24 h-24`}
@@ -25,8 +25,8 @@ export const ProfileContainer = styled.div<{ active?: boolean; size: 'sm' | 'md'
     
 `;
 
-export const Image = styled.img<{ size: 'sm' | 'md' | 'lg' }>`
-    ${tw`rounded-full absolute h-full w-full`}
+export const Image = styled.img`
+    ${tw`rounded-full absolute `}
 `;
 
 export const Notification = styled.circle<{ size: 'sm' | 'md' | 'lg' }>`

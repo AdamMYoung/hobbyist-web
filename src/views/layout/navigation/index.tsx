@@ -10,16 +10,18 @@ const Navigation = () => {
                 <Logo>hobbyist</Logo>
             </Link>
 
-            <NavMenu className="mt-4 lg:mt-0 lg:ml-auto mr-6 order-1 lg:order-none w-full lg:w-auto">
-                <NavItem>
-                    <Link to="/home">Home</Link>
-                </NavItem>
-                <NavItem>Hobbies</NavItem>
-                <NavItem>Meetups</NavItem>
-            </NavMenu>
+            <div className="flex sm:ml-auto w-full sm:w-auto items-center mt-4 sm:mt-0">
+                <NavMenu className="mr-6">
+                    <NavItem>
+                        <Link to="/home">Home</Link>
+                    </NavItem>
+                    <NavItem>Hobbies</NavItem>
+                    <NavItem>Meetups</NavItem>
+                </NavMenu>
 
-            <div className="ml-auto lg:ml-0 ">
-                <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
+                <div className="ml-auto sm:ml-0">
+                    <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
+                </div>
             </div>
         </NavBar>
     );

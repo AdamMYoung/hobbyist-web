@@ -5,7 +5,7 @@ import Wizard from '../../views/wizard';
 const Home = () => {
     return (
         <div className="flex flex-wrap">
-            <div className="order-1 lg:order-none mt-8 mb-4 lg:mt-0 w-1/2 lg:w-1/4 px-2">
+            <div className="order-1 lg:order-none mt-8 mb-4 lg:mt-0 w-full sm:w-1/2 lg:w-1/4 px-2">
                 <div className="text-center">
                     <h2 className="text-xl font-bold">Recently Active.</h2>
                     <p className="text-gray-400 mt-2">Below are some recently active communities.</p>
@@ -38,7 +38,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className=" w-full lg:w-2/4 px-2">
+            <div className="w-full lg:w-2/4 px-2">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold">Find yourself a new hobby.</h1>
                     <p className="text-gray-400 mt-2">
@@ -50,7 +50,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="order-1 lg:order-none mt-8 mb-4 lg:mt-0 w-1/2 lg:w-1/4 px-2">
+            <div className="order-1 lg:order-none mt-8 mb-4 lg:mt-0 w-full sm:w-1/2 lg:w-1/4 px-2">
                 <div className="text-center">
                     <h2 className="text-xl font-bold">Local Meetups.</h2>
                     <p className="text-gray-400 mt-2">Find out what communities around you are up to.</p>
