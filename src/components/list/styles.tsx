@@ -10,6 +10,6 @@ export const ListGroup = styled.ul<{ active?: boolean }>`
 `;
 
 export const ListItem = styled.li`
-    ${tw`py-3 px-1`}
+    ${tw`py-3 px-1 hover:text-blue-700`}
     list-style-type: none;
 `;

@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import Button from '../../components/button';
 import Drawer from '../../components/drawer';
 import HobbyCard from '../../components/hobby-card';
+import Feed from '../../views/feed';
 import Wizard from '../../views/wizard';
 
 const RecentActivity = () => {
@@ -43,7 +44,7 @@ const RecentActivity = () => {
     );
 };
 
-const Feed = () => {
+const WizardCard = () => {
     return (
         <>
             <div className="text-center">
@@ -97,6 +98,7 @@ const Home = () => {
                 </div>
 
                 <div className="w-full px-2 md:w-2/3 lg:w-4/6 px-2">
+                    <WizardCard />
                     <Feed />
                 </div>
 

@@ -12,6 +12,32 @@ export type WizardOption = {
     followUpQuestion?: WizardQuestion;
 };
 
+export type Profile = {
+    name: string;
+    src: string;
+    id: string;
+};
+
+type Post = {
+    profile: Profile;
+    title: string;
+    commentCount: number;
+    likes: number;
+    liked?: boolean;
+};
+
+export type TextPost = Post & {
+    type: 'text';
+    content: string;
+};
+
+export type ImagePost = Post & {
+    type: 'image';
+    images: string[];
+};
+
+export type PostTypes = TextPost | ImagePost;
+
 const EnjoySportsQuestion: WizardQuestion = {
     id: 'sports',
     image: 'https://via.placeholder.com/400',
