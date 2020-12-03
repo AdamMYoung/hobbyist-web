@@ -10,7 +10,7 @@ const WizardCard = (props: Props) => {
     const { question, onAnswerSelected } = props;
 
     return (
-        <div className="shadow w-full">
+        <div className="shadow w-full bg-white">
             <div className="block sm:flex">
                 <div className="mr-0 sm:mr-4 flex-1 relative h-32 sm:h-auto">
                     <img className="absolute inset-0 w-full h-full object-cover" src={question.image} alt="" />

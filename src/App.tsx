@@ -1,11 +1,14 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ScrollLockProvider } from './providers/ScrollLockProvider';
 import Layout from './views/layout';
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Layout />
-        </BrowserRouter>
+        <ScrollLockProvider>
+            <BrowserRouter>
+                <Layout />
+            </BrowserRouter>
+        </ScrollLockProvider>
     );
 };
 
