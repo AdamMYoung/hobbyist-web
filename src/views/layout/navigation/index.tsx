@@ -40,7 +40,7 @@ const Navigation = () => {
     };
 
     return (
-        <div className="sticky top-0 bg-white z-20 border-b-2 border-gray-200">
+        <div className="sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-20">
             <div className="lg:container">
                 <NavBar>
                     <Link to="/">
@@ -53,15 +53,15 @@ const Navigation = () => {
 
                     <div className="hidden md:flex sm:ml-auto w-auto items-center mt-4 md:mt-0">
                         <NavMenu className="mx-auto">
-                            <NavItem>
-                                <Link to="/">Home</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to="/hobbies">Hobbies</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to="/meetups">Meetups</Link>
-                            </NavItem>
+                            <Link to="/">
+                                <NavItem>Home</NavItem>
+                            </Link>
+                            <Link to="/hobbies">
+                                <NavItem>Hobbies</NavItem>
+                            </Link>
+                            <Link to="/meetups">
+                                <NavItem>Meetups</NavItem>
+                            </Link>
                         </NavMenu>
 
                         <div className="mx-auto ml-2">
@@ -75,20 +75,24 @@ const Navigation = () => {
                 <Profile />
                 <hr className="mt-4 mb-2 border-b-2" />
                 <List active>
-                    <List.Item>
-                        <Link to="/">Home</Link>
-                    </List.Item>
-                    <List.Item>
-                        <Link to="/hobbies">Hobbies</Link>
-                    </List.Item>
-                    <List.Item>
-                        <Link to="/meetups">Meetups</Link>
-                    </List.Item>
+                    <Link to="/">
+                        <List.Item>Home</List.Item>
+                    </Link>
+                    <Link to="/hobbies">
+                        <List.Item>Hobbies</List.Item>
+                    </Link>
+                    <Link to="/meetups">
+                        <List.Item>Meetups</List.Item>
+                    </Link>
                 </List>
-                <hr className="mt-4 mb-2 border-b-2" />
-                <List active>
-                    <List.Item onClick={() => logout()}>Logout</List.Item>
-                </List>
+                {isAuthenticated && (
+                    <>
+                        <hr className="mt-4 mb-2 border-b-2" />
+                        <List active>
+                            <List.Item onClick={() => logout()}>Logout</List.Item>
+                        </List>
+                    </>
+                )}
             </Drawer>
         </div>
     );

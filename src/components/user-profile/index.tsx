@@ -5,15 +5,16 @@ type Props = {
     src: string;
     name: string;
     alt?: string;
-    onClick: () => void;
+    onClick?: () => void;
     hasNotification?: boolean;
+    active?: boolean;
 };
 
 const UserProfile = (props: Props) => {
-    const { onClick, name, ...rest } = props;
+    const { onClick, name, active, ...rest } = props;
 
     return (
-        <UserContainer onClick={onClick}>
+        <UserContainer onClick={() => onClick && onClick()} active={active}>
             <ProfileIcon size="sm" {...rest} />
             <p className="text-lg whitespace-nowrap">{name}</p>
         </UserContainer>

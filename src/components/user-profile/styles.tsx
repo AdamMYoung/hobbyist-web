@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
-export const UserContainer = styled.div`
+export const UserContainer = styled.div<{ active?: boolean }>`
     transition: filter 0.2s, text-decoration 0.2s;
 
     ${tw`flex items-center`}
@@ -10,15 +10,19 @@ export const UserContainer = styled.div`
         ${tw`ml-2 font-semibold`}
     }
 
-    &:hover {
-        cursor: pointer;
-        filter: brightness(70%);
+    ${(props) =>
+        props.active &&
+        css`
+            &:hover {
+                cursor: pointer;
+                filter: brightness(70%);
 
-        ${tw`underline`}
-    }
+                ${tw`underline`}
+            }
 
-    &:active {
-        filter: brightness(50%);
-        transition: filter 0.1s;
-    }
+            &:active {
+                filter: brightness(50%);
+                transition: filter 0.1s;
+            }
+        `}
 `;

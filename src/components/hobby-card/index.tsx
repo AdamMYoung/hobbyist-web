@@ -15,7 +15,7 @@ const HobbyCard = (props: Props) => {
                 <div className="w-24 mx-auto">
                     <ProfileIcon size="md" src={src} />
                 </div>
-                <div className="mx-auto mt-4">
+                <div className="mx-auto mt-2">
                     <p className=" text-xl font-semibold">{title}</p>
                     <p className="text-gray-500 ">{`${memberCount} members`}</p>
                     <p className="text-gray-400 mt-2">{description}</p>
