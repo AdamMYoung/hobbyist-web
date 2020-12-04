@@ -4,6 +4,7 @@ import { UserContainer } from './styles';
 type Props = {
     src: string;
     name: string;
+    alt?: string;
     onClick: () => void;
     hasNotification?: boolean;
 };

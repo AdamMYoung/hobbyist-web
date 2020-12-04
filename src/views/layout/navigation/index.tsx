@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
+import Button from '../../../components/button';
 import Input from '../../../components/input';
 import UserProfile from '../../../components/user-profile';
 import { Logo, NavBar, NavMenu, NavItem } from './styles';
@@ -12,6 +14,30 @@ import IconButton from '../../../components/icon-button';
 const Navigation = () => {
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
     const history = useHistory();
+    const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
+
+    const Profile = () => {
+        if (isAuthenticated) {
+            return (
+                <UserProfile
+                    onClick={() => history.push('/profile')}
+                    name={user.name}
+                    src={user.picture}
+                    alt={user.name}
+                />
+            );
+        }
+
+        if (isLoading) {
+            return <p className="mx-2 text-xl font-semibold">Loading...</p>;
+        }
+
+        return (
+            <Button className="mx-2" variant="primary" onClick={() => loginWithRedirect()}>
+                Login
+            </Button>
+        );
+    };
 
     return (
         <div className="sticky top-0 bg-white z-20 border-b-2 border-gray-200">
@@ -39,22 +65,14 @@ const Navigation = () => {
                         </NavMenu>
 
                         <div className="mx-auto ml-2">
-                            <UserProfile
-                                onClick={() => history.push('/profile')}
-                                name="John Doe"
-                                src="https://via.placeholder.com/150"
-                            />
+                            <Profile />
                         </div>
                     </div>
                 </NavBar>
             </div>
 
             <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <UserProfile
-                    onClick={() => history.push('/profile')}
-                    name="John Doe"
-                    src="https://via.placeholder.com/150"
-                />
+                <Profile />
                 <hr className="mt-4 mb-2 border-b-2" />
                 <List active>
                     <List.Item>
@@ -66,6 +84,10 @@ const Navigation = () => {
                     <List.Item>
                         <Link to="/meetups">Meetups</Link>
                     </List.Item>
+                </List>
+                <hr className="mt-4 mb-2 border-b-2" />
+                <List active>
+                    <List.Item onClick={() => logout()}>Logout</List.Item>
                 </List>
             </Drawer>
         </div>

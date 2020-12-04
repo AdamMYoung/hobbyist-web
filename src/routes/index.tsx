@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import { AuthenticatedRoute } from './custom';
 import Hobbies from './hobbies';
 import Hobby from './hobby';
 import Home from './home';
@@ -22,7 +23,7 @@ const Routes = () => {
             <Route path="/h/:hobby/m" exact component={Meetups} />
             <Route path="/h/:hobby/m/:meetup" exact component={Meetup} />
 
-            <Route path="/profile" exact component={UserProfile} />
+            <AuthenticatedRoute path="/profile" exact component={UserProfile} />
             <Route path="/p/:profile" exact component={Profile} />
 
             <Route path="/" component={NotFound} />
