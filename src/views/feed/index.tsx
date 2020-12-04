@@ -213,7 +213,7 @@ const Feed = () => {
     return (
         <>
             {posts.map((post) => (
-                <div className="my-4">
+                <div className="mb-4">
                     {post.type === 'text' ? <TextPostCard {...post} /> : <ImagePostCard {...post} />}
                 </div>
             ))}

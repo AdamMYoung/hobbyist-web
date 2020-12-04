@@ -12,6 +12,22 @@ export type WizardOption = {
     followUpQuestion?: WizardQuestion;
 };
 
+export type Meetup = {
+    id: string;
+    name: string;
+    date: Date;
+    description: string;
+    address?: string;
+    lat: number;
+    lng: number;
+};
+
+export type HobbyCategory = {
+    id: string;
+    name: string;
+    hobbies: Hobby[];
+};
+
 export type Hobby = {
     id: string;
     src: string;

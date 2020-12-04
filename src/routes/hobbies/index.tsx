@@ -1,19 +1,31 @@
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import SplitPage from '../../views/split-page';
+import CuratedHobbies from '../../views/curated-hobbies';
+import SplitPage, { RenderProps } from '../../views/split-page';
 import Trending from '../../views/trending';
 
 const Hobbies = () => {
     const title = 'Hobbies.';
-    const description = "Find what's trending, or disover something new.";
+    const description = 'Check below for our curated list of hobbies.';
 
     return (
-        <SplitPage title={title}>
-            <SplitPage.Center title={title} description={description}>
-                <p className="mt-4 text-3xl font-semibold">Trending.</p>
-                <div className="mt-2">
-                    <Trending />
-                </div>
-            </SplitPage.Center>
+        <SplitPage title={title} leftIcon={faChartLine}>
+            {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
+                <>
+                    <SplitPage.Left isDrawerOpen={leftDrawer} onCloseDrawer={closeLeftDrawer}>
+                        <SplitPage.Header
+                            title="Trending."
+                            description="Here are some communities that are gaining popularity."
+                        />
+
+                        <Trending vertical />
+                    </SplitPage.Left>
+                    <SplitPage.Center>
+                        <SplitPage.Center.Header title={title} description={description} />
+                        <CuratedHobbies />
+                    </SplitPage.Center>
+                </>
+            )}
         </SplitPage>
     );
 };
