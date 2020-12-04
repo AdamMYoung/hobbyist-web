@@ -1,45 +1,20 @@
 import { faChartLine, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import GoogleMapReact from 'google-map-react';
-import React, { useState } from 'react';
+import React from 'react';
 
-import Button from '../../components/button';
-import Drawer from '../../components/drawer';
-import HobbyCard from '../../components/hobby-card';
 import Feed from '../../views/feed';
 import SplitPage, { RenderProps } from '../../views/split-page';
+import Trending from '../../views/trending';
+
 // import Wizard from '../../views/wizard';
 
-const Growing = () => {
+const TrendingHobbies = () => {
     return (
-        <div className="">
+        <div>
             <h2 className="text-4xl font-bold">Trending.</h2>
             <p className="text-gray-400 mt-2">Here are some communities that have been gaining popularity.</p>
             <div className="mt-4">
-                <div className="my-2">
-                    <HobbyCard
-                        src="https://via.placeholder.com/400"
-                        title="Title 1"
-                        description="Description 1"
-                        memberCount={1500}
-                    />
-                </div>
-                <div className="my-2">
-                    <HobbyCard
-                        src="https://via.placeholder.com/400"
-                        title="Title 1"
-                        description="Description 1"
-                        memberCount={1500}
-                    />
-                </div>
-                <div className="my-2">
-                    <HobbyCard
-                        src="https://via.placeholder.com/400"
-                        title="Title 1"
-                        description="Description 1"
-                        memberCount={1500}
-                    />
-                </div>
+                <Trending vertical />
             </div>
         </div>
     );
@@ -87,7 +62,7 @@ const Home = () => {
             {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
                 <>
                     <SplitPage.Left isDrawerOpen={leftDrawer} onCloseDrawer={closeLeftDrawer}>
-                        <Growing />
+                        <TrendingHobbies />
                     </SplitPage.Left>
                     <SplitPage.Center title={title} description={description}>
                         <Feed />
