@@ -42,7 +42,7 @@ const Navigation = () => {
                     </div>
                 </NavBar>
             </div>
-            <div className="absolute top-0 right-0"></div>
+
             <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
                 <hr className="mt-4 mb-2 border-b-2" />

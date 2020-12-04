@@ -199,8 +199,6 @@ const posts: PostTypes[] = [
 const Feed = () => {
     return (
         <>
-            <h1 className="text-4xl font-bold">Feed.</h1>
-            <p className="text-gray-400 mt-2">Recent posts from hobbies you're interested in.</p>
             {posts.map((post) => (
                 <div className="my-4">
                     {post.type === 'text' ? <TextPostCard {...post} /> : <ImagePostCard {...post} />}
