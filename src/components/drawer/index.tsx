@@ -22,7 +22,7 @@ const Drawer = (props: Props) => {
 
     return (
         <div
-            className={`z-50 absolute flex top-0 w-screen h-screen transition-opacity 
+            className={`z-50 fixed flex top-0 w-screen h-screen transition-opacity 
             ${open ? 'opacity-100' : 'opacity-0 aria-hidden pointer-events-none'}`}
         >
             <div

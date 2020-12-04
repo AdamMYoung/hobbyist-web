@@ -7,6 +7,7 @@ import Button from '../../components/button';
 import Drawer from '../../components/drawer';
 import HobbyCard from '../../components/hobby-card';
 import Feed from '../../views/feed';
+import SplitPage, { RenderProps } from '../../views/split-page';
 // import Wizard from '../../views/wizard';
 
 const Growing = () => {
@@ -68,7 +69,7 @@ const Local = () => {
             <div className="rounded h-48 w-full mt-4">
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_KEY ?? '' }}
-                    options={(map) => ({ panControl: false, mapTypeControl: false, scrollwheel: false })}
+                    options={() => ({ panControl: false, mapTypeControl: false, scrollwheel: false })}
                     defaultZoom={11}
                     defaultCenter={{ lat: 59, lng: 30 }}
                 ></GoogleMapReact>
@@ -78,42 +79,25 @@ const Local = () => {
 };
 
 const Home = () => {
-    const [recentDrawerOpen, setRecentDrawerOpen] = useState(false);
-    const [localDrawerOpen, setLocalDrawerOpen] = useState(false);
+    const title = 'Feed.';
+    const description = "Recent posts from hobbies you're interested in.";
 
     return (
-        <>
-            <div className="flex border-b-2 py-1 px-2 border-gray-200 lg:hidden">
-                <Button className="sm:hidden" onClick={() => setRecentDrawerOpen(true)}>
-                    <FontAwesomeIcon size="lg" icon={faChartLine} />
-                </Button>
-                <div className="flex-grow" />
-                <Button className="lg:hidden" onClick={() => setLocalDrawerOpen(true)}>
-                    <FontAwesomeIcon size="lg" icon={faMapMarkerAlt} />
-                </Button>
-            </div>
-            <div className="flex pt-2">
-                <div className="sticky lg:mt-0 px-2 hidden sm:block md:w-1/3 lg:w-1/6 px-2">
-                    <Growing />
-                </div>
-
-                <div className="w-full px-2 md:w-2/3 lg:w-4/6">
-                    {/* <WizardCard /> */}
-                    <Feed />
-                </div>
-
-                <div className="lg:mt-0 px-2 hidden lg:block lg:w-1/6 px-2">
-                    <Local />
-                </div>
-            </div>
-            <Drawer side="left" open={recentDrawerOpen} onClose={() => setRecentDrawerOpen(false)}>
-                <Growing />
-            </Drawer>
-
-            <Drawer open={localDrawerOpen} onClose={() => setLocalDrawerOpen(false)}>
-                <Local />
-            </Drawer>
-        </>
+        <SplitPage title={title} leftIcon={faChartLine} rightIcon={faMapMarkerAlt}>
+            {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
+                <>
+                    <SplitPage.Left isDrawerOpen={leftDrawer} onCloseDrawer={closeLeftDrawer}>
+                        <Growing />
+                    </SplitPage.Left>
+                    <SplitPage.Center title={title} description={description}>
+                        <Feed />
+                    </SplitPage.Center>
+                    <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
+                        <Local />
+                    </SplitPage.Right>
+                </>
+            )}
+        </SplitPage>
     );
 };
 

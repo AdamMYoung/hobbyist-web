@@ -27,7 +27,7 @@ const Navigation = () => {
                         <FontAwesomeIcon size="lg" icon={faBars} />
                     </Button>
 
-                    <div className="hidden md:flex flex-wrap sm:ml-auto w-auto items-center mt-4 md:mt-0">
+                    <div className="hidden md:flex sm:ml-auto w-auto items-center mt-4 md:mt-0">
                         <NavMenu className="mx-auto">
                             <NavItem>
                                 <Link to="/home">Home</Link>
@@ -36,13 +36,13 @@ const Navigation = () => {
                             <NavItem>Meetups</NavItem>
                         </NavMenu>
 
-                        <div className="mx-auto sm:ml-0 lg:ml-4">
+                        <div className="mx-auto ml-0 lg:ml-4">
                             <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
                         </div>
                     </div>
                 </NavBar>
             </div>
-            <div className="absolute top-0 right-0"></div>
+
             <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <UserProfile onClick={console.log} name="John Doe" src="https://via.placeholder.com/150" />
                 <hr className="mt-4 mb-2 border-b-2" />
