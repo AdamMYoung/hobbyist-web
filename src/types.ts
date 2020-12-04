@@ -12,6 +12,14 @@ export type WizardOption = {
     followUpQuestion?: WizardQuestion;
 };
 
+export type Hobby = {
+    id: string;
+    src: string;
+    title: string;
+    description: string;
+    memberCount: number;
+};
+
 export type Profile = {
     name: string;
     src: string;
@@ -19,6 +27,7 @@ export type Profile = {
 };
 
 type Post = {
+    id: string;
     profile: Profile;
     title: string;
     commentCount: number;

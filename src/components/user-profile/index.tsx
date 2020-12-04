@@ -12,7 +12,7 @@ const UserProfile = (props: Props) => {
     const { onClick, name, ...rest } = props;
 
     return (
-        <UserContainer>
+        <UserContainer onClick={onClick}>
             <ProfileIcon size="sm" {...rest} />
             <p className="text-lg whitespace-nowrap">{name}</p>
         </UserContainer>

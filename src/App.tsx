@@ -1,13 +1,17 @@
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+
 import { ScrollLockProvider } from './providers/ScrollLockProvider';
 import Layout from './views/layout';
+
+const history = createBrowserHistory();
 
 const App = () => {
     return (
         <ScrollLockProvider>
-            <BrowserRouter>
+            <Router history={history}>
                 <Layout />
-            </BrowserRouter>
+            </Router>
         </ScrollLockProvider>
     );
 };

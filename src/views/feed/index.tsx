@@ -4,6 +4,7 @@ import ImagePostCard from '../../components/image-post-card';
 
 const posts: PostTypes[] = [
     {
+        id: '1',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -17,6 +18,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '2',
         type: 'image',
         profile: {
             id: 'Bob',
@@ -30,6 +32,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '3',
         type: 'image',
         profile: {
             id: 'Bob',
@@ -43,6 +46,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '4',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -56,6 +60,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '5',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -69,6 +74,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '6',
         type: 'image',
         profile: {
             id: 'Bob',
@@ -86,6 +92,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '7',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -99,6 +106,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '8',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -112,6 +120,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '9',
         type: 'image',
         profile: {
             id: 'Bob',
@@ -130,6 +139,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '10',
         type: 'image',
         profile: {
             id: 'Bob',
@@ -149,6 +159,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '11',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -162,6 +173,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '12',
         type: 'text',
         profile: {
             id: 'Bob',
@@ -175,6 +187,7 @@ const posts: PostTypes[] = [
         commentCount: 0,
     },
     {
+        id: '13',
         type: 'image',
         profile: {
             id: 'Bob',

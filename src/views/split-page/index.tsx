@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import Button from '../../components/button';
 import Drawer from '../../components/drawer';
+import IconButton from '../../components/icon-button';
 
 type ColumnProps = {
     children: React.ReactNode;
@@ -35,7 +36,7 @@ const LeftColumn = (props: ColumnProps) => {
 
     return (
         <>
-            <div className="lg:mt-0 px-2 hidden sm:block md:w-1/3 lg:w-1/6 px-2">{children}</div>
+            <div className="lg:mt-0 px-3 hidden sm:block w-2/6 lg:w-1/6 px-2">{children}</div>
             <Drawer side="left" open={isDrawerOpen} onClose={onCloseDrawer}>
                 {children}
             </Drawer>
@@ -48,7 +49,7 @@ const RightColumn = (props: ColumnProps) => {
 
     return (
         <>
-            <div className="lg:mt-0 px-2 hidden lg:block lg:w-1/6 px-2">{children}</div>
+            <div className="lg:mt-0 px-3 hidden lg:block w-2/6 px-2">{children}</div>
             <Drawer open={isDrawerOpen} onClose={onCloseDrawer}>
                 {children}
             </Drawer>
@@ -60,7 +61,7 @@ const CenterColumn: React.FC<CenterProps> = (props) => {
     const { title, description, children } = props;
 
     return (
-        <div className="w-full px-2 md:w-2/3 lg:w-4/6">
+        <div className="w-full px-3">
             <div className="hidden sm:block">
                 <h1 className="text-4xl font-bold">{title}</h1>
                 <p className="text-gray-400 mt-2">{description}</p>
@@ -84,20 +85,18 @@ const SplitPage = (props: Props) => {
 
     return (
         <>
-            <div className="flex border-b-2 py-1 px-2 border-gray-200 lg:hidden">
-                {leftIcon && (
-                    <Button className="sm:hidden" onClick={() => setLeftDrawerOpen(true)}>
-                        <FontAwesomeIcon size="lg" icon={leftIcon} />
-                    </Button>
-                )}
-                <div className="text-2xl font-bold my-auto sm:hidden">{title}</div>
-                <span className="flex-grow" />
-                {rightIcon && (
-                    <Button className="lg:hidden" onClick={() => setRightDrawerOpen(true)}>
-                        <FontAwesomeIcon size="lg" icon={rightIcon} />
-                    </Button>
-                )}
-            </div>
+            {leftIcon && rightIcon && (
+                <div className="flex items-center border-b-2 py-1 px-2 border-gray-200 lg:hidden">
+                    {leftIcon && (
+                        <IconButton className="sm:hidden" icon={leftIcon} onClick={() => setLeftDrawerOpen(true)} />
+                    )}
+                    <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{title}</div>
+                    <span className="flex-grow" />
+                    {rightIcon && (
+                        <IconButton className="lg:hidden" icon={rightIcon} onClick={() => setRightDrawerOpen(true)} />
+                    )}
+                </div>
+            )}
             <div className="flex sm:pt-4">{typeof children === 'function' ? children(renderProps) : children}</div>
         </>
     );
