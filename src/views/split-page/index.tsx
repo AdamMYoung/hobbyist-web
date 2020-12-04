@@ -1,8 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React, { useState } from 'react';
 
-import Button from '../../components/button';
 import Drawer from '../../components/drawer';
 import IconButton from '../../components/icon-button';
 
