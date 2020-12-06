@@ -30,7 +30,7 @@ const PostCard: React.FC<Props> = (props) => {
                     <Button
                         variant="link"
                         onClick={() => history.push(`/h/${hobbyId}`)}
-                        className="pl-2 text-sm text-gray-500"
+                        className="text-sm text-gray-500"
                     >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</Button>
                 </UserProfile>
                 <div className="pl-10">
