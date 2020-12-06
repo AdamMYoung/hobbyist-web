@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 'icon' | 'link' }>`
-    ${tw`rounded-full`}
+    ${tw`block rounded-full`}
     cursor: pointer;
     transition: filter 0.1s;
 

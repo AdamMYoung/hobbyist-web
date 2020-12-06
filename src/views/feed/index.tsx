@@ -239,7 +239,7 @@ const Feed = () => {
     return (
         <div className="mt-4">
             {posts.map((post) => (
-                <div className="mb-4">
+                <div key={post.id} className="mb-4">
                     {post.type === 'text' ? <TextPostCard {...post} /> : <ImagePostCard {...post} />}
                 </div>
             ))}

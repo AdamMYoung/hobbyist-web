@@ -233,7 +233,7 @@ const Meetups = () => {
                             </Card>
                             <div className="mt-4 pointer-events-auto">
                                 {MeetupEvents.map((event) => (
-                                    <div className="mt-2">
+                                    <div key={event.id} className="mt-2">
                                         <MeetupCard {...event} />
                                     </div>
                                 ))}

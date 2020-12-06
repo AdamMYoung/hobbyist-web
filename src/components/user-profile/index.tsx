@@ -14,17 +14,15 @@ type Props = {
 };
 
 const UserProfile: React.FC<Props> = (props) => {
-    const { onClick, active, children, size = 'xs', title, ...rest } = props;
+    const { onClick, active, children, size = 'sm', title, ...rest } = props;
 
     return (
         <UserContainer>
             <ProfileIcon size={size} alt={title} {...rest} active={active} />
             <div className="block ml-2">
-                <div>
-                    <Button variant="link" className=" text-sm" onClick={() => onClick && onClick()}>
-                        {title}
-                    </Button>
-                </div>
+                <Button variant="link" className="font-semibold" onClick={() => onClick && onClick()}>
+                    {title}
+                </Button>
                 {children}
             </div>
         </UserContainer>

@@ -6,10 +6,6 @@ export const UserContainer = styled.div<{ active?: boolean }>`
 
     ${tw`flex items-center`}
 
-    p {
-        ${tw`ml-2 font-semibold`}
-    }
-
     ${(props) =>
         props.active &&
         css`

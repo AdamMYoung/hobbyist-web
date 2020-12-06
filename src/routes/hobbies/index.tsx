@@ -12,18 +12,19 @@ const Hobbies = () => {
             <SplitPage.Center>
                 <SplitPage.Center.Header title={title} />
 
-                <div>
+                <div className="p-2 sm:p-0">
                     <h1 className="text-4xl font-bold">Find yourself something new.</h1>
                     <p className="text-gray-400 mt-2">
                         Use our wizard below and we'll pick out some hobbies we think you'll love!
                     </p>
-                </div>
-                <div className="my-6 px-2">
-                    <Wizard />
+
+                    <div className="my-6">
+                        <Wizard />
+                    </div>
                 </div>
 
                 <hr className="mb-4" />
-
+                <h2 className="text-2xl font-semibold mb-2">Suggested.</h2>
                 <CuratedHobbies />
             </SplitPage.Center>
         </SplitPage>

@@ -6,6 +6,7 @@ import Button from '../../../components/button';
 import Input from '../../../components/input';
 import { Logo, NavBar } from './styles';
 import ProfileIcon from '../../../components/profile-icon';
+import IconButton from '../../../components/icon-button';
 
 const Navigation = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
@@ -21,7 +22,12 @@ const Navigation = () => {
 
                     <Input type="text" size={1} className="mx-4 md:max-w-sm flex-grow" placeholder="Search" />
 
-                    <div className="ml-auto">
+                    <div className="flex ml-auto">
+                        {isAuthenticated && (
+                            <Button className="hidden sm:block" variant="primary">
+                                New Post
+                            </Button>
+                        )}
                         {isAuthenticated && <ProfileIcon src={user.image} />}
                         {!isAuthenticated && !isLoading && (
                             <Button variant="primary" onClick={() => loginWithRedirect()}>

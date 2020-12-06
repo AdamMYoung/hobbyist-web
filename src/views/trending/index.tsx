@@ -70,7 +70,7 @@ const Trending = (props: Props) => {
     return (
         <div className="flex flex-wrap">
             {Hobbies.map((hobby) => (
-                <div className={`${vertical ? 'w-full my-2' : 'items-center m-2'}`}>
+                <div key={hobby.id} className={`${vertical ? 'w-full my-2' : 'items-center m-2'}`}>
                     <HobbyCard {...hobby} />
                 </div>
             ))}
