@@ -6,7 +6,6 @@ import Button from '../../../components/button';
 import Input from '../../../components/input';
 import { Logo, NavBar } from './styles';
 import ProfileIcon from '../../../components/profile-icon';
-import IconButton from '../../../components/icon-button';
 
 const Navigation = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();

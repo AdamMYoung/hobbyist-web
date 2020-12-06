@@ -1,5 +1,4 @@
 import React from 'react';
-import LoadTransition from '../../components/load-transition';
 
 import CuratedHobbies from '../../views/curated-hobbies';
 import SplitPage from '../../views/split-page';
