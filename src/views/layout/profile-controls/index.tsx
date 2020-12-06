@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { faBook, faComments, faMagic, faMap } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faComments, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory } from 'react-router-dom';

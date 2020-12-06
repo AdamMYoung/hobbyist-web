@@ -1,4 +1,4 @@
-import { faComment, faComments, faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import IconButton from '../icon-button';

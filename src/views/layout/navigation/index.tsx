@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import Button from '../../../components/button';
@@ -8,7 +8,6 @@ import UserProfile from '../../../components/user-profile';
 import { Logo, NavBar } from './styles';
 
 const Navigation = () => {
-    const history = useHistory();
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
     return (
