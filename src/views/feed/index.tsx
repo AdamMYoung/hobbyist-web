@@ -6,6 +6,7 @@ const posts: PostTypes[] = [
     {
         id: '1',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -20,6 +21,7 @@ const posts: PostTypes[] = [
     {
         id: '2',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -34,6 +36,7 @@ const posts: PostTypes[] = [
     {
         id: '3',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -48,6 +51,7 @@ const posts: PostTypes[] = [
     {
         id: '4',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -62,6 +66,7 @@ const posts: PostTypes[] = [
     {
         id: '5',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -76,6 +81,7 @@ const posts: PostTypes[] = [
     {
         id: '6',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -94,6 +100,7 @@ const posts: PostTypes[] = [
     {
         id: '7',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -108,6 +115,7 @@ const posts: PostTypes[] = [
     {
         id: '8',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -122,6 +130,7 @@ const posts: PostTypes[] = [
     {
         id: '9',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -141,6 +150,7 @@ const posts: PostTypes[] = [
     {
         id: '10',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -161,6 +171,7 @@ const posts: PostTypes[] = [
     {
         id: '11',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -175,6 +186,7 @@ const posts: PostTypes[] = [
     {
         id: '12',
         type: 'text',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -189,6 +201,7 @@ const posts: PostTypes[] = [
     {
         id: '13',
         type: 'image',
+        created: new Date(),
         profile: {
             id: 'Bob',
             name: 'John Doe',
@@ -211,13 +224,13 @@ const posts: PostTypes[] = [
 
 const Feed = () => {
     return (
-        <>
+        <div className="mt-4">
             {posts.map((post) => (
                 <div className="mb-4">
                     {post.type === 'text' ? <TextPostCard {...post} /> : <ImagePostCard {...post} />}
                 </div>
             ))}
-        </>
+        </div>
     );
 };
 

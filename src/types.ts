@@ -45,6 +45,7 @@ export type Profile = {
 type Post = {
     id: string;
     profile: Profile;
+    created: Date;
     title: string;
     commentCount: number;
     likes: number;

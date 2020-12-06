@@ -6,7 +6,7 @@ type Props = {
     onClick?: () => void;
     active?: boolean;
     hasNotification?: boolean;
-    size?: 'sm' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 const ProfileIcon = (props: Props) => {
