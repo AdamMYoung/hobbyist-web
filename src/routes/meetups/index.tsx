@@ -6,6 +6,7 @@ import SplitPage from '../../views/split-page';
 import Card from '../../components/card';
 import Input from '../../components/input';
 import MeetupCard from '../../components/meetup-card';
+import useWindowSize from '../../hooks/useWindowHeight';
 
 const MeetupEvents: Meetup[] = [
     {
@@ -202,17 +203,20 @@ const MeetupEvents: Meetup[] = [
 
 const Meetups = () => {
     const title = 'Meetups.';
+    const { height } = useWindowSize();
 
     return (
         <>
+            {/* Map */}
             <div className="fixed left-0 w-full h-full top-20">
-                <Map style={{ height: 'calc(100vh - 5rem)' }} />
+                <Map style={{ height: `calc(100vh - 5rem)` }} />
             </div>
+            {/* Window  */}
             <div className="relative h-full pointer-events-none">
-                <SplitPage disableProfileControls title={title}>
+                <SplitPage disableProfileControls>
                     <SplitPage.Center>
                         <div className="w-full sm:w-1/3 ml-auto p-2 sm:p-0">
-                            <div style={{ height: 'calc(100vh - 15rem)' }} className="sm:hidden" />
+                            <div style={{ height: `calc(${height}px - 15rem)` }} className="sm:hidden" />
                             <Card className="pointer-events-auto">
                                 <div className="p-2 h-28">
                                     <SplitPage.Header title={title} />

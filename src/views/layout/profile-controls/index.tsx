@@ -18,9 +18,7 @@ const ProfileControls = () => {
                 {isAuthenticated && (
                     <List.Item onClick={() => history.push('/profile')}>
                         <div className="flex items-center my-2">
-                            <UserProfile size="sm" src={user.image} alt={user.name}>
-                                <p>{user.name}</p>
-                            </UserProfile>
+                            <UserProfile size="sm" src={user.image} title={user.name} />
                             <Button variant="primary" className="hidden sm:block ml-auto" onClick={() => logout()}>
                                 Sign Out
                             </Button>
