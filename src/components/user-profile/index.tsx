@@ -14,8 +14,8 @@ const UserProfile: React.FC<Props> = (props) => {
     const { onClick, active, children, size = 'xs', ...rest } = props;
 
     return (
-        <UserContainer onClick={() => onClick && onClick()} active={active}>
-            <ProfileIcon size={size} {...rest} />
+        <UserContainer>
+            <ProfileIcon size={size} {...rest} onClick={() => onClick && onClick()} active={active} />
             {children}
         </UserContainer>
     );

@@ -18,6 +18,7 @@ export type Meetup = {
     date: Date;
     description: string;
     address?: string;
+    hobbyId: string;
     lat: number;
     lng: number;
 };
@@ -44,6 +45,7 @@ export type Profile = {
 
 type Post = {
     id: string;
+    hobbyId: string;
     profile: Profile;
     created: Date;
     title: string;

@@ -13,8 +13,8 @@ const ProfileIcon = (props: Props) => {
     const { src, onClick, alt, active, hasNotification = false, size = 'sm' } = props;
 
     return (
-        <ProfileContainer active={active} size={size}>
-            <Image src={src} alt={alt} onClick={() => active && onClick && onClick()} />
+        <ProfileContainer active={active} size={size} onClick={() => active && onClick && onClick()}>
+            <Image src={src} alt={alt} />
             {hasNotification && <Notification size={size} />}
         </ProfileContainer>
     );

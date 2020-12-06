@@ -5,6 +5,7 @@ import ImagePostCard from '../../components/image-post-card';
 const posts: PostTypes[] = [
     {
         id: '1',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -20,6 +21,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '2',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
@@ -35,6 +37,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '3',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
@@ -50,6 +53,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '4',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -65,6 +69,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '5',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -80,6 +85,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '6',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
@@ -99,6 +105,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '7',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -114,6 +121,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '8',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -129,6 +137,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '9',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
@@ -149,6 +158,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '10',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
@@ -170,6 +180,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '11',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -185,6 +196,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '12',
+        hobbyId: 'knitting',
         type: 'text',
         created: new Date(),
         profile: {
@@ -200,6 +212,7 @@ const posts: PostTypes[] = [
     },
     {
         id: '13',
+        hobbyId: 'knitting',
         type: 'image',
         created: new Date(),
         profile: {
