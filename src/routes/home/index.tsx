@@ -1,10 +1,7 @@
-import { faChartLine, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import Map from '../../components/map';
 
 import Feed from '../../views/feed';
-import SplitPage, { RenderProps } from '../../views/split-page';
-import Trending from '../../views/trending';
+import SplitPage from '../../views/split-page';
 
 // const WizardCard = () => {
 //     return (
@@ -24,29 +21,13 @@ import Trending from '../../views/trending';
 
 const Home = () => {
     const title = 'Feed.';
-    const description = "Recent posts from hobbies you're interested in.";
 
     return (
-        <SplitPage title={title} leftIcon={faChartLine} rightIcon={faMapMarkerAlt}>
-            {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
-                <>
-                    <SplitPage.Left isDrawerOpen={leftDrawer} onCloseDrawer={closeLeftDrawer}>
-                        <SplitPage.Header
-                            title="Trending."
-                            description="Here are some communities that are gaining popularity."
-                        />
-                        <Trending vertical />
-                    </SplitPage.Left>
-                    <SplitPage.Center>
-                        <SplitPage.Center.Header title={title} description={description} />
-                        <Feed />
-                    </SplitPage.Center>
-                    <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                        <SplitPage.Header title="Local." description="Find out what communities near you are up to." />
-                        <Map />
-                    </SplitPage.Right>
-                </>
-            )}
+        <SplitPage title={title}>
+            <SplitPage.Center>
+                <SplitPage.Center.Header title={title} />
+                <Feed />
+            </SplitPage.Center>
         </SplitPage>
     );
 };

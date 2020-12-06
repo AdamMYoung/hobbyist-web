@@ -9,7 +9,7 @@ type Props = FAProps & {
 };
 
 const IconButton: React.FC<Props> = (props) => {
-    const { onClick, className, children, color, icon, active, activeIcon, size, ...rest } = props;
+    const { onClick, className, children, color, icon, active, activeIcon, ...rest } = props;
 
     const iconColor = color ?? 'gray';
 
@@ -18,8 +18,8 @@ const IconButton: React.FC<Props> = (props) => {
             className={`${className} rounded-full p-2 flex items-center focus:outline-none hover:bg-${iconColor}-100 active:ring`}
             onClick={onClick}
         >
-            <FontAwesomeIcon size="lg" icon={!active ? icon : activeIcon ?? icon} color={color ?? 'black'} {...rest} />
-            <p className={`ml-1 text-lg font-semibold`}>{children}</p>
+            <FontAwesomeIcon icon={!active ? icon : activeIcon ?? icon} color={color ?? 'black'} {...rest} />
+            <p className={`ml-1 font-semibold`}>{children}</p>
         </button>
     );
 };

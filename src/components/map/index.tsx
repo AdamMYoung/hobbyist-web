@@ -17,9 +17,13 @@ const Map: React.FC<Props> = (props) => {
                     panControl: false,
                     mapTypeControl: false,
                     scrollwheel: false,
+                    fullscreenControl: false,
+                    rotateControl: false,
+                    zoomControl: false,
+                    scaleControl: false,
                 })}
-                defaultZoom={11}
-                defaultCenter={{ lat: 0, lng: 0 }}
+                defaultZoom={15}
+                defaultCenter={{ lat: 52.4862, lng: -1.8904 }}
             >
                 {children}
             </GoogleMapReact>

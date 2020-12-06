@@ -1,32 +1,55 @@
 import React from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { useHistory } from 'react-router-dom';
+
 import { Profile } from '../../types';
 import Card from '../card';
 import SocialControls from '../social-controls';
 import UserProfile from '../user-profile';
 
+dayjs.extend(relativeTime);
+
 type Props = {
     title: string;
+    id: string;
+    hobbyId: string;
+    created: Date;
     profile: Profile;
 };
 
 const PostCard: React.FC<Props> = (props) => {
-    const { title, profile, children } = props;
+    const { id, title, created, profile, hobbyId, children } = props;
+    const history = useHistory();
 
     return (
-        <Card active>
+        <Card>
             <article className="min-h-32 max-h-92">
-                <p className="mt-2 text-xl font-bold">{title}</p>
-                <div className="flex mt-2 w-full">{children}</div>
-                <hr className="mt-2" />
+                <UserProfile src={profile.src} onClick={() => history.push(`/u/${profile.id}`)}>
+                    <div>
+                        <p
+                            className="text-sm hover:underline cursor-pointer"
+                            onClick={() => history.push(`/p/${profile.id}`)}
+                        >
+                            {profile.name}
+                        </p>
+                        <div className="pl-2">
+                            <button
+                                onClick={() => history.push(`/h/${hobbyId}`)}
+                                className="text-sm text-gray-500 hover:underline"
+                            >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</button>
+                        </div>
+                    </div>
+                </UserProfile>
+                <div className="pl-10">
+                    <p className="mt-4 text-xl font-bold">{title}</p>
+                    <div className="flex my-2 w-full">{children}</div>
 
-                <div className="flex flex-wrap mt-4">
-                    <div className="mt-2 sm:mt-0">
-                        <UserProfile name={profile.name} src={profile.src} onClick={console.log} />
-                    </div>
-                    <div className="flex-grow" />
-                    <div className="mt-2 sm:mt-0">
-                        <SocialControls likeCount={0} commentCount={0} />
-                    </div>
+                    <SocialControls
+                        onCommentsClicked={() => history.push(`/h/${hobbyId}/p/${id}`)}
+                        likeCount={0}
+                        commentCount={0}
+                    />
                 </div>
             </article>
         </Card>

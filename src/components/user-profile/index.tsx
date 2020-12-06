@@ -3,20 +3,20 @@ import { UserContainer } from './styles';
 
 type Props = {
     src: string;
-    name: string;
     alt?: string;
     onClick?: () => void;
     hasNotification?: boolean;
     active?: boolean;
+    size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
-const UserProfile = (props: Props) => {
-    const { onClick, name, active, ...rest } = props;
+const UserProfile: React.FC<Props> = (props) => {
+    const { onClick, active, children, size = 'xs', ...rest } = props;
 
     return (
-        <UserContainer onClick={() => onClick && onClick()} active={active}>
-            <ProfileIcon size="sm" {...rest} />
-            <p className="text-lg whitespace-nowrap">{name}</p>
+        <UserContainer>
+            <ProfileIcon size={size} {...rest} onClick={() => onClick && onClick()} active={active} />
+            {children}
         </UserContainer>
     );
 };
