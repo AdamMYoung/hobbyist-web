@@ -100,9 +100,7 @@ const CuratedHobbies = () => {
                         <List active>
                             {group.hobbies.map((hobby) => (
                                 <List.Item onClick={() => history.push(`/h/${hobby.id}`)}>
-                                    <UserProfile src={hobby.src}>
-                                        <p>{hobby.title}</p>
-                                    </UserProfile>
+                                    <UserProfile title={hobby.title} src={hobby.src} />
                                     <p className="text-gray-400 mt-2">{`${hobby.memberCount} members`}</p>
                                     <p className="text-gray-400">{hobby.description}</p>
                                 </List.Item>

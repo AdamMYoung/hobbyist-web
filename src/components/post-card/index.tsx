@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
 
+import Button from '../button';
 import { Profile } from '../../types';
 import Card from '../card';
 import SocialControls from '../social-controls';
@@ -25,21 +26,12 @@ const PostCard: React.FC<Props> = (props) => {
     return (
         <Card>
             <article className="min-h-32 max-h-92">
-                <UserProfile src={profile.src} onClick={() => history.push(`/u/${profile.id}`)}>
-                    <div>
-                        <p
-                            className="text-sm hover:underline cursor-pointer"
-                            onClick={() => history.push(`/p/${profile.id}`)}
-                        >
-                            {profile.name}
-                        </p>
-                        <div className="pl-2">
-                            <button
-                                onClick={() => history.push(`/h/${hobbyId}`)}
-                                className="text-sm text-gray-500 hover:underline"
-                            >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</button>
-                        </div>
-                    </div>
+                <UserProfile title={profile.name} src={profile.src} onClick={() => history.push(`/p/${profile.id}`)}>
+                    <Button
+                        variant="link"
+                        onClick={() => history.push(`/h/${hobbyId}`)}
+                        className="pl-2 text-sm text-gray-500"
+                    >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</Button>
                 </UserProfile>
                 <div className="pl-10">
                     <p className="mt-4 text-xl font-bold">{title}</p>

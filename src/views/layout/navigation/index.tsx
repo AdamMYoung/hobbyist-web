@@ -4,8 +4,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import Button from '../../../components/button';
 import Input from '../../../components/input';
-import UserProfile from '../../../components/user-profile';
 import { Logo, NavBar } from './styles';
+import ProfileIcon from '../../../components/profile-icon';
 
 const Navigation = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
@@ -22,7 +22,7 @@ const Navigation = () => {
                     <Input type="text" size={1} className="mx-4 md:max-w-sm flex-grow" placeholder="Search" />
 
                     <div className="ml-auto">
-                        {isAuthenticated && <UserProfile src={user.image} />}
+                        {isAuthenticated && <ProfileIcon src={user.image} />}
                         {!isAuthenticated && !isLoading && (
                             <Button variant="primary" onClick={() => loginWithRedirect()}>
                                 Sign In
