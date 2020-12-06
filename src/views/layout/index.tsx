@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
@@ -23,11 +24,12 @@ const Layout = () => {
     return (
         <LockableDiv locked={locked}>
             <Navigation />
-            <div className="">
-                <main className="lg:container min-h-screen">
+
+            <main className="lg:container min-h-screen">
+                <Suspense fallback={null}>
                     <Routes />
-                </main>
-            </div>
+                </Suspense>
+            </main>
         </LockableDiv>
     );
 };
