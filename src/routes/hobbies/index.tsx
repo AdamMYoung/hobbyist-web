@@ -24,6 +24,7 @@ const Hobbies = () => {
                 </div>
 
                 <hr className="mb-4" />
+                <h2 className="text-2xl font-semibold mb-2">Suggested.</h2>
                 <CuratedHobbies />
             </SplitPage.Center>
         </SplitPage>

@@ -24,7 +24,7 @@ const PostCard: React.FC<Props> = (props) => {
     const history = useHistory();
 
     return (
-        <Card>
+        <Card noCursor active>
             <article className="min-h-32 max-h-92">
                 <UserProfile title={profile.name} src={profile.src} onClick={() => history.push(`/p/${profile.id}`)}>
                     <Button
@@ -33,10 +33,11 @@ const PostCard: React.FC<Props> = (props) => {
                         className="text-sm text-gray-500"
                     >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</Button>
                 </UserProfile>
-                <div className="pl-14">
+                <div onClick={() => history.push(`/h/${hobbyId}/p/${id}`)} className="cursor-pointer pl-14">
                     <p className="mt-4 text-xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
-
+                </div>
+                <div className="pl-14">
                     <SocialControls
                         onCommentsClicked={() => history.push(`/h/${hobbyId}/p/${id}`)}
                         likeCount={0}

@@ -21,8 +21,8 @@ const ImagePostCard = (props: Props) => {
 
             {restImages && restImages.length > 0 && (
                 <div className="flex flex-wrap h-48 w-1/2">
-                    {restImages.map((src, index) => (
-                        <div className="w-1/2">
+                    {restImages.map((src) => (
+                        <div key={src} className="w-1/2">
                             <div className="relative h-24 ">
                                 <img className="absolute inset-0 w-full h-full object-cover" src={src} alt="" />
                             </div>
@@ -33,7 +33,7 @@ const ImagePostCard = (props: Props) => {
                             <div className="relative h-24">
                                 <img className="absolute inset-0 w-full h-full object-cover" src={lastImage} alt="" />
                                 {restImageCount > 0 && (
-                                    <p className="absolute text-4xl font-semibold text-white top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                    <p className="absolute text-4xl text-white top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                                         +{restImageCount}
                                     </p>
                                 )}

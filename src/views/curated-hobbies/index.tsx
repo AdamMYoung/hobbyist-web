@@ -96,12 +96,12 @@ const CuratedHobbies = () => {
     return (
         <div className="flex flex-wrap">
             {Groups.map((group) => (
-                <div className="w-full lg:w-1/2 lg:px-2">
+                <div key={group.id} className="w-full lg:w-1/2 lg:px-2">
                     <Card className="my-2">
                         <h2 className="text-2xl font-semibold my-2">{group.name}</h2>
                         <List active>
                             {group.hobbies.map((hobby) => (
-                                <List.Item onClick={() => history.push(`/h/${hobby.id}`)}>
+                                <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
                                     <div className="flex items-center">
                                         <UserProfile title={hobby.title} src={hobby.src}>
                                             <p className="text-gray-400">{`${hobby.memberCount} members`}</p>

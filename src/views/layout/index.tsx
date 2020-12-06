@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 import { useScrollLock } from '../../providers/ScrollLockProvider';
 import Routes from '../../routes';
-import Footer from './footer';
+
 import Navigation from './navigation';
 
 const LockableDiv = styled.div<{ locked: boolean }>`
@@ -28,7 +28,6 @@ const Layout = () => {
                     <Routes />
                 </main>
             </div>
-            <Footer />
         </LockableDiv>
     );
 };

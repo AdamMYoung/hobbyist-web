@@ -55,13 +55,15 @@ const Hobbies: Hobby[] = [
 ];
 
 const FeaturedHobbies = () => {
+    const history = useHistory();
+
     return (
         <>
             <h1 className="text-xl font-semibold">Featured Hobbies</h1>
             <div className="mt-4">
                 <List active>
                     {Hobbies.map((hobby) => (
-                        <List.Item>
+                        <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
                             <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                         </List.Item>
                     ))}
@@ -72,13 +74,15 @@ const FeaturedHobbies = () => {
 };
 
 const UserHobbies = () => {
+    const history = useHistory();
+
     return (
         <>
             <h1 className="text-xl font-semibold">Your Hobbies</h1>
             <div className="mt-4">
                 <List active>
                     {Hobbies.map((hobby) => (
-                        <List.Item>
+                        <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
                             <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                         </List.Item>
                     ))}
@@ -99,9 +103,6 @@ const ProfileControls = () => {
                     <List.Item onClick={() => history.push('/profile')}>
                         <div className="flex items-center my-2">
                             <UserProfile size="sm" src={user.image} title={user.name} />
-                            <Button variant="primary" className="hidden sm:block ml-auto" onClick={() => logout()}>
-                                Sign Out
-                            </Button>
                         </div>
                     </List.Item>
                 )}
