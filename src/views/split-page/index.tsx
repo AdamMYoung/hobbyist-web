@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import Drawer from '../../components/drawer';
 import IconButton from '../../components/icon-button';
+import LoadTransition from '../../components/load-transition';
 import ProfileControls from '../profile-controls';
 
 type ColumnProps = {
@@ -14,6 +15,7 @@ type ColumnProps = {
 
 type Props = {
     title?: string;
+    headerNavContent?: React.ReactNode;
     children: React.ReactNode;
     disableProfileControls?: boolean;
     rightIcon?: IconProp;
@@ -69,7 +71,11 @@ const RightColumn = (props: ColumnProps) => {
 const CenterColumn = (props: { children?: React.ReactNode }) => {
     const { children } = props;
 
-    return <div className="w-full md:px-3">{children}</div>;
+    return (
+        <div className="w-full md:px-3">
+            <LoadTransition>{children}</LoadTransition>
+        </div>
+    );
 };
 
 const Header = (props: HeaderProps) => {
@@ -89,7 +95,7 @@ const CenterHeader = (props: HeaderProps) => {
 const SplitPage = (props: Props) => {
     const [leftDrawerOpen, setLeftDrawerOpen] = useState<boolean>(false);
     const [rightDrawerOpen, setRightDrawerOpen] = useState<boolean>(false);
-    const { title, rightIcon, children, disableProfileControls } = props;
+    const { title, rightIcon, children, headerNavContent, disableProfileControls } = props;
 
     const renderProps: RenderProps = {
         rightDrawer: rightDrawerOpen,
@@ -108,6 +114,9 @@ const SplitPage = (props: Props) => {
 
                     <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{title}</div>
                     <span className="flex-grow" />
+                    {headerNavContent && (
+                        <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{headerNavContent}</div>
+                    )}
                     {!!rightIcon && (
                         <IconButton
                             size="lg"

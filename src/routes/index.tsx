@@ -1,15 +1,16 @@
+import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { AuthenticatedRoute } from './custom';
-import Hobbies from './hobbies';
-import Hobby from './hobby';
 import Home from './home';
-import Meetup from './meetup';
-import Meetups from './meetups';
 
-import ViewPost from './view-post';
-import Profile from './profile';
-import UserProfile from './user-profile';
-import About from './about';
+const Meetups = React.lazy(() => import('./meetups'));
+const Hobbies = React.lazy(() => import('./hobbies'));
+const ViewPost = React.lazy(() => import('./view-post'));
+const Profile = React.lazy(() => import('./profile'));
+const About = React.lazy(() => import('./about'));
+const UserProfile = React.lazy(() => import('./user-profile'));
+const Meetup = React.lazy(() => import('./meetup'));
+const Hobby = React.lazy(() => import('./hobby'));
 
 const Routes = () => {
     return (
