@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import Drawer from '../../components/drawer';
 import IconButton from '../../components/icon-button';
-import ProfileControls from '../layout/profile-controls';
+import ProfileControls from '../profile-controls';
 
 type ColumnProps = {
     children?: React.ReactNode;
@@ -39,7 +39,7 @@ const LeftColumn = (props: ColumnProps) => {
 
     return (
         <>
-            <div className="md:px-3 hidden sm:block w-2/6">{children}</div>
+            <div className=" md:px-3 hidden sm:block w-2/6">{children}</div>
             <Drawer side="left" open={isDrawerOpen ?? false} onClose={handleClose}>
                 {children}
             </Drawer>

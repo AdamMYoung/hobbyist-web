@@ -1,4 +1,6 @@
 import { useHistory } from 'react-router-dom';
+
+import Button from '../../components/button';
 import Card from '../../components/card';
 import List from '../../components/list';
 import UserProfile from '../../components/user-profile';
@@ -100,9 +102,17 @@ const CuratedHobbies = () => {
                         <List active>
                             {group.hobbies.map((hobby) => (
                                 <List.Item onClick={() => history.push(`/h/${hobby.id}`)}>
-                                    <UserProfile title={hobby.title} src={hobby.src} />
-                                    <p className="text-gray-400 mt-2">{`${hobby.memberCount} members`}</p>
-                                    <p className="text-gray-400">{hobby.description}</p>
+                                    <div className="flex items-center">
+                                        <UserProfile title={hobby.title} src={hobby.src}>
+                                            <p className="text-gray-400">{`${hobby.memberCount} members`}</p>
+                                        </UserProfile>
+
+                                        <Button className="ml-auto" variant="primary">
+                                            Follow
+                                        </Button>
+                                    </div>
+
+                                    <p className="text-gray-400 mt-2">{hobby.description}</p>
                                 </List.Item>
                             ))}
                         </List>

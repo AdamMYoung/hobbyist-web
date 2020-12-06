@@ -33,7 +33,7 @@ const PostCard: React.FC<Props> = (props) => {
                         className="text-sm text-gray-500"
                     >{`/h/${hobbyId} - ${dayjs(created).fromNow()}`}</Button>
                 </UserProfile>
-                <div className="pl-10">
+                <div className="pl-14">
                     <p className="mt-4 text-xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
 
