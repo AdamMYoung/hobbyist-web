@@ -19,10 +19,12 @@ const UserProfile: React.FC<Props> = (props) => {
     return (
         <UserContainer>
             <ProfileIcon size={size} alt={title} {...rest} active={active} />
-            <div>
-                <Button className="text-sm" onClick={() => onClick && onClick()}>
-                    {title}
-                </Button>
+            <div className="block ml-2">
+                <div>
+                    <Button variant="link" className=" text-sm" onClick={() => onClick && onClick()}>
+                        {title}
+                    </Button>
+                </div>
                 {children}
             </div>
         </UserContainer>
