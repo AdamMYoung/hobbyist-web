@@ -1,4 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 
 import Drawer from '../../components/drawer';
@@ -15,7 +16,6 @@ type Props = {
     title?: string;
     children: React.ReactNode;
     disableProfileControls?: boolean;
-    leftIcon?: IconProp;
     rightIcon?: IconProp;
 };
 
@@ -89,7 +89,7 @@ const CenterHeader = (props: HeaderProps) => {
 const SplitPage = (props: Props) => {
     const [leftDrawerOpen, setLeftDrawerOpen] = useState<boolean>(false);
     const [rightDrawerOpen, setRightDrawerOpen] = useState<boolean>(false);
-    const { title, leftIcon, rightIcon, children, disableProfileControls } = props;
+    const { title, rightIcon, children, disableProfileControls } = props;
 
     const renderProps: RenderProps = {
         rightDrawer: rightDrawerOpen,
@@ -98,23 +98,17 @@ const SplitPage = (props: Props) => {
 
     return (
         <>
-            {title && (!!leftIcon || !!rightIcon) && (
+            {title && (
                 <div
                     className={`flex items-center border-b-2 py-1 px-2 border-gray-200 lg:hidden ${
                         !rightIcon && 'sm:hidden'
                     } `}
                 >
-                    {leftIcon && (
-                        <IconButton
-                            size="lg"
-                            className="sm:hidden"
-                            icon={leftIcon}
-                            onClick={() => setLeftDrawerOpen(true)}
-                        />
-                    )}
+                    <IconButton size="lg" className="sm:hidden" icon={faUser} onClick={() => setLeftDrawerOpen(true)} />
+
                     <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{title}</div>
                     <span className="flex-grow" />
-                    {rightIcon && (
+                    {!!rightIcon && (
                         <IconButton
                             size="lg"
                             className="lg:hidden"

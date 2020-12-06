@@ -1,4 +1,4 @@
-import { faComments, faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faComments, faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import IconButton from '../icon-button';
@@ -16,7 +16,7 @@ const SocialControls = (props: Props) => {
 
     return (
         <div className="flex">
-            <IconButton className="mr-2" onClick={() => onCommentsClicked && onCommentsClicked()} icon={faComments}>
+            <IconButton className="mr-2" onClick={() => onCommentsClicked && onCommentsClicked()} icon={faComment}>
                 {commentCount}
             </IconButton>
             <IconButton

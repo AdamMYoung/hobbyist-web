@@ -7,14 +7,15 @@ type Props = {
     onClick?: () => void;
     hasNotification?: boolean;
     active?: boolean;
+    size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 const UserProfile: React.FC<Props> = (props) => {
-    const { onClick, active, children, ...rest } = props;
+    const { onClick, active, children, size = 'xs', ...rest } = props;
 
     return (
         <UserContainer onClick={() => onClick && onClick()} active={active}>
-            <ProfileIcon size="xs" {...rest} />
+            <ProfileIcon size={size} {...rest} />
             {children}
         </UserContainer>
     );

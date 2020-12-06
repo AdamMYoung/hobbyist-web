@@ -1,15 +1,7 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { faChartLine, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import List from '../../components/list';
-import Map from '../../components/map';
-import UserProfile from '../../components/user-profile';
 
 import Feed from '../../views/feed';
-import ProfileControls from '../../views/layout/profile-controls';
-import SplitPage, { RenderProps } from '../../views/split-page';
-import Trending from '../../views/trending';
+import SplitPage from '../../views/split-page';
 
 // const WizardCard = () => {
 //     return (
@@ -31,15 +23,11 @@ const Home = () => {
     const title = 'Feed.';
 
     return (
-        <SplitPage title={title} leftIcon={faChartLine} rightIcon={faMapMarkerAlt}>
-            {({ rightDrawer, closeRightDrawer }: RenderProps) => (
-                <>
-                    <SplitPage.Center>
-                        <SplitPage.Center.Header title={title} />
-                        <Feed />
-                    </SplitPage.Center>
-                </>
-            )}
+        <SplitPage title={title}>
+            <SplitPage.Center>
+                <SplitPage.Center.Header title={title} />
+                <Feed />
+            </SplitPage.Center>
         </SplitPage>
     );
 };
