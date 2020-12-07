@@ -21,7 +21,7 @@ const Hobby: React.FC = () => {
                     profileSrc="https://via.placeholder.com/150"
                     headerSrc="https://via.placeholder.com/150"
                 >
-                    <Button variant="primary" className="ml-4">
+                    <Button variant="primary" className="sm:ml-auto sm:mr-4 lg:mr-0 mb-auto mt-2">
                         Follow
                     </Button>
                 </ProfileHead>
