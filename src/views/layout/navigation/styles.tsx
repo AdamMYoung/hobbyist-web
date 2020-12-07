@@ -6,7 +6,7 @@ export const Logo = styled.p`
 `;
 
 export const NavBar = styled.nav`
-    ${tw`flex py-4 px-4 md:px-8 items-center`}
+    ${tw`flex px-4 md:px-8 items-center w-full`}
 `;
 
 export const NavMenu = styled.ul``;

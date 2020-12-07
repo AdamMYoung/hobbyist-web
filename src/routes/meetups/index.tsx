@@ -213,8 +213,8 @@ const Meetups = () => {
                 description="Discover new meetups around you, alongside people with the same passions as you."
             />
             {/* Map */}
-            <div className="fixed left-0 w-full h-full top-20">
-                <Map style={{ height: `calc(100vh - 5rem)` }} />
+            <div className="fixed left-0 w-full h-full top-16">
+                <Map style={{ height: `calc(100vh - 4rem)` }} />
             </div>
             {/* Window  */}
             <div className="relative h-full pointer-events-none">

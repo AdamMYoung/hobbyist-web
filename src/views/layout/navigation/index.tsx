@@ -12,8 +12,8 @@ const Navigation = () => {
     const history = useHistory();
 
     return (
-        <div className="sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-20">
-            <div className="lg:container">
+        <div className="flex items-center w-full sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-16">
+            <div className="lg:container w-full">
                 <NavBar>
                     <div
                         className="cursor-pointer"
@@ -33,9 +33,11 @@ const Navigation = () => {
 
                     <div className="flex ml-auto">
                         {isAuthenticated && (
-                            <Button className="hidden sm:block mr-4" variant="primary">
-                                New Post
-                            </Button>
+                            <div className="hidden sm:block mr-4">
+                                <Button variant="primary" onClick={() => history.push('/create')}>
+                                    New Post
+                                </Button>
+                            </div>
                         )}
                         {isAuthenticated && (
                             <div className="cursor-pointer">
