@@ -29,7 +29,7 @@ const Navigation = () => {
 
                     <div className="flex ml-auto">
                         {isAuthenticated && (
-                            <Button className="hidden sm:block" variant="primary">
+                            <Button className="hidden sm:block mr-4" variant="primary">
                                 New Post
                             </Button>
                         )}

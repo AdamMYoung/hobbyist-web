@@ -2,9 +2,9 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { AuthenticatedRoute } from './custom';
 import Home from './home';
-import Hobbies from './hobbies';
 
 const Meetups = React.lazy(() => import('./meetups'));
+const Hobbies = React.lazy(() => import('./hobbies'));
 const ViewPost = React.lazy(() => import('./view-post'));
 const Profile = React.lazy(() => import('./profile'));
 const About = React.lazy(() => import('./about'));
