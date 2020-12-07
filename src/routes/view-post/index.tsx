@@ -1,8 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import LoadTransition from '../../components/load-transition';
-import PostCard from '../../components/post-card';
-import Feed from '../../views/feed';
 import SplitPage from '../../views/split-page';
 
 const Post = () => {
