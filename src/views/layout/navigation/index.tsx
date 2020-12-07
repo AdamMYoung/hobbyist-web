@@ -19,7 +19,13 @@ const Navigation = () => {
                         <Logo className="hidden sm:block">hobbyist.</Logo>
                     </Link>
 
-                    <Input type="text" size={1} className="mx-4 md:max-w-sm flex-grow" placeholder="Search" />
+                    <Input
+                        aria-label="Search"
+                        type="text"
+                        size={1}
+                        className="mx-4 md:max-w-sm flex-grow"
+                        placeholder="Search"
+                    />
 
                     <div className="flex ml-auto">
                         {isAuthenticated && (
@@ -27,7 +33,7 @@ const Navigation = () => {
                                 New Post
                             </Button>
                         )}
-                        {isAuthenticated && <ProfileIcon src={user.image} />}
+                        {isAuthenticated && <ProfileIcon src={user.image} alt={user.name} />}
                         {!isAuthenticated && !isLoading && (
                             <Button variant="primary" onClick={() => loginWithRedirect()}>
                                 Sign In

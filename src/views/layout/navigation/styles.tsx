@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-export const Logo = styled.a`
+export const Logo = styled.p`
     ${tw`text-3xl font-bold`}
 `;
 
