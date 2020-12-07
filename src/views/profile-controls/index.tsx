@@ -59,10 +59,10 @@ const FeaturedHobbies = () => {
 
     return (
         <>
-            <h1 className="text-xl font-semibold">Featured Hobbies</h1>
+            <h1 className="text-xl font-semibold mb-2">Featured Hobbies</h1>
             <List active>
                 {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
+                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
                         <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                     </List.Item>
                 ))}
@@ -76,10 +76,10 @@ const UserHobbies = () => {
 
     return (
         <>
-            <h1 className="text-xl font-semibold">Your Hobbies</h1>
+            <h1 className="text-xl font-semibold mb-2">Your Hobbies</h1>
             <List active>
                 {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
+                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
                         <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                     </List.Item>
                 ))}
@@ -94,7 +94,7 @@ const ProfileControls = () => {
 
     return (
         <>
-            <List noTopPadding active>
+            <List active>
                 {isAuthenticated && (
                     <List.Item onClick={() => history.push('/profile')}>
                         <div className="flex items-center">
@@ -123,9 +123,7 @@ const ProfileControls = () => {
                 </List.Item>
             </List>
 
-            <hr className="mt-2 mb-6" />
-
-            {isAuthenticated ? <UserHobbies /> : <FeaturedHobbies />}
+            <div className="mt-6">{isAuthenticated ? <UserHobbies /> : <FeaturedHobbies />}</div>
 
             {isAuthenticated && (
                 <Button variant="primary" className="block sm:hidden mt-4 mx-auto" onClick={() => logout()}>

@@ -103,7 +103,7 @@ const SplitPage = (props: Props) => {
     };
 
     return (
-        <>
+        <div className="relative">
             {title && (
                 <div
                     className={`flex items-center border-b-2 py-1 px-2 border-gray-200 lg:hidden ${
@@ -136,7 +136,7 @@ const SplitPage = (props: Props) => {
                 )}
                 {typeof children === 'function' ? children(renderProps) : children}
             </div>
-        </>
+        </div>
     );
 };
 

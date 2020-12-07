@@ -6,6 +6,7 @@ const LoadTransition: React.FC = (props) => {
 
     useEffect(() => {
         setVisible(true);
+        window.scrollTo({ top: 0 });
     }, []);
 
     return <VisibilityTransition isVisible={isVisible}>{props.children}</VisibilityTransition>;

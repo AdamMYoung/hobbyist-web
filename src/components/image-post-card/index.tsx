@@ -14,7 +14,7 @@ const ImagePostCard = (props: Props) => {
     return (
         <PostCard {...rest}>
             <div className={`${images.length > 1 ? 'w-1/2' : 'w-full'}`}>
-                <div className={`relative h-48`}>
+                <div className="relative h-48">
                     <img className="absolute inset-0 w-full h-full object-cover" src={titleImage} alt="" />
                 </div>
             </div>

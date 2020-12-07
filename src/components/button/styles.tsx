@@ -14,4 +14,12 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
     &:hover {
         filter: brightness(90%);
     }
+
+    &:disabled {
+        ${tw`cursor-default`}
+        filter: brightness(100%);
+
+        ${(props) => props.variant === 'primary' && tw` text-blue-200 bg-blue-400`}
+        ${(props) => props.variant === 'secondary' && tw`text-yellow-200 bg-yellow-400`}
+    }
 `;
