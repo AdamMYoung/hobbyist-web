@@ -14,7 +14,6 @@ const Profile = () => {
             <div className="py-4">
                 <ProfileHead
                     title={username}
-                    description="This is the description"
                     profileSrc="https://via.placeholder.com/150"
                     headerSrc="https://via.placeholder.com/150"
                 ></ProfileHead>
