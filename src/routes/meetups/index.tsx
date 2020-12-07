@@ -209,7 +209,7 @@ const Meetups = () => {
     return (
         <>
             <SEO
-                title="Meetups - hobbyist."
+                title="Meetups"
                 description="Discover new meetups around you, alongside people with the same passions as you."
             />
             {/* Map */}

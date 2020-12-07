@@ -6,6 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import Input from '../../components/input';
+import SEO from '../../components/seo';
 
 const TextPost = () => {
     const [title, setTitle] = useState('');
@@ -38,6 +39,7 @@ const TextPost = () => {
 const NewPost = () => {
     return (
         <div className="pt-4">
+            <SEO title="Create Post" />
             <h1 className="text-3xl font-bold mb-4">Create Post</h1>
             <label className="mt-4 text-lg font-semibold">
                 Select a hobby:

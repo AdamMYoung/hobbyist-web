@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import LoadTransition from '../../components/load-transition';
+import SEO from '../../components/seo';
 import SplitPage from '../../views/split-page';
 
 const Post = () => {
@@ -8,6 +9,7 @@ const Post = () => {
 
     return (
         <LoadTransition>
+            <SEO title={postId} />
             <SplitPage disableProfileControls>
                 <SplitPage.Center>
                     <h1>{hobbyId}</h1>

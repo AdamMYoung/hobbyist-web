@@ -11,7 +11,7 @@ const Hobbies = () => {
     return (
         <>
             <SEO
-                title="Hobbies - hobbyist."
+                title="Hobbies"
                 description="Find yourself a new community using our hobby wizard, or search for the hobbies you love."
             />
             <SplitPage title={title}>
