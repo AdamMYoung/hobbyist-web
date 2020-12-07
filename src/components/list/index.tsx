@@ -2,11 +2,13 @@ import { ListGroup, ListItem } from './styles';
 
 type Props = {
     active?: boolean;
+    noTopPadding?: boolean;
     children: React.ReactNode;
 };
 
 const List = (props: Props) => {
-    return <ListGroup active={props.active}>{props.children}</ListGroup>;
+    const { children, ...rest } = props;
+    return <ListGroup {...rest}>{children}</ListGroup>;
 };
 
 List.Item = ListItem;
