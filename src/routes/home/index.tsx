@@ -11,10 +11,7 @@ const Home = () => {
 
     return (
         <>
-            <SEO
-                title="hobbyist."
-                description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions."
-            />
+            <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage title={title}>
                 <SplitPage.Center>
                     <SplitPage.Center.Header title={title} />

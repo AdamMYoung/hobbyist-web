@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
 
 type Props = {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
 };
 
 const SEO: React.FC<Props> = (props) => {
@@ -10,8 +10,8 @@ const SEO: React.FC<Props> = (props) => {
 
     return (
         <Helmet>
-            <title>{title}</title>
-            <meta name="description" content={description} />
+            {title ? <title>{title} - hobbyist.</title> : <title>hobbyist.</title>}
+            {description && <meta name="description" content={description} />}
         </Helmet>
     );
 };

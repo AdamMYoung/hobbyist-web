@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
+import SEO from '../../components/seo';
 import Feed from '../../views/feed';
 import SplitPage from '../../views/split-page';
 
@@ -11,6 +12,7 @@ const Profile = () => {
 
     return (
         <LoadTransition>
+            <SEO title={username} />
             <div className="py-4">
                 <ProfileHead
                     title={username}
