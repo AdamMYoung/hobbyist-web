@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import SEO from '../../components/seo';
 
 import CuratedHobbies from '../../views/curated-hobbies';
