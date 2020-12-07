@@ -37,7 +37,11 @@ const Navigation = () => {
                                 New Post
                             </Button>
                         )}
-                        {isAuthenticated && <ProfileIcon src={user.image} alt={user.name} />}
+                        {isAuthenticated && (
+                            <div className="cursor-pointer">
+                                <ProfileIcon src={user.picture} alt={user.name} />
+                            </div>
+                        )}
                         {!isAuthenticated && !isLoading && (
                             <Button variant="primary" onClick={() => loginWithRedirect()}>
                                 Sign In
