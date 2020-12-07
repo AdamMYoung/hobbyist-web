@@ -31,7 +31,7 @@ const Navigation = () => {
                         placeholder="Search"
                     />
 
-                    <div className="flex ml-auto">
+                    <div className="flex items-center ml-auto">
                         {isAuthenticated && (
                             <div className="hidden sm:block mr-4">
                                 <Button variant="primary" onClick={() => history.push('/create')}>
