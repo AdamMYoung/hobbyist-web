@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 
 import { useScrollLock } from '../../providers/ScrollLockProvider';
 import Routes from '../../routes';
+import SplitPage from '../split-page';
 
 import Navigation from './navigation';
 
@@ -26,7 +27,7 @@ const Layout = () => {
             <Navigation />
 
             <main className="lg:container min-h-screen">
-                <Suspense fallback={null}>
+                <Suspense fallback={<SplitPage />}>
                     <Routes />
                 </Suspense>
             </main>

@@ -16,7 +16,7 @@ type ColumnProps = {
 type Props = {
     title?: string;
     headerNavContent?: React.ReactNode;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     disableProfileControls?: boolean;
     rightIcon?: IconProp;
 };
