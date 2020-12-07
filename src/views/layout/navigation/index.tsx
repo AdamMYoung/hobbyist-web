@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import Button from '../../../components/button';
@@ -9,15 +9,19 @@ import ProfileIcon from '../../../components/profile-icon';
 
 const Navigation = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+    const history = useHistory();
 
     return (
         <div className="sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-20">
             <div className="lg:container">
                 <NavBar>
-                    <Link to="/">
+                    <div
+                        className="cursor-pointer"
+                        onClick={() => (window.scrollY > 50 ? window.scrollTo({ top: 0 }) : history.push('/'))}
+                    >
                         <Logo className="block sm:hidden">h.</Logo>
                         <Logo className="hidden sm:block">hobbyist.</Logo>
-                    </Link>
+                    </div>
 
                     <Input
                         aria-label="Search"
