@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 export const ProfileContainer = styled.div<{ active?: boolean; size: 'xs' | 'sm' | 'md' | 'lg' }>`
     transition: filter 0.2s;    
-    ${tw`relative p-0 lg:mx-0`}    
+    ${tw`relative p-0 lg:mx-0 border-white border-2 rounded-full`}    
 
     ${(props) => props.size === 'xs' && tw`w-8 h-8`}
     ${(props) => props.size === 'sm' && tw`w-12 h-12`}

@@ -19,16 +19,16 @@ const Routes = () => {
             <Route path="/" exact component={Home} />
 
             <Route path="/hobbies" exact component={Hobbies} />
-            <Route path="/h/:hobby" exact component={Hobby} />
-            <Route path="/h/:hobby/p/:post" exact component={ViewPost} />
+            <Route path="/hobby/:hobbyId" exact component={Hobby} />
+            <Route path="/hobby/:hobbyId/post/:postId" exact component={ViewPost} />
             <Route path="/create/:hobby?" component={CreatePost} />
 
             <Route path="/meetups" exact component={Meetups} />
-            <Route path="/h/:hobby/m" exact component={Meetups} />
-            <Route path="/h/:hobby/m/:meetup" exact component={Meetup} />
+            <Route path="/hobby/:hobbyId/meetups" exact component={Meetups} />
+            <Route path="/hobby/:hobbyId/meetups/:meetupId" exact component={Meetup} />
 
             <AuthenticatedRoute path="/profile" exact component={UserProfile} />
-            <Route path="/p/:profile" exact component={Profile} />
+            <Route path="/profile/:username" exact component={Profile} />
 
             <Route path="/about" exact component={About} />
 

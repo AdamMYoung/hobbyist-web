@@ -62,7 +62,7 @@ const FeaturedHobbies = () => {
             <h1 className="text-xl font-semibold mb-2">Featured Hobbies</h1>
             <List active>
                 {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
+                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
                         <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                     </List.Item>
                 ))}
@@ -79,7 +79,7 @@ const UserHobbies = () => {
             <h1 className="text-xl font-semibold mb-2">Your Hobbies</h1>
             <List active>
                 {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
+                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
                         <UserProfile size="xs" src={hobby.src} title={hobby.title} />
                     </List.Item>
                 ))}
