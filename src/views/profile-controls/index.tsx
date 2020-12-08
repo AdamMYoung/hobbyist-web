@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/button';
 import List from '../../components/list';
+import ProfileIcon from '../../components/profile-icon';
 import UserProfile from '../../components/user-profile';
 import { Hobby } from '../../types';
 
@@ -54,33 +55,23 @@ const Hobbies: Hobby[] = [
     },
 ];
 
-const FeaturedHobbies = () => {
-    const history = useHistory();
-
-    return (
-        <>
-            <h1 className="text-xl font-semibold mb-2">Featured Hobbies</h1>
-            <List active>
-                {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
-                        <UserProfile size="xs" src={hobby.src} title={hobby.title} />
-                    </List.Item>
-                ))}
-            </List>
-        </>
-    );
+type HobbiesProps = {
+    title: string;
 };
 
-const UserHobbies = () => {
+const ProfileHobbies = (props: HobbiesProps) => {
     const history = useHistory();
 
     return (
         <>
-            <h1 className="text-xl font-semibold mb-2">Your Hobbies</h1>
-            <List active>
+            <h1 className="ml-2 text-xl font-semibold mb-2">{props.title}</h1>
+            <List narrow active>
                 {Hobbies.map((hobby) => (
                     <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
-                        <UserProfile size="xs" src={hobby.src} title={hobby.title} />
+                        <div className="flex items-center">
+                            <ProfileIcon size="xs" src={hobby.src} alt={hobby.title} />
+                            <p className="ml-2">{hobby.title}</p>
+                        </div>
                     </List.Item>
                 ))}
             </List>
@@ -123,7 +114,9 @@ const ProfileControls = () => {
                 </List.Item>
             </List>
 
-            <div className="mt-6">{isAuthenticated ? <UserHobbies /> : <FeaturedHobbies />}</div>
+            <div className="mt-6">
+                <ProfileHobbies title={isAuthenticated ? 'Your Hobbies' : 'Featured Hobbies'} />
+            </div>
 
             {isAuthenticated && (
                 <Button variant="primary" className="block sm:hidden mt-4 mx-auto" onClick={() => logout()}>

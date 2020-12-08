@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
-export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean }>`
+export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean; narrow?: boolean }>`
     ${tw`w-full`}
 
     li {
@@ -12,9 +12,11 @@ export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean }>
             props.noTopPadding
                 ? css`
                       &:not(:first-child) {
-                          ${tw`pt-3`}
+                          ${props.narrow ? tw`pt-2` : tw`pt-3`}
                       }
                   `
+                : props.narrow
+                ? tw`py-2`
                 : tw`py-3`}
         
 

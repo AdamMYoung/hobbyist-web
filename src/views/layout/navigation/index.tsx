@@ -33,13 +33,6 @@ const Navigation = () => {
 
                     <div className="flex items-center ml-auto">
                         {isAuthenticated && (
-                            <div className="hidden sm:block mr-4">
-                                <Button variant="primary" onClick={() => history.push('/create')}>
-                                    New Post
-                                </Button>
-                            </div>
-                        )}
-                        {isAuthenticated && (
                             <div className="cursor-pointer">
                                 <ProfileIcon src={user.picture} alt={user.name} />
                             </div>

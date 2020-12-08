@@ -10,6 +10,7 @@ import ProfileControls from '../profile-controls';
 type ColumnProps = {
     children?: React.ReactNode;
     isDrawerOpen?: boolean;
+
     onCloseDrawer?: () => void;
 };
 
@@ -18,6 +19,7 @@ type Props = {
     headerNavContent?: React.ReactNode;
     children?: React.ReactNode;
     disableProfileControls?: boolean;
+    disableNavBar?: boolean;
     rightIcon?: IconProp;
 };
 
@@ -26,7 +28,9 @@ type HeaderProps = {
 };
 
 export type RenderProps = {
+    leftDrawer?: boolean;
     rightDrawer?: boolean;
+    closeLeftDrawer?: () => void;
     closeRightDrawer?: () => void;
 };
 
@@ -95,16 +99,18 @@ const CenterHeader = (props: HeaderProps) => {
 const SplitPage = (props: Props) => {
     const [leftDrawerOpen, setLeftDrawerOpen] = useState<boolean>(false);
     const [rightDrawerOpen, setRightDrawerOpen] = useState<boolean>(false);
-    const { title, rightIcon, children, headerNavContent, disableProfileControls } = props;
+    const { title, rightIcon, children, disableNavBar, headerNavContent, disableProfileControls } = props;
 
     const renderProps: RenderProps = {
+        leftDrawer: leftDrawerOpen,
         rightDrawer: rightDrawerOpen,
+        closeLeftDrawer: () => setLeftDrawerOpen(false),
         closeRightDrawer: () => setRightDrawerOpen(false),
     };
 
     return (
         <div className="relative">
-            {title && (
+            {!disableNavBar && (
                 <div
                     className={`flex items-center border-b-2 py-1 px-2 border-gray-200 lg:hidden ${
                         !rightIcon && 'sm:hidden'
@@ -112,7 +118,7 @@ const SplitPage = (props: Props) => {
                 >
                     <IconButton size="lg" className="sm:hidden" icon={faUser} onClick={() => setLeftDrawerOpen(true)} />
 
-                    <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{title}</div>
+                    <div className="ml-2 items-center text-2xl font-bold sm:hidden">{title}</div>
                     <span className="flex-grow" />
                     {headerNavContent && (
                         <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{headerNavContent}</div>

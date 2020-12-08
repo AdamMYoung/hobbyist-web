@@ -218,7 +218,7 @@ const Meetups = () => {
             </div>
             {/* Window  */}
             <div className="relative h-full pointer-events-none">
-                <SplitPage disableProfileControls>
+                <SplitPage disableNavBar disableProfileControls>
                     <SplitPage.Center>
                         <div className="w-full sm:w-1/3 ml-auto p-2 sm:p-0">
                             <div style={{ height: `calc(${height}px - 15rem)` }} className="sm:hidden" />

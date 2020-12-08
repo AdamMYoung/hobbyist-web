@@ -3,6 +3,7 @@ import { ListGroup, ListItem } from './styles';
 type Props = {
     active?: boolean;
     noTopPadding?: boolean;
+    narrow?: boolean;
     children: React.ReactNode;
 };
 
