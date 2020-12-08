@@ -115,7 +115,7 @@ const ProfileControls = () => {
             </List>
 
             <div className="mt-6">
-                <ProfileHobbies title={isAuthenticated ? 'User Hobbies' : 'Featured Hobbies'} />
+                <ProfileHobbies title={isAuthenticated ? 'Your Hobbies' : 'Featured Hobbies'} />
             </div>
 
             {isAuthenticated && (

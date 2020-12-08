@@ -6,7 +6,6 @@ import Home from './home';
 const Meetups = React.lazy(() => import('./meetups'));
 const Hobbies = React.lazy(() => import('./hobbies'));
 const ViewPost = React.lazy(() => import('./view-post'));
-const CreatePost = React.lazy(() => import('./create-post'));
 const Profile = React.lazy(() => import('./profile'));
 const About = React.lazy(() => import('./about'));
 const UserProfile = React.lazy(() => import('./user-profile'));
@@ -21,7 +20,6 @@ const Routes = () => {
             <Route path="/hobbies" exact component={Hobbies} />
             <Route path="/hobby/:hobbyId" exact component={Hobby} />
             <Route path="/hobby/:hobbyId/post/:postId" exact component={ViewPost} />
-            <Route path="/create/:hobby?" component={CreatePost} />
 
             <Route path="/meetups" exact component={Meetups} />
             <Route path="/hobby/:hobbyId/meetups" exact component={Meetups} />

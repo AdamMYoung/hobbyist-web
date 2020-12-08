@@ -101,7 +101,7 @@ const CuratedHobbies = () => {
                         <h2 className="text-2xl font-semibold my-2">{group.name}</h2>
                         <List active>
                             {group.hobbies.map((hobby) => (
-                                <List.Item key={hobby.id} onClick={() => history.push(`/h/${hobby.id}`)}>
+                                <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
                                     <div className="flex items-center">
                                         <UserProfile title={hobby.title} src={hobby.src}>
                                             <p className="text-gray-400">{`${hobby.memberCount} members`}</p>
