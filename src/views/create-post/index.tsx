@@ -6,6 +6,11 @@ import 'react-quill/dist/quill.snow.css';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import Input from '../../components/input';
+import { Hobby } from '../../types';
+
+type Props = {
+    selectedHobby?: Hobby;
+};
 
 const TextPost = () => {
     const [title, setTitle] = useState('');
@@ -32,28 +37,33 @@ const TextPost = () => {
     );
 };
 
-const CreatePost = () => {
+const CreatePost = (props: Props) => {
+    const { selectedHobby } = props;
+
+    const [hobby, setHobby] = useState<Hobby | null>(selectedHobby ?? null);
+
     return (
-        <div className="m-2 sm:m-0">
+        <div className="mx-2 mt-2 mb-8 sm:mx-0">
             <Card>
-                <label className="mt-4 text-lg font-semibold">
-                    Select a hobby:
-                    <select className="ml-4">
-                        <option>Hobby 1</option>
-                        <option>Hobby 2</option>
-                        <option>Hobby 3</option>
-                    </select>
-                </label>
+                {!selectedHobby && (
+                    <label className="mt-4 text-lg font-semibold">
+                        Select a hobby:
+                        <select value={hobby?.title} onChange={() => setHobby(null)} className="ml-4">
+                            <option>Hobby 1</option>
+                            <option>Hobby 2</option>
+                            <option>Hobby 3</option>
+                        </select>
+                    </label>
+                )}
 
                 <div className="mt-4">
                     <TextPost />
                 </div>
-            </Card>
-            <div className="mt-4">
-                <Button className="ml-auto" variant="primary">
+
+                <Button className="mt-4 ml-auto" variant="primary">
                     Post
                 </Button>
-            </div>
+            </Card>
         </div>
     );
 };

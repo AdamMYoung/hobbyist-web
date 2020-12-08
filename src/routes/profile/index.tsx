@@ -75,7 +75,9 @@ const Profile = () => {
                     <Feed />
                 </SplitPage.Center>
                 <SplitPage.Right>
-                    <h2 className="text-3xl ml-2 sm:ml-0 font-semibold">Hobbies</h2>
+                    <div className="sm:mt-2">
+                        <SplitPage.Header title="Hobbies" />
+                    </div>
                     <ProfileHobbies hobbies={Hobbies} />
                 </SplitPage.Right>
             </SplitPage>

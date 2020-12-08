@@ -5,8 +5,6 @@ import CreatePost from '../../views/create-post';
 import Feed from '../../views/feed';
 import SplitPage from '../../views/split-page';
 
-//
-
 const Home = () => {
     const title = 'Feed.';
 
@@ -17,7 +15,9 @@ const Home = () => {
                 <SplitPage.Center>
                     <CreatePost />
                     <SplitPage.Center.Header title={title} />
-                    <Feed />
+                    <div className="mt-4">
+                        <Feed />
+                    </div>
                 </SplitPage.Center>
                 <SplitPage.Right></SplitPage.Right>
             </SplitPage>
