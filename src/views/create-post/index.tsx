@@ -43,7 +43,7 @@ const CreatePost = (props: Props) => {
     const [hobby, setHobby] = useState<Hobby | null>(selectedHobby ?? null);
 
     return (
-        <div className="mx-2 mt-2 mb-8 sm:mx-0">
+        <div className="mx-2 mt-4 mb-8 sm:mx-0">
             <Card>
                 {!selectedHobby && (
                     <label className="mt-4 text-lg font-semibold">
