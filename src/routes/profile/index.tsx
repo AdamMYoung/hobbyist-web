@@ -1,3 +1,4 @@
+import { faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ import SEO from '../../components/seo';
 import { Hobby } from '../../types';
 import Feed from '../../views/feed';
 import ProfileHobbies from '../../views/profile-hobbies';
-import SplitPage from '../../views/split-page';
+import SplitPage, { RenderProps } from '../../views/split-page';
 
 const Hobbies: Hobby[] = [
     {
@@ -61,23 +62,29 @@ const Profile = () => {
         <LoadTransition>
             <SEO title={username} />
 
-            <SplitPage title={username}>
-                <SplitPage.Center>
-                    <div className="sm:pt-4 pb-2">
-                        <ProfileHead
-                            title={username}
-                            description="This is the user's bio"
-                            profileSrc="https://via.placeholder.com/150"
-                            headerSrc="https://via.placeholder.com/150"
-                        ></ProfileHead>
-                    </div>
-                    <h2 className="text-3xl ml-2 sm:ml-0 mt-8 font-semibold">Posts</h2>
-                    <Feed />
-                </SplitPage.Center>
-                <SplitPage.Right>
-                    <h2 className="text-3xl ml-2 sm:ml-0 font-semibold">Hobbies</h2>
-                    <ProfileHobbies hobbies={Hobbies} />
-                </SplitPage.Right>
+            <SplitPage title={username} rightIcon={faPaintBrush}>
+                {({ rightDrawer, closeRightDrawer }: RenderProps) => (
+                    <>
+                        <SplitPage.Center>
+                            <div className="sm:pt-4 pb-2">
+                                <ProfileHead
+                                    title={username}
+                                    description="This is the user's bio"
+                                    profileSrc="https://via.placeholder.com/150"
+                                    headerSrc="https://via.placeholder.com/150"
+                                ></ProfileHead>
+                            </div>
+                            <h2 className="text-3xl ml-2 sm:ml-0 mt-8 font-semibold">Posts</h2>
+                            <Feed />
+                        </SplitPage.Center>
+                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
+                            <div className="sm:mt-2">
+                                <SplitPage.Header title="Hobbies" />
+                            </div>
+                            <ProfileHobbies hobbies={Hobbies} />
+                        </SplitPage.Right>
+                    </>
+                )}
             </SplitPage>
         </LoadTransition>
     );
