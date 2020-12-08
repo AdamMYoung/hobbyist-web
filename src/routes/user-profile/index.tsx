@@ -15,7 +15,7 @@ const UserProfile = () => {
             <div className="py-4">
                 <ProfileHead
                     title={user.name}
-                    profileSrc="https://via.placeholder.com/150"
+                    profileSrc={user.picture}
                     headerSrc="https://via.placeholder.com/150"
                 ></ProfileHead>
             </div>

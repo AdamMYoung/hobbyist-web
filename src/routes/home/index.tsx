@@ -13,7 +13,7 @@ const Home = () => {
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage title={title}>
                 <SplitPage.Center>
-                    <h1 className="text-2xl font-bold">Create Post.</h1>
+                    <h1 className="text-2xl  font-bold">Create Post.</h1>
                     <CreatePost />
                     <SplitPage.Center.Header title={title} />
                     <div className="mt-4">
