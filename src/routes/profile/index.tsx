@@ -13,9 +13,10 @@ const Profile = () => {
     return (
         <LoadTransition>
             <SEO title={username} />
-            <div className="py-4">
+            <div className="sm:pt-4 pb-2">
                 <ProfileHead
                     title={username}
+                    description="This is the user's bio"
                     profileSrc="https://via.placeholder.com/150"
                     headerSrc="https://via.placeholder.com/150"
                 ></ProfileHead>

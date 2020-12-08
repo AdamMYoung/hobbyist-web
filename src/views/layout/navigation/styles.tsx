@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const Logo = styled.p`
-    ${tw`text-3xl font-bold`}
+    ${tw`text-3xl font-bold select-none`}
 `;
 
 export const NavBar = styled.nav`
