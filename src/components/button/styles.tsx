@@ -3,6 +3,7 @@ import tw from 'twin.macro';
 
 export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 'icon' | 'link' }>`
     ${tw`block rounded-full`}
+    
     cursor: pointer;
     transition: filter 0.1s;
 
@@ -10,6 +11,8 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
     ${(props) => props.variant === 'secondary' && tw`px-4 py-2 bg-yellow-500 text-white font-bold`}
     ${(props) => props.variant === 'icon' && tw`px-4 py-2 rounded font-bold`}
     ${(props) => props.variant === 'link' && tw`hover:underline cursor-pointer`}
+
+    ${(props) => (props.variant === 'primary' || props.variant === 'secondary') && 'min-width: 8rem;'}
 
     &:hover {
         filter: brightness(90%);

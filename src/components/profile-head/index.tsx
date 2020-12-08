@@ -28,7 +28,7 @@ const ProfileHead: React.FC<Props> = (props) => {
                 </div>
             </div>
             <div className="flex flex-col sm:flex-row items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-0">
-                <div className="sm:mx-8 xl:mx-2 sm:mx-none">
+                <div className="sm:ml-8 xl:ml-8 sm:mx-none">
                     <h1 className="text-5xl font-bold">{title}</h1>
                     {description && <p className="mt-1 text-gray-400">{description}</p>}
                 </div>

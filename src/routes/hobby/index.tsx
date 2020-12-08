@@ -31,14 +31,13 @@ const Hobby: React.FC = () => {
                         </ProfileHead>
                     </div>
 
-                    <CreatePost />
+                    <div className="sm:mt-8">
+                        <CreatePost />
+                    </div>
 
                     <h2 className="text-3xl ml-2 mt-4 sm:ml-0 font-semibold">Posts</h2>
                     <Feed />
                 </SplitPage.Center>
-                <SplitPage.Right>
-                    <h1 className="text-3xl font-semibold">Members</h1>
-                </SplitPage.Right>
             </SplitPage>
         </LoadTransition>
     );
