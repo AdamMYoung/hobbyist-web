@@ -10,7 +10,7 @@ import Input from '../../components/input';
 const TextPost = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    //const [textLength, setTextLength] = useState(0);
+    const [textLength, setTextLength] = useState(0);
 
     const handleChange = (text: string, _: DeltaStatic, __: Sources, editor: ReactQuill.UnprivilegedEditor) => {
         setText(text);
@@ -21,6 +21,8 @@ const TextPost = () => {
             setTextLength(editor.getLength());
         }
     };
+
+    textLength.toFixed();
 
     return (
         <div>
