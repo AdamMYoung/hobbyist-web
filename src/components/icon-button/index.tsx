@@ -1,6 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { act } from 'react-dom/test-utils';
 
 type Props = {
     onClick: () => void;
