@@ -27,7 +27,13 @@ const Layout = () => {
             <Navigation />
 
             <main className="lg:container min-h-screen">
-                <Suspense fallback={<SplitPage />}>
+                <Suspense
+                    fallback={
+                        <SplitPage>
+                            <SplitPage.Center />
+                        </SplitPage>
+                    }
+                >
                     <Routes />
                 </Suspense>
             </main>

@@ -16,18 +16,20 @@ const SocialControls = (props: Props) => {
 
     return (
         <div className="flex">
-            <IconButton className="mr-2" onClick={() => onCommentsClicked && onCommentsClicked()} icon={faComment}>
-                {commentCount}
-            </IconButton>
+            <IconButton
+                className="mr-2"
+                onClick={() => onCommentsClicked && onCommentsClicked()}
+                icon={faComment}
+                text={commentCount.toString()}
+            />
             <IconButton
                 onClick={() => onLikeClicked && onLikeClicked()}
                 icon={faHeart}
                 activeIcon={faHeartFilled}
                 active={liked}
                 color="red"
-            >
-                {likeCount}
-            </IconButton>
+                text={likeCount.toString()}
+            />
         </div>
     );
 };

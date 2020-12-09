@@ -66,6 +66,14 @@ export type ImagePost = Post & {
 
 export type PostTypes = TextPost | ImagePost;
 
+export enum FeedSortType {
+    Feed = 'Feed',
+    New = 'New',
+    Week = 'Week',
+    Month = 'Month',
+    Year = 'Year',
+}
+
 const EnjoySportsQuestion: WizardQuestion = {
     id: 'sports',
     image: 'https://via.placeholder.com/400',

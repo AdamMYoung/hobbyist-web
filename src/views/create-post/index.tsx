@@ -43,27 +43,25 @@ const CreatePost = (props: Props) => {
     const [hobby, setHobby] = useState<Hobby | null>(selectedHobby ?? null);
 
     return (
-        <div className="mx-2 mt-2 mb-8 sm:mx-0">
-            <Card>
-                {!selectedHobby && (
-                    <label className="mt-4 text-lg font-semibold">
-                        Select a hobby:
-                        <select value={hobby?.title} onChange={() => setHobby(null)} className="ml-4">
-                            <option>Hobby 1</option>
-                            <option>Hobby 2</option>
-                            <option>Hobby 3</option>
-                        </select>
-                    </label>
-                )}
+        <div className="mx-4 my-8 sm:mx-0">
+            {!selectedHobby && (
+                <label className="mt-4 text-lg font-semibold">
+                    Select a hobby:
+                    <select value={hobby?.title} onChange={() => setHobby(null)} className="ml-4">
+                        <option>Hobby 1</option>
+                        <option>Hobby 2</option>
+                        <option>Hobby 3</option>
+                    </select>
+                </label>
+            )}
 
-                <div className="mt-4">
-                    <TextPost />
-                </div>
+            <div className="mt-4">
+                <TextPost />
+            </div>
 
-                <Button className="mt-4 ml-auto" variant="primary">
-                    Post
-                </Button>
-            </Card>
+            <Button className="mt-4 ml-auto" variant="primary">
+                Post
+            </Button>
         </div>
     );
 };

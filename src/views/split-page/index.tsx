@@ -24,7 +24,7 @@ type Props = {
 };
 
 type HeaderProps = {
-    title: string;
+    title?: string;
 };
 
 export type RenderProps = {
@@ -88,10 +88,12 @@ const Header = (props: HeaderProps) => {
     return <h1 className="text-2xl font-bold">{title}</h1>;
 };
 
-const CenterHeader = (props: HeaderProps) => {
+const CenterHeader: React.FC<HeaderProps> = (props) => {
     return (
-        <div className="hidden sm:block mb-4">
+        <div className="hidden sm:flex mt-8 flex-wrap items-center">
             <Header {...props} />
+            <div className="flex-grow" />
+            {props.children}
         </div>
     );
 };
@@ -112,7 +114,7 @@ const SplitPage = (props: Props) => {
         <div className="relative">
             {!disableNavBar && (
                 <div
-                    className={`flex items-center border-b-2 py-1 px-2 border-gray-200 lg:hidden ${
+                    className={`flex flex-wrap fixed py-1 z-50 bg-gray-50 w-full items-center border-b-2 px-2 border-gray-200 lg:hidden ${
                         !rightIcon && 'sm:hidden'
                     } `}
                 >
@@ -121,7 +123,9 @@ const SplitPage = (props: Props) => {
                     <div className="ml-2 items-center text-2xl font-bold sm:hidden">{title}</div>
                     <span className="flex-grow" />
                     {headerNavContent && (
-                        <div className="ml-2 text-2xl font-bold my-auto sm:hidden">{headerNavContent}</div>
+                        <div style={{ minWidth: '8rem' }} className="mx-2 text-lg font-bold sm:hidden">
+                            {headerNavContent}
+                        </div>
                     )}
                     {!!rightIcon && (
                         <IconButton
@@ -134,7 +138,7 @@ const SplitPage = (props: Props) => {
                 </div>
             )}
 
-            <div className="flex sm:pt-4">
+            <div className={`flex pt-16 lg:pt-0 ${!rightIcon && 'sm:pt-0'}`}>
                 {!disableProfileControls && (
                     <LeftColumn isDrawerOpen={leftDrawerOpen} onCloseDrawer={() => setLeftDrawerOpen(false)}>
                         <ProfileControls />
