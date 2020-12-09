@@ -27,7 +27,7 @@ export const ProfileContainer = styled.div<{ active?: boolean; size: 'xs' | 'sm'
 `;
 
 export const Image = styled.img`
-    ${tw`rounded-full absolute `}
+    ${tw`rounded-full absolute w-full h-full`}
 `;
 
 export const Notification = styled.circle<{ size: 'xs' | 'sm' | 'md' | 'lg' }>`
