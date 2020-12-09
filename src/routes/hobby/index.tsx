@@ -27,7 +27,7 @@ const Hobby: React.FC = () => {
                 {({ rightDrawer, closeRightDrawer }: RenderProps) => (
                     <>
                         <SplitPage.Center>
-                            <div className="pb-8 sm:py-4 mx-2">
+                            <div className="pb-8  mx-2">
                                 <ProfileHead
                                     title={hobbyId}
                                     description="This is the description"

@@ -1,5 +1,4 @@
 import { useHistory } from 'react-router-dom';
-import List from '../../components/list';
 
 import ProfileIcon from '../../components/profile-icon';
 import { Hobby } from '../../types';

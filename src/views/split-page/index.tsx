@@ -76,7 +76,7 @@ const CenterColumn = (props: { children?: React.ReactNode }) => {
     const { children } = props;
 
     return (
-        <div className="w-full sm:px-3">
+        <div className="w-full sm:px-3 mt-8">
             <LoadTransition>{children}</LoadTransition>
         </div>
     );
@@ -90,7 +90,7 @@ const Header = (props: HeaderProps) => {
 
 const CenterHeader: React.FC<HeaderProps> = (props) => {
     return (
-        <div className="hidden sm:flex mt-8 flex-wrap items-center">
+        <div className="hidden sm:flex flex-wrap items-center">
             <Header {...props} />
             <div className="flex-grow" />
             {props.children}
