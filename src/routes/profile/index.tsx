@@ -1,12 +1,14 @@
 import { faPaintBrush } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
 import SEO from '../../components/seo';
-import { Hobby } from '../../types';
+import { FeedSortType, Hobby } from '../../types';
 import Feed from '../../views/feed';
+import FeedSortButtons from '../../views/feed-sort-buttons';
+import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import ProfileHobbies from '../../views/profile-hobbies';
 import SplitPage, { RenderProps } from '../../views/split-page';
 
@@ -57,16 +59,22 @@ const Hobbies: Hobby[] = [
 
 const Profile = () => {
     const { username } = useParams<{ username: string }>();
+    const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.New);
 
     return (
         <LoadTransition>
             <SEO title={username} />
 
-            <SplitPage title={username} rightIcon={faPaintBrush}>
+            <SplitPage
+                rightIcon={faPaintBrush}
+                headerNavContent={
+                    <FeedSortDropdown disableFeedSort currentSortType={feedSortType} onSortChanged={setFeedSortType} />
+                }
+            >
                 {({ rightDrawer, closeRightDrawer }: RenderProps) => (
                     <>
                         <SplitPage.Center>
-                            <div className="sm:pt-4 pb-2">
+                            <div className="sm:pt-4">
                                 <ProfileHead
                                     title={username}
                                     description="This is the user's bio"
@@ -74,11 +82,17 @@ const Profile = () => {
                                     headerSrc="https://via.placeholder.com/150"
                                 ></ProfileHead>
                             </div>
-                            <h2 className="text-3xl ml-2 sm:ml-0 mt-8 font-semibold">Posts</h2>
+                            <SplitPage.Center.Header>
+                                <FeedSortButtons
+                                    disableFeedSort
+                                    currentSortType={feedSortType}
+                                    onSortChanged={setFeedSortType}
+                                />
+                            </SplitPage.Center.Header>
                             <Feed />
                         </SplitPage.Center>
                         <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                            <div className="sm:mt-2">
+                            <div className="sm:mt-2 mb-4">
                                 <SplitPage.Header title="Hobbies" />
                             </div>
                             <ProfileHobbies hobbies={Hobbies} />

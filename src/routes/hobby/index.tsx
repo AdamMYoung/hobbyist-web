@@ -1,23 +1,29 @@
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Button from '../../components/button';
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
 import SEO from '../../components/seo';
-import CreatePost from '../../views/create-post';
+import { FeedSortType } from '../../types';
 import Feed from '../../views/feed';
+import FeedSortButtons from '../../views/feed-sort-buttons';
+import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage, { RenderProps } from '../../views/split-page';
 
 const Hobby: React.FC = () => {
     const { hobbyId } = useParams<{ hobbyId: string }>();
+    const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
 
     return (
         <LoadTransition>
             <SEO title={hobbyId} />
 
-            <SplitPage title={hobbyId} rightIcon={faCalendarAlt}>
+            <SplitPage
+                rightIcon={faCalendarAlt}
+                headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
+            >
                 {({ rightDrawer, closeRightDrawer }: RenderProps) => (
                     <>
                         <SplitPage.Center>
@@ -34,11 +40,10 @@ const Hobby: React.FC = () => {
                                 </ProfileHead>
                             </div>
 
-                            <div className="sm:mt-8">
-                                <CreatePost />
-                            </div>
+                            <SplitPage.Center.Header>
+                                <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
+                            </SplitPage.Center.Header>
 
-                            <h2 className="text-3xl ml-2 mt-4 sm:ml-0 font-semibold">Posts</h2>
                             <Feed />
                         </SplitPage.Center>
                         <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
