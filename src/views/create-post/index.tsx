@@ -4,9 +4,54 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import Button from '../../components/button';
-import Card from '../../components/card';
 import Input from '../../components/input';
 import { Hobby } from '../../types';
+import HobbiesDropdown from '../hobbies-dropdown';
+
+const Hobbies: Hobby[] = [
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+];
 
 type Props = {
     selectedHobby?: Hobby;
@@ -40,22 +85,13 @@ const TextPost = () => {
 const CreatePost = (props: Props) => {
     const { selectedHobby } = props;
 
-    const [hobby, setHobby] = useState<Hobby | null>(selectedHobby ?? null);
+    const [hobby, setHobby] = useState<Hobby>(Hobbies[0]);
 
     return (
         <div className="mx-4 my-8 sm:mx-0">
-            {!selectedHobby && (
-                <label className="mt-4 text-lg font-semibold">
-                    Select a hobby:
-                    <select value={hobby?.title} onChange={() => setHobby(null)} className="ml-4">
-                        <option>Hobby 1</option>
-                        <option>Hobby 2</option>
-                        <option>Hobby 3</option>
-                    </select>
-                </label>
-            )}
+            {!selectedHobby && <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} />}
 
-            <div className="mt-4">
+            <div className="mt-2">
                 <TextPost />
             </div>
 

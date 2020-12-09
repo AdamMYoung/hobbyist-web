@@ -28,7 +28,7 @@ const FeedSortDropdown = (props: Props) => {
         currentSortType,
     ]);
 
-    return <Select options={options} value={currentValue} onChange={(entry) => entry && onSortChanged(entry?.value)} />;
+    return <Select options={options} value={currentValue} onChange={(entry) => entry && onSortChanged(entry.value)} />;
 };
 
 export default FeedSortDropdown;
