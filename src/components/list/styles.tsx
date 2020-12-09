@@ -5,8 +5,8 @@ export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean; n
     ${tw`w-full`}
 
     li {
-        transition: filter 0.2s;
-        ${tw`hover:text-blue-700 pb-3 px-2`}
+        
+        ${tw`transition hover:text-blue-700 pb-3 px-2`}
 
         ${(props) =>
             props.noTopPadding

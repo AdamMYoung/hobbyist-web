@@ -1,8 +1,9 @@
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Button from '../../components/button';
+import IconButton from '../../components/icon-button';
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
 import SEO from '../../components/seo';
@@ -15,6 +16,8 @@ import SplitPage, { RenderProps } from '../../views/split-page';
 const Hobby: React.FC = () => {
     const { hobbyId } = useParams<{ hobbyId: string }>();
     const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
+
+    const [following, setFollowing] = useState<boolean>(false);
 
     return (
         <LoadTransition>
@@ -34,9 +37,30 @@ const Hobby: React.FC = () => {
                                     profileSrc="https://via.placeholder.com/150"
                                     headerSrc="https://via.placeholder.com/150"
                                 >
-                                    <Button variant="primary" className="sm:ml-auto sm:mr-4 lg:mr-0 mb-auto mt-2">
-                                        Follow
-                                    </Button>
+                                    <div className="flex flex-wrap sm:ml-auto sm:mr-4 lg:mr-0 mb-auto mt-2">
+                                        {following && (
+                                            <Button className="m-1" variant="primary">
+                                                New Post
+                                            </Button>
+                                        )}
+                                        {following ? (
+                                            <IconButton
+                                                size="2x"
+                                                onClick={() => setFollowing(false)}
+                                                icon={faSignOutAlt}
+                                                color="#8b5cf6"
+                                                bgColor="purple"
+                                            />
+                                        ) : (
+                                            <Button
+                                                onClick={() => setFollowing(true)}
+                                                className="m-1"
+                                                variant="primary"
+                                            >
+                                                Follow
+                                            </Button>
+                                        )}
+                                    </div>
                                 </ProfileHead>
                             </div>
 
