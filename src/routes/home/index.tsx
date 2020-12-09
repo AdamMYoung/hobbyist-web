@@ -13,16 +13,14 @@ const Home = () => {
     const title = 'Feed.';
 
     return (
-        <div className="mt-8">
+        <>
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage
                 title={title}
                 headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
             >
                 <SplitPage.Center>
-                    <div className="mt-8 sm:mt-0">
-                        <CreatePost />
-                    </div>
+                    <CreatePost />
 
                     <SplitPage.Center.Header title={title}>
                         <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
@@ -32,7 +30,7 @@ const Home = () => {
                 </SplitPage.Center>
                 <SplitPage.Right />
             </SplitPage>
-        </div>
+        </>
     );
 };
 
