@@ -6,6 +6,7 @@ type Props = {
     icon: IconProp;
     className?: string;
     color?: string;
+    bgColor?: string;
     active?: boolean;
     size?: FontAwesomeIconProps['size'];
     activeIcon?: IconProp;
@@ -13,9 +14,9 @@ type Props = {
 };
 
 const IconButton = (props: Props) => {
-    const { onClick, className, color, icon, active, size, activeIcon, text } = props;
+    const { onClick, className, color, bgColor, icon, active, size, activeIcon, text } = props;
 
-    const iconColor = color ?? 'gray';
+    const iconColor = bgColor ? bgColor : color ?? 'gray';
 
     let buttonIcon = icon;
     if (active && activeIcon) buttonIcon = activeIcon;

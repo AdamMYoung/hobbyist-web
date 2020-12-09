@@ -8,9 +8,11 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
     transition: filter 0.1s;
 
     ${(props) =>
-        props.variant === 'primary' && tw`px-4 py-2 bg-purple-500 text-white font-bold focus:outline-none focus:ring`}
+        props.variant === 'primary' &&
+        tw`px-4 py-2 bg-purple-500 hover:bg-purple-700 transition text-white font-bold focus:outline-none focus:ring`}
     ${(props) =>
-        props.variant === 'secondary' && tw`px-4 py-2 bg-yellow-500 text-white font-bold focus:outline-none focus:ring`}
+        props.variant === 'secondary' &&
+        tw`px-4 py-2 bg-yellow-500 bg-yellow-700 transition text-white font-bold focus:outline-none focus:ring`}
     ${(props) => props.variant === 'icon' && tw`px-4 py-2 rounded font-bold hover:bg-gray-300`}
     ${(props) => props.variant === 'link' && tw`hover:underline cursor-pointer`}
 
