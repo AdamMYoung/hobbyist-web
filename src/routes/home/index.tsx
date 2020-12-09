@@ -13,7 +13,7 @@ const Home = () => {
     const title = 'Feed.';
 
     return (
-        <>
+        <div className="mt-8">
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage
                 title={title}
@@ -30,8 +30,9 @@ const Home = () => {
 
                     <Feed />
                 </SplitPage.Center>
+                <SplitPage.Right />
             </SplitPage>
-        </>
+        </div>
     );
 };
 

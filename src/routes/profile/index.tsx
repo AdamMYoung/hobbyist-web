@@ -10,7 +10,7 @@ import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import ProfileHobbies from '../../views/profile-hobbies';
-import SplitPage, { RenderProps } from '../../views/split-page';
+import SplitPage from '../../views/split-page';
 
 const Hobbies: Hobby[] = [
     {
@@ -71,34 +71,30 @@ const Profile = () => {
                     <FeedSortDropdown disableFeedSort currentSortType={feedSortType} onSortChanged={setFeedSortType} />
                 }
             >
-                {({ rightDrawer, closeRightDrawer }: RenderProps) => (
-                    <>
-                        <SplitPage.Center>
-                            <div className="sm:pt-4">
-                                <ProfileHead
-                                    title={username}
-                                    description="This is the user's bio"
-                                    profileSrc="https://via.placeholder.com/150"
-                                    headerSrc="https://via.placeholder.com/150"
-                                ></ProfileHead>
-                            </div>
-                            <SplitPage.Center.Header>
-                                <FeedSortButtons
-                                    disableFeedSort
-                                    currentSortType={feedSortType}
-                                    onSortChanged={setFeedSortType}
-                                />
-                            </SplitPage.Center.Header>
-                            <Feed />
-                        </SplitPage.Center>
-                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                            <div className="sm:mt-2 mb-4">
-                                <SplitPage.Header title="Hobbies" />
-                            </div>
-                            <ProfileHobbies hobbies={Hobbies} />
-                        </SplitPage.Right>
-                    </>
-                )}
+                <SplitPage.Center>
+                    <div className="sm:pt-4">
+                        <ProfileHead
+                            title={username}
+                            description="This is the user's bio"
+                            profileSrc="https://via.placeholder.com/150"
+                            headerSrc="https://via.placeholder.com/150"
+                        ></ProfileHead>
+                    </div>
+
+                    <h2 className="text-2xl font-semibold mx-2 ">Hobbies</h2>
+                    <ProfileHobbies hobbies={Hobbies} />
+
+                    <SplitPage.Center.Header>
+                        <FeedSortButtons
+                            disableFeedSort
+                            currentSortType={feedSortType}
+                            onSortChanged={setFeedSortType}
+                        />
+                    </SplitPage.Center.Header>
+
+                    <Feed />
+                </SplitPage.Center>
+                <SplitPage.Right />
             </SplitPage>
         </LoadTransition>
     );

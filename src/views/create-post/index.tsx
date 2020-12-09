@@ -88,7 +88,7 @@ const CreatePost = (props: Props) => {
     const [hobby, setHobby] = useState<Hobby>(Hobbies[0]);
 
     return (
-        <div className="mx-4 my-8 sm:mx-0">
+        <div className="mx-4 mb-8 sm:mx-0">
             {!selectedHobby && <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} />}
 
             <div className="mt-2">
