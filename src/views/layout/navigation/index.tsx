@@ -24,7 +24,7 @@ const Navigation = () => {
                     </div>
 
                     <Input
-                        aria-label="Search"
+                        aria-label="Search site"
                         type="text"
                         size={1}
                         className="mx-4 md:max-w-sm flex-grow"
