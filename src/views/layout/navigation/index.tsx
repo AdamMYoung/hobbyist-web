@@ -14,7 +14,7 @@ const Navigation = () => {
     return (
         <div className="flex items-center w-full sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-16">
             <div className="lg:container w-full">
-                <NavBar>
+                <NavBar aria-label="Primary navigation">
                     <div
                         className="cursor-pointer"
                         onClick={() => (window.scrollY > 50 ? window.scrollTo({ top: 0 }) : history.push('/'))}
@@ -24,7 +24,7 @@ const Navigation = () => {
                     </div>
 
                     <Input
-                        aria-label="Search"
+                        aria-label="Search site"
                         type="text"
                         size={1}
                         className="mx-4 md:max-w-sm flex-grow"

@@ -113,7 +113,8 @@ const SplitPage = (props: Props) => {
     return (
         <div className="relative">
             {!disableNavBar && (
-                <div
+                <nav
+                    aria-label="Secondary navigation"
                     className={`flex flex-wrap fixed py-1 z-50 bg-gray-50 w-full items-center border-b-2 px-2 border-gray-200 lg:hidden ${
                         !rightIcon && 'sm:hidden'
                     } `}
@@ -135,7 +136,7 @@ const SplitPage = (props: Props) => {
                             onClick={() => setRightDrawerOpen(true)}
                         />
                     )}
-                </div>
+                </nav>
             )}
 
             <div className={`flex pt-16 lg:pt-0 ${!rightIcon && 'sm:pt-0'}`}>

@@ -87,28 +87,28 @@ const ProfileControls = () => {
         <>
             <List active>
                 {isAuthenticated && (
-                    <List.Item onClick={() => history.push('/profile')}>
+                    <List.Item aria-label="My Profile" onClick={() => history.push('/profile')}>
                         <div className="flex items-center">
                             <UserProfile size="sm" src={user.picture} title={user.name} />
                         </div>
                     </List.Item>
                 )}
                 {!isAuthenticated && !isLoading && (
-                    <List.Item onClick={() => loginWithRedirect()}>
+                    <List.Item aria-label="Sign In" onClick={() => loginWithRedirect()}>
                         <FontAwesomeIcon className="mr-6" icon={faUser} />
                         Sign In
                     </List.Item>
                 )}
-                {isLoading && <List.Item>Loading...</List.Item>}
-                <List.Item onClick={() => history.push('/')}>
+                {isLoading && <List.Item aria-label="Loading">Loading...</List.Item>}
+                <List.Item aria-label="Feed" onClick={() => history.push('/')}>
                     <FontAwesomeIcon className="mr-5" icon={faComments} />
                     Feed
                 </List.Item>
-                <List.Item onClick={() => history.push('/hobbies')}>
+                <List.Item aria-label="Hobbies" onClick={() => history.push('/hobbies')}>
                     <FontAwesomeIcon className="mr-6" icon={faBook} />
                     Hobbies
                 </List.Item>
-                <List.Item onClick={() => history.push('/meetups')}>
+                <List.Item aria-label="Meetups" onClick={() => history.push('/meetups')}>
                     <FontAwesomeIcon className="mr-5" icon={faMap} />
                     Meetups
                 </List.Item>
@@ -119,7 +119,12 @@ const ProfileControls = () => {
             </div>
 
             {isAuthenticated && (
-                <Button variant="primary" className="block sm:hidden mt-4 mx-auto" onClick={() => logout()}>
+                <Button
+                    aria-label="Sign Out"
+                    variant="primary"
+                    className="block sm:hidden mt-4 mx-auto"
+                    onClick={() => logout()}
+                >
                     Sign Out
                 </Button>
             )}
