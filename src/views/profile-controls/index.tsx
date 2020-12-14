@@ -90,7 +90,7 @@ const ProfileControls = () => {
                 {isAuthenticated && (
                     <List.Item aria-label="My Profile" onClick={() => history.push('/profile')}>
                         <div className="flex items-center">
-                            <UserProfile size="sm" src={user.picture} title={getMetadata(user, 'username')} />
+                            <UserProfile size="sm" src={user.picture} title="My Profile" />
                         </div>
                     </List.Item>
                 )}
