@@ -38,8 +38,9 @@ export type Hobby = {
 };
 
 export type Profile = {
-    name: string;
-    src: string;
+    username: string;
+    profileSrc: string;
+    bannerSrc: string;
     id: string;
 };
 

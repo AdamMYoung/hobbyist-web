@@ -20,7 +20,6 @@ const Home = () => {
                 headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
             >
                 <SplitPage.Center>
-                    <h1 className="mb-2 text-2xl font-bold mx-2 sm:mx-0">Post.</h1>
                     <CreatePost />
                     <hr className="mb-8 border-gray-300" />
                     <SplitPage.Center.Header title={title}>

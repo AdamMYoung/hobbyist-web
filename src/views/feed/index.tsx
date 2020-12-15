@@ -10,8 +10,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -26,8 +27,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -42,8 +44,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -58,8 +61,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -74,8 +78,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -90,8 +95,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -110,8 +116,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -126,8 +133,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -142,8 +150,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -163,8 +172,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -185,8 +195,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -201,8 +212,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
@@ -217,8 +229,9 @@ const posts: PostTypes[] = [
         created: new Date(),
         profile: {
             id: 'Bob',
-            name: 'John Doe',
-            src: 'https://via.placeholder.com/150',
+            username: 'John Doe',
+            profileSrc: 'https://via.placeholder.com/150',
+            bannerSrc: 'https://via.placeholder.com/150',
         },
 
         title: 'Test Post',
