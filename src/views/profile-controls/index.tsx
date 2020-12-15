@@ -9,6 +9,7 @@ import List from '../../components/list';
 import ProfileIcon from '../../components/profile-icon';
 import UserProfile from '../../components/user-profile';
 import { Hobby } from '../../types';
+import { getMetadata } from '../../utils/userUtils';
 
 const Hobbies: Hobby[] = [
     {
@@ -89,7 +90,7 @@ const ProfileControls = () => {
                 {isAuthenticated && (
                     <List.Item aria-label="My Profile" onClick={() => history.push('/profile')}>
                         <div className="flex items-center">
-                            <UserProfile size="sm" src={user.picture} title={user.name} />
+                            <UserProfile size="sm" src={user.picture} title="My Profile" />
                         </div>
                     </List.Item>
                 )}

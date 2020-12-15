@@ -5,3 +5,8 @@
 html {
     scroll-behavior: smooth;
 }
+
+.ql-editor {
+    min-height: 8rem;
+    background-color: white;
+}

@@ -27,8 +27,8 @@ const PostCard: React.FC<Props> = (props) => {
         <Card noCursor active>
             <article className="min-h-32 max-h-92">
                 <UserProfile
-                    title={profile.name}
-                    src={profile.src}
+                    title={profile.username}
+                    src={profile.profileSrc}
                     onClick={() => history.push(`/profile/${profile.id}`)}
                 >
                     <Button

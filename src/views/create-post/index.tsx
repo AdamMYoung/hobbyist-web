@@ -89,6 +89,7 @@ const CreatePost = (props: Props) => {
 
     return (
         <div className="mx-4 mb-8 sm:mx-0">
+            <h1 className="mb-2 text-2xl font-bold">Post.</h1>
             {!selectedHobby && <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} />}
 
             <div className="mt-2">
