@@ -9,7 +9,6 @@ import List from '../../components/list';
 import ProfileIcon from '../../components/profile-icon';
 import UserProfile from '../../components/user-profile';
 import { Hobby } from '../../types';
-import { getMetadata } from '../../utils/userUtils';
 
 const Hobbies: Hobby[] = [
     {
