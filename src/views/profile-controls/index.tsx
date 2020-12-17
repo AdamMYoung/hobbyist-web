@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { faBook, faComments, faMap, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faComments, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -107,10 +107,6 @@ const ProfileControls = () => {
                 <List.Item aria-label="Hobbies" onClick={() => history.push('/hobbies')}>
                     <FontAwesomeIcon className="mr-6" icon={faBook} />
                     Hobbies
-                </List.Item>
-                <List.Item aria-label="Meetups" onClick={() => history.push('/meetups')}>
-                    <FontAwesomeIcon className="mr-5" icon={faMap} />
-                    Meetups
                 </List.Item>
             </List>
 

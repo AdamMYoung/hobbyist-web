@@ -1,11 +1,19 @@
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Auth0Provider } from '@auth0/auth0-react';
+import ReactGA from 'react-ga';
+import { hotjar } from 'react-hotjar';
 
 import { ScrollLockProvider } from './providers/ScrollLockProvider';
 import Layout from './views/layout';
 
+ReactGA.initialize('G-00M9LYJ67J');
+hotjar.initialize(2162518, 6);
+
 const history = createBrowserHistory();
+history.listen((location) => {
+    ReactGA.pageview(location.pathname);
+});
 
 const App = () => {
     return (

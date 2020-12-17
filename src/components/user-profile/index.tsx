@@ -20,7 +20,7 @@ const UserProfile: React.FC<Props> = (props) => {
         <UserContainer>
             <ProfileIcon size={size} alt={title} {...rest} active={active} />
             <div className="block ml-2">
-                <Button variant="link" className="font-semibold" onClick={() => onClick && onClick()}>
+                <Button className="font-semibold hover:underline" onClick={() => onClick && onClick()}>
                     {title}
                 </Button>
                 {children}

@@ -1,6 +1,6 @@
 import { Image, Notification, ProfileContainer } from './styles';
 
-type Props = {
+type Props = React.ComponentPropsWithoutRef<'div'> & {
     src: string;
     alt?: string;
     onClick?: () => void;
@@ -10,10 +10,10 @@ type Props = {
 };
 
 const ProfileIcon = (props: Props) => {
-    const { src, onClick, alt, active, hasNotification = false, size = 'sm' } = props;
+    const { src, onClick, alt, active, hasNotification = false, size = 'sm', ...rest } = props;
 
     return (
-        <ProfileContainer active={active} size={size} onClick={() => active && onClick && onClick()}>
+        <ProfileContainer {...rest} active={active} size={size} onClick={() => active && onClick && onClick()}>
             <Image src={src} alt={alt} />
             {hasNotification && <Notification size={size} />}
         </ProfileContainer>
