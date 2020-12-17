@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { paramCase } from 'param-case';
 import { useHistory } from 'react-router-dom';
 
-import Input from '../../components/input';
 import Button from '../../components/button';
 import SplitPage from '../../views/split-page';
 import EditableProfileHead from '../../components/profile-head-edit';
@@ -12,8 +10,6 @@ const NewHobby = () => {
 
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
-    const [profileBase64, setProfileBase64] = useState<string>('');
-    const [bannerBase64, setBannerBase64] = useState<string>('');
 
     return (
         <SplitPage title="New Hobby.">

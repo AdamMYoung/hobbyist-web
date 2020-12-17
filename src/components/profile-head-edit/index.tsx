@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { ProfileContainer } from '../profile-icon/styles';
 
 type Props = {
@@ -13,7 +11,7 @@ type Props = {
 };
 
 const EditableProfileHead = (props: Props) => {
-    const { headerSrc, profileSrc, title, description, onTitleChanged, onDescriptionChanged } = props;
+    const { title, description, onTitleChanged, onDescriptionChanged } = props;
 
     return (
         <div>
