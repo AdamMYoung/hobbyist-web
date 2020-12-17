@@ -1,27 +1,68 @@
+import React from 'react';
+import useFileUpload from '../../hooks/useImageUpload';
+import ProfileIcon from '../profile-icon';
 import { ProfileContainer } from '../profile-icon/styles';
 
 type Props = {
-    headerSrc?: string;
-    profileSrc?: string;
-    title?: string;
+    bannerImgBase64?: string;
+    profileImgBase64?: string;
+    name?: string;
     description?: string;
 
-    onTitleChanged: (title: string) => void;
+    onNameChanged: (name: string) => void;
     onDescriptionChanged: (title: string) => void;
+    onProfileImgChanged: (file: File) => void;
+    onBannerImgChanged: (file: File) => void;
 };
 
+const uploadOptions = { fileTypes: ['.jpg', '.png'] };
+
 const EditableProfileHead = (props: Props) => {
-    const { title, description, onTitleChanged, onDescriptionChanged } = props;
+    const {
+        name,
+        description,
+        bannerImgBase64,
+        profileImgBase64,
+        onNameChanged,
+        onDescriptionChanged,
+        onProfileImgChanged,
+        onBannerImgChanged,
+    } = props;
+
+    const onUploadProfileImg = useFileUpload((files) => onProfileImgChanged(files[0]), uploadOptions);
+    const onUploadBannerImg = useFileUpload((files) => onBannerImgChanged(files[0]), uploadOptions);
 
     return (
         <div>
             <div className="relative h-36 w-full">
                 <div className="absolute t-0 h-36 w-full">
-                    <div className="relative h-36 w-full cursor-pointer bg-blue-100 transition hover:bg-gray-400 active:bg-gray-500" />
+                    <div
+                        className="relative h-36 w-full cursor-pointer bg-blue-100 transition hover:bg-gray-400 active:bg-gray-500"
+                        onClick={onUploadBannerImg}
+                    >
+                        {bannerImgBase64 && (
+                            <img
+                                className="rounded-t-lg absolute inset-0 w-full h-full object-cover transition hover:opacity-60"
+                                src={bannerImgBase64}
+                                alt=""
+                            />
+                        )}
+                    </div>
                 </div>
                 <hr className="absolute top-36 w-full border-gray-300" />
                 <div className="absolute top-36 left-1/2 sm:left-1/4 transform -translate-y-1/2 -translate-x-1/2">
-                    <ProfileContainer active size="lg" className="bg-blue-100" />
+                    {!profileImgBase64 ? (
+                        <ProfileContainer active size="lg" className="bg-blue-100" onClick={onUploadProfileImg} />
+                    ) : (
+                        <ProfileIcon
+                            active
+                            className="cursor-pointer"
+                            onClick={onUploadProfileImg}
+                            size="lg"
+                            src={profileImgBase64}
+                            alt=""
+                        />
+                    )}
                 </div>
             </div>
             <div className="flex flex-col sm:flex-row flex-wrap items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-2">
@@ -30,8 +71,8 @@ const EditableProfileHead = (props: Props) => {
                         className="text-5xl font-bold w-full bg-transparent"
                         placeholder="Hobby Name"
                         size={1}
-                        value={title}
-                        onChange={(e) => onTitleChanged(e.target.value)}
+                        value={name}
+                        onChange={(e) => onNameChanged(e.target.value)}
                     />
                     <input
                         className="mt-1 text-gray-400 w-full bg-transparent"
