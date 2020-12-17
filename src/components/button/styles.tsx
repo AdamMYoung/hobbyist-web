@@ -14,7 +14,7 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
         props.variant === 'secondary' &&
         tw`px-4 py-2 bg-yellow-500 bg-yellow-700 transition text-white font-bold focus:outline-none focus:ring`}
     ${(props) => props.variant === 'icon' && tw`px-4 py-2 rounded font-bold hover:bg-gray-300`}
-    ${(props) => props.variant === 'link' && tw`hover:underline cursor-pointer`}
+    ${(props) => props.variant === 'link' && tw`underline cursor-pointer`}
 
     ${(props) => (props.variant === 'primary' || props.variant === 'secondary') && 'min-width: 8rem;'}
 

@@ -1,70 +1,36 @@
+import React, { useState } from 'react';
+import { paramCase } from 'param-case';
+import { useHistory } from 'react-router-dom';
+
 import Input from '../../components/input';
 import Button from '../../components/button';
-import React, { useState } from 'react';
-import Dropzone from 'react-dropzone';
-import Card from '../../components/card';
 import SplitPage from '../../views/split-page';
+import EditableProfileHead from '../../components/profile-head-edit';
 
 const NewHobby = () => {
-    const [profileBase64, setProfileBase64] = useState();
-    const [bannerBase64, setBannerBase64] = useState();
+    const history = useHistory();
 
-    const title = 'New Hobby.';
+    const [title, setTitle] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [profileBase64, setProfileBase64] = useState<string>('');
+    const [bannerBase64, setBannerBase64] = useState<string>('');
 
     return (
-        <SplitPage title={title}>
+        <SplitPage title="New Hobby.">
             <SplitPage.Center>
-                <SplitPage.Center.Header title={title} />
-                <Card className="flex flex-col mt-4">
-                    <div className="flex flex-col mt-2">
-                        <label>Hobby URL (Can't be changed.)</label>
-                        <Input />
-                    </div>
+                <EditableProfileHead
+                    title={title}
+                    description={description}
+                    onTitleChanged={setTitle}
+                    onDescriptionChanged={setDescription}
+                />
 
-                    <div className="flex flex-col mt-2">
-                        <label>Hobby Name</label>
-                        <Input />
-                    </div>
-
-                    <div className="flex flex-col mt-2">
-                        <label>Description</label>
-                        <Input />
-                    </div>
-
-                    <Dropzone>
-                        {({ getRootProps, getInputProps }) => (
-                            <section className="mt-4">
-                                <p>Profile Image</p>
-                                <div
-                                    className="py-12 rounded border cursor-pointer hover:bg-gray-100"
-                                    {...getRootProps()}
-                                >
-                                    <input {...getInputProps()} />
-                                    <p className="text-center">Drop a hobby image here, or click to select a file.</p>
-                                </div>
-                            </section>
-                        )}
-                    </Dropzone>
-
-                    <Dropzone>
-                        {({ getRootProps, getInputProps }) => (
-                            <section className="mt-4">
-                                <p>Banner Image</p>
-                                <div
-                                    className="py-12 rounded border cursor-pointer hover:bg-gray-100"
-                                    {...getRootProps()}
-                                >
-                                    <input {...getInputProps()} />
-                                    <p className="text-center">Drop a banner image here, or click to select a file.</p>
-                                </div>
-                            </section>
-                        )}
-                    </Dropzone>
-
-                    <Button className="mt-4 ml-auto" variant="primary">
-                        Create
+                <div className="mt-4 flex">
+                    <Button className="ml-auto mr-4" variant="link" onClick={() => history.push('/')}>
+                        Cancel
                     </Button>
-                </Card>
+                    <Button variant="primary">Create</Button>
+                </div>
             </SplitPage.Center>
         </SplitPage>
     );

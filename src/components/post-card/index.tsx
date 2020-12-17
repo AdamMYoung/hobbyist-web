@@ -32,9 +32,8 @@ const PostCard: React.FC<Props> = (props) => {
                     onClick={() => history.push(`/profile/${profile.id}`)}
                 >
                     <Button
-                        variant="link"
                         onClick={() => history.push(`/hobby/${hobbyId}`)}
-                        className="text-sm text-gray-500"
+                        className="text-sm text-gray-500 hover:underline"
                     >{`${hobbyId} - ${dayjs(created).fromNow()}`}</Button>
                 </UserProfile>
                 <div onClick={() => history.push(`/hobby/${hobbyId}/post/${id}`)} className="cursor-pointer pl-14">

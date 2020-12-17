@@ -10,7 +10,6 @@ import ProfileControls from '../profile-controls';
 type ColumnProps = {
     children?: React.ReactNode;
     isDrawerOpen?: boolean;
-
     onCloseDrawer?: () => void;
 };
 
@@ -76,7 +75,7 @@ const CenterColumn = (props: { children?: React.ReactNode }) => {
     const { children } = props;
 
     return (
-        <div className="w-full sm:px-3 mt-8">
+        <div className="w-full sm:px-3 sm:mt-8">
             <LoadTransition>{children}</LoadTransition>
         </div>
     );
