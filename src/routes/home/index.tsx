@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../components/button';
 import SEO from '../../components/seo';
 import { FeedSortType } from '../../types';
-import CreatePost from '../../views/create-post';
 
+import CreatePost from '../../views/create-post';
 import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
