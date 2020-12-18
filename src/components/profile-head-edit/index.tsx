@@ -37,7 +37,7 @@ const EditableProfileHead = (props: Props) => {
             <div className="relative h-36 w-full">
                 <div className="absolute t-0 h-36 w-full">
                     <div
-                        className="relative h-36 w-full cursor-pointer bg-blue-100 transition hover:bg-gray-400 active:bg-gray-500"
+                        className="relative h-36 w-full cursor-pointer bg-purple-500 transition hover:bg-purple-700 active:bg-purple-800"
                         onClick={onUploadBannerImg}
                     >
                         {bannerImgBase64 && (
@@ -52,7 +52,7 @@ const EditableProfileHead = (props: Props) => {
                 <hr className="absolute top-36 w-full border-gray-300" />
                 <div className="absolute top-36 left-1/2 sm:left-1/4 transform -translate-y-1/2 -translate-x-1/2">
                     {!profileImgBase64 ? (
-                        <ProfileContainer active size="lg" className="bg-blue-100" onClick={onUploadProfileImg} />
+                        <ProfileContainer active size="lg" className="bg-purple-500" onClick={onUploadProfileImg} />
                     ) : (
                         <ProfileIcon
                             active
