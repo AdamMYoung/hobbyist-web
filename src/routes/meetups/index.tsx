@@ -218,33 +218,35 @@ const Meetups = () => {
             </div>
             {/* Window  */}
             <div className="relative h-full pointer-events-none">
-                <SplitPage disableNavBar disableProfileControls>
-                    <SplitPage.Center>
-                        <div className="w-full sm:w-1/3 ml-auto p-2 sm:p-0">
-                            <div style={{ height: `calc(${height}px - 15rem)` }} className="sm:hidden" />
-                            <Card className="pointer-events-auto">
-                                <div className="p-2 h-28">
-                                    <SplitPage.Header title={title} />
-                                    <label htmlFor="locationPlaceholder" className="mt-4 text-gray-400 text-sm">
-                                        Enter a location:
-                                    </label>
-                                    <Input
-                                        id="locationPlaceholder"
-                                        className="w-full mt-1"
-                                        placeholder="London"
-                                        size={1}
-                                    />
-                                </div>
-                            </Card>
-                            <div className="mt-4 pointer-events-auto">
-                                {MeetupEvents.map((event) => (
-                                    <div key={event.id} className="mt-2">
-                                        <MeetupCard {...event} />
+                <SplitPage disableNavBar>
+                    <SplitPage.Body disableProfileControls>
+                        <SplitPage.Center>
+                            <div className="w-full sm:w-1/3 ml-auto p-2 sm:p-0">
+                                <div style={{ height: `calc(${height}px - 15rem)` }} className="sm:hidden" />
+                                <Card className="pointer-events-auto">
+                                    <div className="p-2 h-28">
+                                        <SplitPage.Header title={title} />
+                                        <label htmlFor="locationPlaceholder" className="mt-4 text-gray-400 text-sm">
+                                            Enter a location:
+                                        </label>
+                                        <Input
+                                            id="locationPlaceholder"
+                                            className="w-full mt-1"
+                                            placeholder="London"
+                                            size={1}
+                                        />
                                     </div>
-                                ))}
+                                </Card>
+                                <div className="mt-4 pointer-events-auto">
+                                    {MeetupEvents.map((event) => (
+                                        <div key={event.id} className="mt-2">
+                                            <MeetupCard {...event} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    </SplitPage.Center>
+                        </SplitPage.Center>
+                    </SplitPage.Body>
                 </SplitPage>
             </div>
         </>

@@ -98,8 +98,8 @@ const NewHobby = () => {
 
     return (
         <SplitPage title={title} headerNavContent={<CreateButton />} rightIcon={faQuestion}>
-            {({ rightDrawer, closeRightDrawer }: RenderProps) => (
-                <>
+            {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
+                <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                     <SplitPage.Center>
                         <SplitPage.Center.Header title={title}>
                             <CreateButton />
@@ -118,6 +118,7 @@ const NewHobby = () => {
                         </div>
                         <PlaceholderFeed />
                     </SplitPage.Center>
+
                     <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
                         <SplitPage.Header title="Help." />
                         <p className="mt-2 text-sm font-semibold">To create a new hobby, you'll need to provide:</p>
@@ -141,7 +142,7 @@ const NewHobby = () => {
                             created!
                         </p>
                     </SplitPage.Right>
-                </>
+                </SplitPage.Body>
             )}
         </SplitPage>
     );
