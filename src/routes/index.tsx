@@ -3,8 +3,9 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { AuthenticatedRoute } from './custom';
 import Home from './home';
-import NewHobby from './new-hobby';
 
+const NewHobby = React.lazy(() => import('./new-hobby'));
+const NewPost = React.lazy(() => import('./new-post'));
 const Hobbies = React.lazy(() => import('./hobbies'));
 const ViewPost = React.lazy(() => import('./view-post'));
 const Profile = React.lazy(() => import('./profile'));
@@ -18,7 +19,8 @@ const Routes = () => {
             <Route path="/" exact component={Home} />
 
             <Route path="/hobbies" exact component={Hobbies} />
-            <Route path="/new-hobby" exact component={NewHobby} />
+            <AuthenticatedRoute path="/new-hobby" exact component={NewHobby} />
+            <AuthenticatedRoute path="/new-post" exact component={NewPost} />
             <Route path="/hobby/:hobbyId" exact component={Hobby} />
             <Route path="/hobby/:hobbyId/post/:postId" exact component={ViewPost} />
 

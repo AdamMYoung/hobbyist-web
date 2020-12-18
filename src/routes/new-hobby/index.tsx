@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { paramCase } from 'param-case';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
-import api from '../../api';
 import Button from '../../components/button';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import EditableProfileHead from '../../components/profile-head-edit';
@@ -11,6 +10,9 @@ import { CreateHobbyRequest } from '../../api/hobbies';
 
 import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
+import { useAuthAxios } from '../../hooks/useAuthAxios';
+import { useHistory } from 'react-router-dom';
+import { useMutation } from 'react-query';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),
@@ -21,6 +23,12 @@ const schema = yup.object().shape({
 });
 
 const NewHobby = () => {
+    const getAxios = useAuthAxios();
+    const [mutate] = useMutation<void, void, CreateHobbyRequest>(async (data) => {
+        return await getAxios().then((axios) => axios.post('/hobbies', data));
+    });
+
+    const history = useHistory();
     const [schemaValid, setSchemaValid] = useState<boolean>(false);
     const [name, setName] = useState<string>();
     const [description, setDescription] = useState<string>();
@@ -84,14 +92,14 @@ const NewHobby = () => {
     const handleSubmit = async () => {
         //Hobby is cast as schema would be invalid if all properties weren't there.
         if (schemaValid) {
-            api.hobbies.createHobby(hobbyRequest as CreateHobbyRequest);
+            await mutate(hobbyRequest as CreateHobbyRequest);
         }
     };
 
     const title = 'Create Hobby.';
 
     const CreateButton = () => (
-        <Button className="my-2" variant="primary" onClick={handleSubmit} disabled={!schemaValid}>
+        <Button variant="primary" onClick={handleSubmit} disabled={!schemaValid}>
             Create
         </Button>
     );
@@ -137,10 +145,19 @@ const NewHobby = () => {
                         <p className="mt-2 text-lg font-bold">Banner Photo</p>
                         <p className="text-sm">A banner photo to highlight your hobby.</p>
 
-                        <p className="mt-6 text-sm">
+                        <hr className="my-4 border-gray-300" />
+                        <p className="mt-2 text-sm">
                             Once you're done, click "Create" at the top of the screen, and your hobby page will be
-                            created!
+                            created.
                         </p>
+
+                        <Button variant="primary" className="mb-4 mt-6 w-full" onClick={() => history.replace('/')}>
+                            Cancel
+                        </Button>
+
+                        <Button variant="primary" className="mt-2 w-full" onClick={() => history.push('/new-post')}>
+                            New Post
+                        </Button>
                     </SplitPage.Right>
                 </SplitPage.Body>
             )}

@@ -69,7 +69,7 @@ const RightColumn = (props: ColumnProps) => {
 
     return (
         <>
-            <div className={`sm:px-3 hidden mt-2 ${children ? 'lg:block' : 'xl:block'} w-2/6`}>{children}</div>
+            <div className="sm:px-3 hidden mt-2 lg:block w-2/6">{children}</div>
             <Drawer open={isDrawerOpen ?? false} onClose={handleClose}>
                 {children}
             </Drawer>

@@ -26,7 +26,7 @@ const Layout = () => {
         <LockableDiv locked={locked}>
             <Navigation />
 
-            <main className="lg:container min-h-screen">
+            <main className="xl:container min-h-screen">
                 <Suspense
                     fallback={
                         <SplitPage>

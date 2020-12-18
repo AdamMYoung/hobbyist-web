@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/button';
 import List from '../../components/list';
+import LoadTransition from '../../components/load-transition';
 import ProfileIcon from '../../components/profile-icon';
 import UserProfile from '../../components/user-profile';
 import { Hobby } from '../../types';
@@ -89,7 +90,9 @@ const ProfileControls = () => {
                 {isAuthenticated && (
                     <List.Item aria-label="My Profile" onClick={() => history.push('/profile')}>
                         <div className="flex items-center">
-                            <UserProfile size="sm" src={user.picture} title="My Profile" />
+                            <LoadTransition>
+                                <UserProfile size="sm" src={user.picture} title="My Profile" />
+                            </LoadTransition>
                         </div>
                     </List.Item>
                 )}
@@ -115,14 +118,16 @@ const ProfileControls = () => {
             </div>
 
             {isAuthenticated && (
-                <Button
-                    aria-label="Sign Out"
-                    variant="primary"
-                    className="block sm:hidden mt-4 mx-auto"
-                    onClick={() => logout()}
-                >
-                    Sign Out
-                </Button>
+                <LoadTransition>
+                    <Button
+                        aria-label="Sign Out"
+                        variant="primary"
+                        className="block sm:hidden mt-4 mx-auto"
+                        onClick={() => logout()}
+                    >
+                        Sign Out
+                    </Button>
+                </LoadTransition>
             )}
         </>
     );

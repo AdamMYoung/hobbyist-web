@@ -1,11 +1,11 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import Button from '../../components/button';
+import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
 import { FeedSortType } from '../../types';
-
-import CreatePost from '../../views/create-post';
 import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
@@ -14,7 +14,6 @@ import SplitPage, { RenderProps } from '../../views/split-page';
 const Home = () => {
     const { isAuthenticated } = useAuth0();
     const history = useHistory();
-    const [isCreatePost, setCreatePost] = useState<boolean>(false);
     const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
     const title = 'Feed.';
 
@@ -28,47 +27,41 @@ const Home = () => {
                 {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
                     <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                         <SplitPage.Center>
-                            <div className="mx-4 sm:mx-0">
-                                {!isAuthenticated && (
-                                    <p className="text-2xl font-semibold mb-4 text-center">Sign in to create a post.</p>
-                                )}
-
-                                {isAuthenticated && !isCreatePost && (
-                                    <div className="flex flex-wrap items-center mb-4">
-                                        <Button variant="primary" className="mt-2" onClick={() => setCreatePost(true)}>
-                                            New Post
-                                        </Button>
-
-                                        <div className="ml-auto mt-2 flex items-center">
-                                            <p>Can't find your hobby?</p>
-                                            <Button
-                                                className="ml-2"
-                                                variant="link"
-                                                onClick={() => history.push('/new-hobby')}
-                                            >
-                                                Create it!
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {isAuthenticated && isCreatePost && (
-                                    <>
-                                        <Button variant="link" className="mb-4" onClick={() => setCreatePost(false)}>
-                                            Back
-                                        </Button>
-                                        <CreatePost />
-                                    </>
-                                )}
-                            </div>
-                            <hr className="mb-8 border-gray-300" />
                             <SplitPage.Center.Header title={title}>
                                 <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
                             </SplitPage.Center.Header>
-
-                            <Feed />
+                            <div className="my-4">
+                                <Feed />
+                            </div>
                         </SplitPage.Center>
-                        <SplitPage.Right />
+                        <SplitPage.Right>
+                            {isAuthenticated && (
+                                <LoadTransition>
+                                    <SplitPage.Header title="Home." />
+                                    <p className="text-sm my-2 mb-4">
+                                        Why not post something new, or create somewhere to share your passions?
+                                    </p>
+
+                                    <div className="ml-auto mb-4">
+                                        <Button
+                                            variant="primary"
+                                            className="mt-2 w-full"
+                                            onClick={() => history.push('/new-post')}
+                                        >
+                                            Create Post
+                                        </Button>
+                                    </div>
+
+                                    <Button
+                                        variant="primary"
+                                        className="mt-2 w-full"
+                                        onClick={() => history.push('/new-hobby')}
+                                    >
+                                        Create Hobby
+                                    </Button>
+                                </LoadTransition>
+                            )}
+                        </SplitPage.Right>
                     </SplitPage.Body>
                 )}
             </SplitPage>

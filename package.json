@@ -14,7 +14,7 @@
         "@testing-library/user-event": "^12.1.10",
         "@types/jest": "^26.0.15",
         "@types/node": "^12.0.0",
-        "@types/react": "^16.9.53",
+        "@types/react": "^17.0.0",
         "@types/react-dom": "^16.9.8",
         "autoprefixer": "^9.8.6",
         "axios": "^0.21.0",
@@ -34,13 +34,15 @@
         "react-hotjar": "^2.2.1",
         "react-placeholder": "^4.0.3",
         "react-query": "^2.26.3",
-        "react-quill": "^2.0.0-beta.2",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.1",
         "react-select": "^3.1.1",
+        "slate": "^0.59.0",
+        "slate-history": "^0.59.0",
+        "slate-react": "^0.59.0",
         "styled-components": "^5.2.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
-        "twin.macro": "^2.0.4",
+        "twin.macro": "^2.0.7",
         "typescript": "^4.0.3",
         "web-vitals": "^0.2.4",
         "yup": "^0.32.8"
@@ -73,9 +75,9 @@
         ]
     },
     "devDependencies": {
-        "@storybook/addon-actions": "^6.1.9",
+        "@storybook/addon-actions": "^6.1.11",
         "@storybook/addon-essentials": "^6.1.9",
-        "@storybook/addon-links": "^6.1.9",
+        "@storybook/addon-links": "^6.1.11",
         "@storybook/node-logger": "^6.1.9",
         "@storybook/preset-create-react-app": "^3.1.5",
         "@storybook/react": "^6.1.9",
@@ -84,7 +86,7 @@
         "@types/imagemin-jpegtran": "^5.0.0",
         "@types/react-helmet": "^6.1.0",
         "@types/react-router-dom": "^5.1.6",
-        "@types/react-select": "^3.0.27",
+        "@types/react-select": "^3.0.28",
         "@types/react-virtualized-auto-sizer": "^1.0.0",
         "@types/styled-components": "^5.1.4"
     }
