@@ -81,7 +81,7 @@ const Profile = () => {
                         </SplitPage.Top>
                         <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                             <SplitPage.Center>
-                                <h2 className="text-2xl font-semibold mx-2 ">Hobbies</h2>
+                                <h2 className="text-2xl font-semibold mx-2">Hobbies</h2>
                                 <ProfileHobbies hobbies={Hobbies} />
 
                                 <SplitPage.Center.Header>
