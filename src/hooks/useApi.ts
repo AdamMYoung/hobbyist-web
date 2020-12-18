@@ -47,8 +47,11 @@ export function useApi<T>(url: string, query: 'POST' | 'PUT' | 'GET' | 'DELETE' 
 
             setLoading(true);
 
-            await axiosQuery<T>(url, body)
-                .then((response) => setData(response.data))
+            return await axiosQuery<T>(url, body)
+                .then((response) => {
+                    setData(response.data);
+                    return response.data;
+                })
                 .catch((error) => setError(error))
                 .finally(() => setLoading(false));
         },
