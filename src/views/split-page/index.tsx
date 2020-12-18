@@ -17,13 +17,19 @@ type Props = {
     title?: string;
     headerNavContent?: React.ReactNode;
     children?: React.ReactNode;
-    disableProfileControls?: boolean;
     disableNavBar?: boolean;
     rightIcon?: IconProp;
 };
 
 type HeaderProps = {
     title?: string;
+};
+
+type BodyProps = {
+    children?: React.ReactNode;
+    disableProfileControls?: boolean;
+    leftDrawerOpen?: boolean;
+    onCloseLeftDrawer?: () => void;
 };
 
 export type RenderProps = {
@@ -63,7 +69,7 @@ const RightColumn = (props: ColumnProps) => {
 
     return (
         <>
-            <div className="sm:px-3 hidden mt-2 lg:block w-2/6">{children}</div>
+            <div className={`sm:px-3 hidden mt-2 ${children ? 'lg:block' : 'xl:block'} w-2/6`}>{children}</div>
             <Drawer open={isDrawerOpen ?? false} onClose={handleClose}>
                 {children}
             </Drawer>
@@ -77,6 +83,34 @@ const CenterColumn = (props: { children?: React.ReactNode }) => {
     return (
         <div className="w-full sm:px-3 sm:mt-8">
             <LoadTransition>{children}</LoadTransition>
+        </div>
+    );
+};
+
+const Top = (props: { children?: React.ReactNode }) => {
+    const { children } = props;
+
+    return (
+        <div className="w-full py-4">
+            <LoadTransition>{children}</LoadTransition>
+        </div>
+    );
+};
+
+const Body = (props: BodyProps) => {
+    const { children, disableProfileControls, leftDrawerOpen, onCloseLeftDrawer } = props;
+
+    return (
+        <div className="flex ">
+            {!disableProfileControls && (
+                <LeftColumn
+                    isDrawerOpen={leftDrawerOpen}
+                    onCloseDrawer={() => onCloseLeftDrawer && onCloseLeftDrawer()}
+                >
+                    <ProfileControls />
+                </LeftColumn>
+            )}
+            {children}
         </div>
     );
 };
@@ -100,7 +134,7 @@ const CenterHeader: React.FC<HeaderProps> = (props) => {
 const SplitPage = (props: Props) => {
     const [leftDrawerOpen, setLeftDrawerOpen] = useState<boolean>(false);
     const [rightDrawerOpen, setRightDrawerOpen] = useState<boolean>(false);
-    const { title, rightIcon, children, disableNavBar, headerNavContent, disableProfileControls } = props;
+    const { title, rightIcon, children, disableNavBar, headerNavContent } = props;
 
     const renderProps: RenderProps = {
         leftDrawer: leftDrawerOpen,
@@ -138,12 +172,7 @@ const SplitPage = (props: Props) => {
                 </nav>
             )}
 
-            <div className={`flex pt-16 lg:pt-0 ${!rightIcon && 'sm:pt-0'}`}>
-                {!disableProfileControls && (
-                    <LeftColumn isDrawerOpen={leftDrawerOpen} onCloseDrawer={() => setLeftDrawerOpen(false)}>
-                        <ProfileControls />
-                    </LeftColumn>
-                )}
+            <div className={`pt-16 lg:pt-0 ${!rightIcon && 'sm:pt-0'}`}>
                 {typeof children === 'function' ? children(renderProps) : children}
             </div>
         </div>
@@ -154,6 +183,8 @@ CenterColumn.Header = CenterHeader;
 SplitPage.Left = LeftColumn;
 SplitPage.Right = RightColumn;
 SplitPage.Center = CenterColumn;
+SplitPage.Top = Top;
+SplitPage.Body = Body;
 SplitPage.Header = Header;
 
 export default SplitPage;

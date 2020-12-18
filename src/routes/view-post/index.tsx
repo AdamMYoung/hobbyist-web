@@ -10,12 +10,14 @@ const Post = () => {
     return (
         <LoadTransition>
             <SEO title={postId} />
-            <SplitPage disableProfileControls>
-                <SplitPage.Center>
-                    <h1>{hobbyId}</h1>
-                    <h1>{postId}</h1>
-                </SplitPage.Center>
-                <SplitPage.Right></SplitPage.Right>
+            <SplitPage>
+                <SplitPage.Body disableProfileControls>
+                    <SplitPage.Center>
+                        <h1>{hobbyId}</h1>
+                        <h1>{postId}</h1>
+                    </SplitPage.Center>
+                    <SplitPage.Right></SplitPage.Right>
+                </SplitPage.Body>
             </SplitPage>
         </LoadTransition>
     );
