@@ -120,21 +120,23 @@ const NewHobby = () => {
                     </SplitPage.Center>
                     <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
                         <SplitPage.Header title="Help." />
-                        <p className="mt-2 font-semibold">To create a new hobby, you'll need to provide:</p>
+                        <p className="mt-2 text-sm font-semibold">To create a new hobby, you'll need to provide:</p>
 
                         <p className="mt-4 text-lg font-bold">Name</p>
-                        <p>This will need to be unique, since this is how you'll find your community later on.</p>
+                        <p className="text-sm">
+                            This will need to be unique, since this is how you'll find your community later on.
+                        </p>
 
                         <p className="mt-2 text-lg font-bold">Description</p>
-                        <p>A brief description to tell people what your hobby is all about.</p>
+                        <p className="text-sm">A brief description to tell people what your hobby is all about.</p>
 
                         <p className="mt-2 text-lg font-bold">Header Photo</p>
-                        <p>A profile picture to represent your hobby.</p>
+                        <p className="text-sm">A profile picture to represent your hobby.</p>
 
                         <p className="mt-2 text-lg font-bold">Banner Photo</p>
-                        <p>A banner photo to highlight your hobby.</p>
+                        <p className="text-sm">A banner photo to highlight your hobby.</p>
 
-                        <p className="mt-6">
+                        <p className="mt-6 text-sm">
                             Once you're done, click "Create" at the top of the screen, and your hobby page will be
                             created!
                         </p>
