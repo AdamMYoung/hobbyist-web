@@ -12,11 +12,13 @@ type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 };
 
 const Item: React.FC<ButtonProps> = (props) => {
-    const { children, onClick, ...rest } = props;
+    const { children, onClick, className, ...rest } = props;
 
     return (
         <ListItem onClick={onClick}>
-            <button {...rest}>{props.children}</button>
+            <button className={`focus:outline-none ${className}`} {...rest}>
+                {props.children}
+            </button>
         </ListItem>
     );
 };

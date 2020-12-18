@@ -68,14 +68,14 @@ const EditableProfileHead = (props: Props) => {
             <div className="flex flex-col sm:flex-row flex-wrap items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-2">
                 <div className="sm:ml-8 xl:ml-8 w-full sm:mx-none">
                     <input
-                        className="text-5xl font-bold w-full bg-transparent"
-                        placeholder="Hobby Name"
+                        className="text-4xl font-bold pb-2 w-full bg-transparent text-center sm:text-left focus:outline-none focus:ring-1 focus:ring-purple-700 rounded p-2"
+                        placeholder="Name"
                         size={1}
                         value={name}
                         onChange={(e) => onNameChanged(e.target.value)}
                     />
                     <input
-                        className="mt-1 text-gray-400 w-full bg-transparent"
+                        className="mt-1 text-gray-400 w-full bg-transparent text-center sm:text-left focus:outline-none focus:ring-1 focus:ring-purple-700 rounded p-2"
                         placeholder="Description"
                         size={1}
                         value={description}

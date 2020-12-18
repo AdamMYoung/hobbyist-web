@@ -9,5 +9,5 @@ export type CreateHobbyRequest = {
 };
 
 export const createHobby = async (hobby: CreateHobbyRequest): Promise<void> => {
-    return await client.put('', hobby);
+    return await client.post('/hobbies', hobby);
 };

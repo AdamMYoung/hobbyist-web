@@ -70,11 +70,7 @@ const Hobby: React.FC = () => {
 
                             <Feed />
                         </SplitPage.Center>
-                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                            <div className="sm:mt-2">
-                                <SplitPage.Header title="Upcoming Events" />
-                            </div>
-                        </SplitPage.Right>
+                        <SplitPage.Right />
                     </>
                 )}
             </SplitPage>

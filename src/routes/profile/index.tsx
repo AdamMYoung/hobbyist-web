@@ -85,11 +85,13 @@ const Profile = () => {
                     <ProfileHobbies hobbies={Hobbies} />
 
                     <SplitPage.Center.Header>
-                        <FeedSortButtons
-                            disableFeedSort
-                            currentSortType={feedSortType}
-                            onSortChanged={setFeedSortType}
-                        />
+                        <div className="mt-4">
+                            <FeedSortButtons
+                                disableFeedSort
+                                currentSortType={feedSortType}
+                                onSortChanged={setFeedSortType}
+                            />
+                        </div>
                     </SplitPage.Center.Header>
 
                     <Feed />

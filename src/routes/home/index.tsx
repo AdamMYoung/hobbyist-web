@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/button';
@@ -11,6 +12,7 @@ import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage from '../../views/split-page';
 
 const Home = () => {
+    const { isAuthenticated } = useAuth0();
     const history = useHistory();
     const [isCreatePost, setCreatePost] = useState<boolean>(false);
     const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
@@ -25,7 +27,11 @@ const Home = () => {
             >
                 <SplitPage.Center>
                     <div className="mx-4 sm:mx-0">
-                        {!isCreatePost && (
+                        {!isAuthenticated && (
+                            <p className="text-2xl font-semibold mb-4 text-center">Sign in to create a post.</p>
+                        )}
+
+                        {isAuthenticated && !isCreatePost && (
                             <div className="flex flex-wrap items-center mb-4">
                                 <Button variant="primary" className="mt-2" onClick={() => setCreatePost(true)}>
                                     New Post
@@ -40,7 +46,7 @@ const Home = () => {
                             </div>
                         )}
 
-                        {isCreatePost && (
+                        {isAuthenticated && isCreatePost && (
                             <>
                                 <Button variant="link" className="mb-4" onClick={() => setCreatePost(false)}>
                                     Back

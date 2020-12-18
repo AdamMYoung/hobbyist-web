@@ -26,4 +26,5 @@ export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean; n
 
 export const ListItem = styled.li`
     list-style-type: none;
+    ${tw`focus:ring-blue-700`}
 `;
