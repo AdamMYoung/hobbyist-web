@@ -10,8 +10,9 @@ import { CreateHobbyRequest } from '../../api/hobbies';
 
 import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
-import { useApi } from '../../hooks/useApi';
+import { useAuthAxios } from '../../hooks/useAuthAxios';
 import { useHistory } from 'react-router-dom';
+import { useMutation } from 'react-query';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),
@@ -22,7 +23,10 @@ const schema = yup.object().shape({
 });
 
 const NewHobby = () => {
-    const { submit } = useApi('/hobbies', 'POST');
+    const getAxios = useAuthAxios();
+    const [mutate] = useMutation<void, void, CreateHobbyRequest>(async (data) => {
+        return await getAxios().then((axios) => axios.post('/hobbies', data));
+    });
 
     const history = useHistory();
     const [schemaValid, setSchemaValid] = useState<boolean>(false);
@@ -88,7 +92,7 @@ const NewHobby = () => {
     const handleSubmit = async () => {
         //Hobby is cast as schema would be invalid if all properties weren't there.
         if (schemaValid) {
-            await submit(hobbyRequest);
+            await mutate(hobbyRequest as CreateHobbyRequest);
         }
     };
 

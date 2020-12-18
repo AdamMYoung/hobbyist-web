@@ -1,11 +1,11 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import Button from '../../components/button';
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
 import { FeedSortType } from '../../types';
-
 import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
@@ -37,7 +37,7 @@ const Home = () => {
                         <SplitPage.Right>
                             {isAuthenticated && (
                                 <LoadTransition>
-                                    <SplitPage.Header title="Home" />
+                                    <SplitPage.Header title="Home." />
                                     <p className="text-sm my-2 mb-4">
                                         Why not post something new, or create somewhere to share your passions?
                                     </p>
