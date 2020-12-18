@@ -94,10 +94,6 @@ const CreatePost = (props: Props) => {
             <div className="mt-2">
                 <TextPost />
             </div>
-
-            <Button className="mt-4 ml-auto" variant="primary">
-                Post
-            </Button>
         </div>
     );
 };
