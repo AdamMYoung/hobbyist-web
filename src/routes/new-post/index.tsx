@@ -2,17 +2,65 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/button';
+import Input from '../../components/input';
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
-import { FeedSortType } from '../../types';
+import { Hobby } from '../../types';
+import HobbiesDropdown from '../../views/hobbies-dropdown';
 
-import CreatePost from '../../views/create-post';
-import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage, { RenderProps } from '../../views/split-page';
+import TextEditor from '../../views/text-editor';
+
+const Hobbies: Hobby[] = [
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+    {
+        id: 'one',
+        title: 'Drawing',
+        src: 'https://via.placeholder.com/400',
+        description: 'A thing where you do a hobby',
+        memberCount: 1500,
+    },
+];
 
 const Home = () => {
     const history = useHistory();
-    const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
+    const [hobby, setHobby] = useState<Hobby>(Hobbies[0]);
+    const [postTitle, setPostTitle] = useState<string>();
+
     const title = 'Create Post.';
 
     const handleSubmit = () => {};
@@ -26,10 +74,7 @@ const Home = () => {
     return (
         <>
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
-            <SplitPage
-                title={title}
-                headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
-            >
+            <SplitPage title={title}>
                 {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
                     <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                         <SplitPage.Center>
@@ -38,9 +83,20 @@ const Home = () => {
                             </SplitPage.Center.Header>
 
                             <div className="my-4">
-                                <CreatePost />
+                                <div className="mb-8">
+                                    <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} />
+
+                                    <Input
+                                        className="w-full mt-2"
+                                        value={postTitle}
+                                        placeholder="Title"
+                                        onChange={(e) => setPostTitle(e.target.value)}
+                                    />
+                                    <TextEditor className="mt-2" />
+                                </div>
                             </div>
                         </SplitPage.Center>
+
                         <SplitPage.Right>
                             <LoadTransition>
                                 <SplitPage.Header title="Help." />
