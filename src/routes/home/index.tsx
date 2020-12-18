@@ -29,10 +29,6 @@ const Home = () => {
                     <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                         <SplitPage.Center>
                             <div className="mx-4 sm:mx-0">
-                                {!isAuthenticated && (
-                                    <p className="text-2xl font-semibold mb-4 text-center">Sign in to create a post.</p>
-                                )}
-
                                 {isAuthenticated && !isCreatePost && (
                                     <div className="flex flex-wrap items-center mb-4">
                                         <Button variant="primary" className="mt-2" onClick={() => setCreatePost(true)}>
@@ -61,7 +57,7 @@ const Home = () => {
                                     </>
                                 )}
                             </div>
-                            <hr className="mb-8 border-gray-300" />
+                            {isAuthenticated && <hr className="mb-8 border-gray-300" />}
                             <SplitPage.Center.Header title={title}>
                                 <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
                             </SplitPage.Center.Header>

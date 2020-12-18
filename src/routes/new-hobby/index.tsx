@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { paramCase } from 'param-case';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
-import api from '../../api';
 import Button from '../../components/button';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import EditableProfileHead from '../../components/profile-head-edit';
@@ -11,6 +10,7 @@ import { CreateHobbyRequest } from '../../api/hobbies';
 
 import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
+import { useApi } from '../../hooks/useApi';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),
@@ -21,6 +21,8 @@ const schema = yup.object().shape({
 });
 
 const NewHobby = () => {
+    const { submit } = useApi('/hobbies', 'POST');
+
     const [schemaValid, setSchemaValid] = useState<boolean>(false);
     const [name, setName] = useState<string>();
     const [description, setDescription] = useState<string>();
@@ -84,7 +86,7 @@ const NewHobby = () => {
     const handleSubmit = async () => {
         //Hobby is cast as schema would be invalid if all properties weren't there.
         if (schemaValid) {
-            api.hobbies.createHobby(hobbyRequest as CreateHobbyRequest);
+            await submit(hobbyRequest);
         }
     };
 
