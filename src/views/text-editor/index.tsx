@@ -7,7 +7,6 @@ import { withHistory } from 'slate-history';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
     faBold,
-    faCode,
     faHeading,
     faItalic,
     faListOl,
@@ -49,11 +48,12 @@ const TextEditor = (props: Props) => {
     return (
         <Typography className={`${className}`}>
             <Slate editor={editor} value={value} onChange={(value) => setValue(value)}>
-                <div className="flex items-center bg-white border-b-2 border-gray-200">
+                <div className="flex items-center bg-white border">
                     <MarkButton format="bold" icon={faBold} />
                     <MarkButton format="italic" icon={faItalic} />
                     <MarkButton format="underline" icon={faUnderline} />
-                    <MarkButton format="code" icon={faCode} />
+
+                    <div className="mx-2" />
                     <BlockButton format="heading-one" icon={faHeading} />
                     <BlockButton format="heading-two" icon={faHeading} />
                     <BlockButton format="block-quote" icon={faQuoteLeft} />
@@ -148,10 +148,6 @@ const Leaf = ({ attributes, children, leaf }: any) => {
         children = <strong>{children}</strong>;
     }
 
-    if (leaf.code) {
-        children = <code>{children}</code>;
-    }
-
     if (leaf.italic) {
         children = <em>{children}</em>;
     }
@@ -188,7 +184,7 @@ const MarkButton = ({ format, icon }: EditorButtonProps) => {
                 toggleMark(editor, format);
             }}
         >
-            <FontAwesomeIcon icon={icon} size="1x" />
+            <FontAwesomeIcon icon={icon} size={format === 'heading-two' ? 'xs' : '1x'} />
         </ToolbarButton>
     );
 };

@@ -17,6 +17,10 @@ const Typography = styled.div`
     h2 {
         ${tw`text-xl`}
     }
+
+    blockquote {
+        ${tw`italic my-1 mx-6 text-gray-500`}
+    }
 `;
 
 export default Typography;

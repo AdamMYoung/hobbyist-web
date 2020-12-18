@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { queryCache, useMutation, useQuery } from 'react-query';
+import { useCallback } from 'react';
 
 const options = {
     audience: `api.hobbyist.app`,
