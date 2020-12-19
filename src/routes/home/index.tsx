@@ -36,7 +36,7 @@ const Home = () => {
                                 <Feed />
                             </div>
                         </SplitPage.Center>
-                        {console.log('Drawer Open', rightDrawer)}
+
                         <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
                             {isAuthenticated && (
                                 <LoadTransition>
