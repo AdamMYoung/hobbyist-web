@@ -44,7 +44,7 @@ type Props = {
 const HobbiesDropdown = (props: Props) => {
     const { onHobbyChange, selectedHobby, hobbies } = props;
 
-    const options = useMemo(() => hobbies.map((hobby) => ({ value: hobby, label: hobby.title })), [hobbies]);
+    const options = useMemo(() => hobbies.map((hobby) => ({ value: hobby, label: hobby.name })), [hobbies]);
     const currentValue = useMemo(() => options.filter((o) => o.value === selectedHobby)[0], [options, selectedHobby]);
 
     return (

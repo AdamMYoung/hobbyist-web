@@ -13,46 +13,46 @@ import { Hobby } from '../../types';
 
 const Hobbies: Hobby[] = [
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
     {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
+        slug: 'one',
+        name: 'Drawing',
+        profileSrc: 'https://via.placeholder.com/400',
+        bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
-        memberCount: 1500,
     },
 ];
 
@@ -68,10 +68,10 @@ const ProfileHobbies = (props: HobbiesProps) => {
             <h1 className="ml-2 text-xl font-semibold mb-2">{props.title}</h1>
             <List narrow active>
                 {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
+                    <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
                         <div className="flex items-center">
-                            <ProfileIcon size="xs" src={hobby.src} alt={hobby.title} />
-                            <p className="ml-2">{hobby.title}</p>
+                            <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
+                            <p className="ml-2">{hobby.name}</p>
                         </div>
                     </List.Item>
                 ))}

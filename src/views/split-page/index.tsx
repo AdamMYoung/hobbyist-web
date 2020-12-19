@@ -123,7 +123,7 @@ const Header = (props: HeaderProps) => {
 
 const CenterHeader: React.FC<HeaderProps> = (props) => {
     return (
-        <div className="hidden sm:flex flex-wrap items-center">
+        <div className="hidden sm:flex flex-wrap items-center mb-4">
             <Header {...props} />
             <div className="flex-grow" />
             {props.children}

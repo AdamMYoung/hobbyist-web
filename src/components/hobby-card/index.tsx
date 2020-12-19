@@ -6,18 +6,18 @@ import ProfileIcon from '../profile-icon';
 type Props = Hobby;
 
 const HobbyCard = (props: Props) => {
-    const { id, title, description, src, memberCount } = props;
+    const { slug, name, description, profileSrc } = props;
     const history = useHistory();
 
     return (
-        <Card active className="items-center" onClick={() => history.push(`/h/${id}`)}>
+        <Card active className="items-center" onClick={() => history.push(`/hobby/${slug}`)}>
             <article className="block items-center">
                 <div className="w-24 mx-auto">
-                    <ProfileIcon size="md" src={src} />
+                    <ProfileIcon size="md" src={profileSrc} />
                 </div>
                 <div className="mx-auto mt-2">
-                    <p className=" text-xl font-semibold">{title}</p>
-                    <p className="text-gray-500 ">{`${memberCount} members`}</p>
+                    <p className=" text-xl font-semibold">{name}</p>
+                    <p className="text-gray-500 ">{`${1} members`}</p>
                     <p className="text-gray-400 mt-2">{description}</p>
                 </div>
             </article>

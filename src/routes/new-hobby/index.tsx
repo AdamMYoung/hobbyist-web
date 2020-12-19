@@ -24,7 +24,7 @@ const schema = yup.object().shape({
 
 const NewHobby = () => {
     const getAxios = useAuthAxios();
-    const [mutate] = useMutation<void, void, CreateHobbyRequest>(async (data) => {
+    const [mutate, { isLoading, isSuccess }] = useMutation<void, void, CreateHobbyRequest>(async (data) => {
         return await getAxios().then((axios) => axios.post('/hobbies', data));
     });
 
@@ -49,6 +49,10 @@ const NewHobby = () => {
         [name, description, profileImgBase64, bannerImgBase64]
     );
 
+    useEffect(() => {
+        if (isSuccess) history.replace(`/hobby/${hobbyRequest.slug}`);
+    }, [isSuccess, history, hobbyRequest.slug]);
+
     /**
      * Validates the existing schema when the hobby request object changes.
      */
@@ -65,9 +69,7 @@ const NewHobby = () => {
      */
     useEffect(() => {
         const parseImg = async () => {
-            if (profileImg) {
-                await toBase64(profileImg).then(setProfileImgBase64);
-            }
+            if (profileImg) await toBase64(profileImg).then(setProfileImgBase64);
         };
 
         parseImg();
@@ -78,9 +80,7 @@ const NewHobby = () => {
      */
     useEffect(() => {
         const parseImg = async () => {
-            if (bannerImg) {
-                await toBase64(bannerImg).then(setBannerImgBase64);
-            }
+            if (bannerImg) await toBase64(bannerImg).then(setBannerImgBase64);
         };
 
         parseImg();
@@ -99,7 +99,7 @@ const NewHobby = () => {
     const title = 'Create Hobby.';
 
     const CreateButton = () => (
-        <Button variant="primary" onClick={handleSubmit} disabled={!schemaValid}>
+        <Button variant="primary" onClick={handleSubmit} disabled={!schemaValid || isLoading}>
             Create
         </Button>
     );

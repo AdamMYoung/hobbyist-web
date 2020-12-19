@@ -12,52 +12,25 @@ const Groups: HobbyCategory[] = [
         name: 'Art',
         hobbies: [
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
+                bannerSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
             },
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
+                bannerSrc: 'https://via.placeholder.com/400',
             },
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
-            },
-        ],
-    },
-    {
-        id: 'group',
-        name: 'Art',
-        hobbies: [
-            {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
-                description: 'A thing where you do a hobby',
-                memberCount: 1500,
-            },
-            {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
-                description: 'A thing where you do a hobby',
-                memberCount: 1500,
-            },
-            {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
-                description: 'A thing where you do a hobby',
-                memberCount: 1500,
+                bannerSrc: 'https://via.placeholder.com/400',
             },
         ],
     },
@@ -66,25 +39,52 @@ const Groups: HobbyCategory[] = [
         name: 'Art',
         hobbies: [
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
+                bannerSrc: 'https://via.placeholder.com/400',
             },
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
+                bannerSrc: 'https://via.placeholder.com/400',
             },
             {
-                id: 'one',
-                title: 'Drawing',
-                src: 'https://via.placeholder.com/400',
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
                 description: 'A thing where you do a hobby',
-                memberCount: 1500,
+                bannerSrc: 'https://via.placeholder.com/400',
+            },
+        ],
+    },
+    {
+        id: 'group',
+        name: 'Art',
+        hobbies: [
+            {
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
+                description: 'A thing where you do a hobby',
+                bannerSrc: 'https://via.placeholder.com/400',
+            },
+            {
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
+                description: 'A thing where you do a hobby',
+                bannerSrc: 'https://via.placeholder.com/400',
+            },
+            {
+                slug: 'one',
+                name: 'Drawing',
+                profileSrc: 'https://via.placeholder.com/400',
+                description: 'A thing where you do a hobby',
+                bannerSrc: 'https://via.placeholder.com/400',
             },
         ],
     },
@@ -101,10 +101,10 @@ const CuratedHobbies = () => {
                         <h2 className="text-2xl font-semibold my-2">{group.name}</h2>
                         <List active>
                             {group.hobbies.map((hobby) => (
-                                <List.Item key={hobby.id} onClick={() => history.push(`/hobby/${hobby.id}`)}>
+                                <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
                                     <div className="flex items-center">
-                                        <UserProfile title={hobby.title} src={hobby.src}>
-                                            <p className="text-gray-400">{`${hobby.memberCount} members`}</p>
+                                        <UserProfile title={hobby.name} src={hobby.profileSrc}>
+                                            <p className="text-gray-400">{`${1} members`}</p>
                                         </UserProfile>
 
                                         <Button className="ml-auto" variant="primary">

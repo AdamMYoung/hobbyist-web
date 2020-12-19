@@ -1,8 +1,9 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { AuthenticatedRoute } from './custom';
 import Home from './home';
+import NotFound from './not-found';
 
 const NewHobby = React.lazy(() => import('./new-hobby'));
 const NewPost = React.lazy(() => import('./new-post'));
@@ -21,15 +22,16 @@ const Routes = () => {
             <Route path="/hobbies" exact component={Hobbies} />
             <AuthenticatedRoute path="/new-hobby" exact component={NewHobby} />
             <AuthenticatedRoute path="/new-post" exact component={NewPost} />
-            <Route path="/hobby/:hobbyId" exact component={Hobby} />
-            <Route path="/hobby/:hobbyId/post/:postId" exact component={ViewPost} />
+            <Route path="/hobby/:slug" exact component={Hobby} />
+            <Route path="/hobby/:slug/post/:postId" exact component={ViewPost} />
 
             <AuthenticatedRoute path="/profile" exact component={UserProfile} />
             <Route path="/profile/:username" exact component={Profile} />
 
             <Route path="/about" exact component={About} />
 
-            <Redirect to="/" />
+            <Route path="/not-found" exact component={NotFound} />
+            <Route path="/" component={NotFound} />
         </Switch>
     );
 };

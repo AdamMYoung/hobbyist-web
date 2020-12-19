@@ -4,57 +4,12 @@ import { useParams } from 'react-router-dom';
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
 import SEO from '../../components/seo';
-import { FeedSortType, Hobby } from '../../types';
+import { FeedSortType } from '../../types';
 import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import ProfileHobbies from '../../views/profile-hobbies';
 import SplitPage, { RenderProps } from '../../views/split-page';
-
-const Hobbies: Hobby[] = [
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-];
 
 const Profile = () => {
     const { username } = useParams<{ username: string }>();
@@ -82,7 +37,7 @@ const Profile = () => {
                         <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                             <SplitPage.Center>
                                 <h2 className="text-2xl font-semibold mx-2">Hobbies</h2>
-                                <ProfileHobbies hobbies={Hobbies} />
+                                {/* <ProfileHobbies hobbies={Hobbies} /> */}
 
                                 <SplitPage.Center.Header>
                                     <div className="mt-4">

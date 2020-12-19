@@ -30,11 +30,15 @@ export type HobbyCategory = {
 };
 
 export type Hobby = {
-    id: string;
-    src: string;
-    title: string;
+    slug: string;
+    name: string;
     description: string;
-    memberCount: number;
+    profileSrc: string;
+    bannerSrc: string;
+};
+
+export type HobbyDetail = Hobby & {
+    admins: string[];
 };
 
 export type Profile = {

@@ -5,60 +5,13 @@ import Button from '../../components/button';
 import Input from '../../components/input';
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
-import { Hobby } from '../../types';
 import HobbiesDropdown from '../../views/hobbies-dropdown';
 
 import SplitPage, { RenderProps } from '../../views/split-page';
 import TextEditor from '../../views/text-editor';
 
-const Hobbies: Hobby[] = [
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-    {
-        id: 'one',
-        title: 'Drawing',
-        src: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        memberCount: 1500,
-    },
-];
-
-const Home = () => {
+const NewPost = () => {
     const history = useHistory();
-    const [hobby, setHobby] = useState<Hobby>(Hobbies[0]);
     const [postTitle, setPostTitle] = useState<string>();
 
     const title = 'Create Post.';
@@ -84,7 +37,7 @@ const Home = () => {
 
                             <div className="my-4">
                                 <div className="mb-8">
-                                    <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} />
+                                    {/* <HobbiesDropdown hobbies={Hobbies} selectedHobby={hobby} onHobbyChange={setHobby} /> */}
 
                                     <Input
                                         className="w-full mt-2"
@@ -146,4 +99,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default NewPost;
