@@ -58,7 +58,7 @@ const Navigation = () => {
                     </div>
                 </NavBar>
             </div>
-            <LoadingBar color="#6537d0" ref={loadingBar} />
+            <LoadingBar color="#9842f5" height={3} ref={loadingBar} />
         </div>
     );
 };
