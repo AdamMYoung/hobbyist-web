@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { HobbyDetail } from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
+/**
+ *  Returns a query for the requested hobby.
+ * @param slug Slug of the hobby to fetch.
+ */
 export const useHobby = (slug: string) => {
     const getAxios = useAuthAxios();
     const history = useHistory();

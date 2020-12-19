@@ -1,8 +1,13 @@
+import { useCallback } from 'react';
 import { useMutation, QueryCache } from 'react-query';
 import { useAuthAxios } from './useAuthAxios';
 
 const queryClient = new QueryCache();
 
+/**
+ * Return a function to toggle the follow status of the hobby.
+ * @param hobbySlug Slug to follow.
+ */
 export const useMutateHobbyFollowState = (hobbySlug: string) => {
     const getAxios = useAuthAxios();
 
@@ -18,13 +23,16 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
         { onSuccess: async () => await queryClient.invalidateQueries(`/hobby/${hobbySlug}`) }
     );
 
-    const setFollowing = (following: boolean) => {
-        if (following) {
-            follow();
-        } else {
-            unfollow();
-        }
-    };
+    const setFollowing = useCallback(
+        (following: boolean) => {
+            if (following) {
+                follow();
+            } else {
+                unfollow();
+            }
+        },
+        [follow, unfollow]
+    );
 
     return setFollowing;
 };
