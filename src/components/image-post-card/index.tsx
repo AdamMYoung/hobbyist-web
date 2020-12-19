@@ -1,4 +1,5 @@
 import { ImagePost } from '../../types';
+import Image from '../image';
 import PostCard from '../post-card';
 
 type Props = ImagePost;
@@ -15,7 +16,7 @@ const ImagePostCard = (props: Props) => {
         <PostCard {...rest}>
             <div className={`${images.length > 1 ? 'w-1/2' : 'w-full'}`}>
                 <div className="relative h-48">
-                    <img className="absolute inset-0 w-full h-full object-cover" src={titleImage} alt="" />
+                    <Image className="absolute inset-0 w-full h-full object-cover" src={titleImage} alt="" />
                 </div>
             </div>
 
@@ -24,14 +25,14 @@ const ImagePostCard = (props: Props) => {
                     {restImages.map((src) => (
                         <div key={src} className="w-1/2">
                             <div className="relative h-24 ">
-                                <img className="absolute inset-0 w-full h-full object-cover" src={src} alt="" />
+                                <Image className="absolute inset-0 w-full h-full object-cover" src={src} alt="" />
                             </div>
                         </div>
                     ))}
                     {lastImage && (
                         <div className="w-1/2">
                             <div className="relative h-24">
-                                <img className="absolute inset-0 w-full h-full object-cover" src={lastImage} alt="" />
+                                <Image className="absolute inset-0 w-full h-full object-cover" src={lastImage} alt="" />
                                 {restImageCount > 0 && (
                                     <p className="absolute text-4xl text-white top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                                         +{restImageCount}

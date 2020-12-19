@@ -1,4 +1,5 @@
 import { WizardQuestion } from '../../types';
+import Image from '../image';
 import List from '../list';
 
 type Props = {
@@ -13,7 +14,7 @@ const WizardCard = (props: Props) => {
         <div className="shadow w-full bg-white">
             <div className="block sm:flex">
                 <div className="mr-0 sm:mr-4 flex-1 relative h-32 sm:h-auto">
-                    <img className="absolute inset-0 w-full h-full object-cover" src={question.image} alt="" />
+                    <Image className="absolute inset-0 w-full h-full object-cover" src={question.image} alt="" />
                 </div>
 
                 <div className="p-4 flex-1">

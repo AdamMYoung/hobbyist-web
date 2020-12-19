@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -22,9 +23,10 @@ const Home = () => {
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage
                 title={title}
+                rightIcon={faPlusSquare}
                 headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
             >
-                {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
+                {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
                     <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                         <SplitPage.Center>
                             <SplitPage.Center.Header title={title}>
@@ -34,7 +36,8 @@ const Home = () => {
                                 <Feed />
                             </div>
                         </SplitPage.Center>
-                        <SplitPage.Right>
+                        {console.log('Drawer Open', rightDrawer)}
+                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
                             {isAuthenticated && (
                                 <LoadTransition>
                                     <SplitPage.Header title="Home." />
