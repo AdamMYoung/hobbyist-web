@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import LoadingBar from 'react-top-loading-bar';
+import { useIsFetching } from 'react-query';
 
 import Button from '../../../components/button';
 import Input from '../../../components/input';
@@ -10,6 +12,17 @@ import ProfileIcon from '../../../components/profile-icon';
 const Navigation = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
     const history = useHistory();
+
+    const loadingBar = useRef(null);
+    const isFetching = useIsFetching();
+
+    useEffect(() => {
+        if (isFetching > 0) {
+            (loadingBar.current as any)?.continuousStart();
+        } else {
+            (loadingBar.current as any)?.complete();
+        }
+    }, [isFetching]);
 
     return (
         <div className="flex items-center w-full sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-16">
@@ -45,6 +58,7 @@ const Navigation = () => {
                     </div>
                 </NavBar>
             </div>
+            <LoadingBar color="#6537d0" ref={loadingBar} />
         </div>
     );
 };
