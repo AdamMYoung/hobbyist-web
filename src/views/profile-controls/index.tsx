@@ -18,6 +18,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
     {
         slug: 'one',
@@ -25,6 +26,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
     {
         slug: 'one',
@@ -32,6 +34,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
     {
         slug: 'one',
@@ -39,6 +42,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
     {
         slug: 'one',
@@ -46,6 +50,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
     {
         slug: 'one',
@@ -53,6 +58,7 @@ const Hobbies: Hobby[] = [
         profileSrc: 'https://via.placeholder.com/400',
         bannerSrc: 'https://via.placeholder.com/400',
         description: 'A thing where you do a hobby',
+        following: true,
     },
 ];
 
