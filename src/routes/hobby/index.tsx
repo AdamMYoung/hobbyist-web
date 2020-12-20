@@ -21,7 +21,7 @@ const Hobby: React.FC = () => {
     const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
 
     const { data, isSuccess } = useHobby(slug);
-    const setFollowing = useMutateHobbyFollowState(slug);
+    const { setFollowing, isLoading } = useMutateHobbyFollowState(slug);
 
     return (
         <LoadTransition>
@@ -55,12 +55,14 @@ const Hobby: React.FC = () => {
                                                 icon={faSignOutAlt}
                                                 color="#8b5cf6"
                                                 bgColor="purple"
+                                                disabled={isLoading}
                                             />
                                         ) : (
                                             <Button
                                                 onClick={() => setFollowing(true)}
                                                 className="m-1"
                                                 variant="primary"
+                                                disabled={isLoading}
                                             >
                                                 Follow
                                             </Button>

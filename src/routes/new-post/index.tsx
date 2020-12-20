@@ -5,7 +5,6 @@ import Button from '../../components/button';
 import Input from '../../components/input';
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
-import HobbiesDropdown from '../../views/hobbies-dropdown';
 
 import SplitPage, { RenderProps } from '../../views/split-page';
 import TextEditor from '../../views/text-editor';

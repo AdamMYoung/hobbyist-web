@@ -1,8 +1,6 @@
 import { useCallback } from 'react';
-import { useMutation, QueryCache } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { useAuthAxios } from './useAuthAxios';
-
-const queryClient = new QueryCache();
 
 /**
  * Return a function to toggle the follow status of the hobby.
@@ -10,17 +8,18 @@ const queryClient = new QueryCache();
  */
 export const useMutateHobbyFollowState = (hobbySlug: string) => {
     const getAxios = useAuthAxios();
+    const queryClient = useQueryClient();
 
-    const [follow] = useMutation(
+    const { mutate: follow, isLoading: isFollowLoading } = useMutation(
         async () => await getAxios().then((axios) => axios.put(`/users/follow/${hobbySlug}`)),
 
-        { onSuccess: async () => await queryClient.invalidateQueries(`/hobby/${hobbySlug}`) }
+        { onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`) }
     );
 
-    const [unfollow] = useMutation(
+    const { mutate: unfollow, isLoading: isUnfollowLoading } = useMutation(
         async () => await getAxios().then((axios) => axios.put(`/users/unfollow/${hobbySlug}`)),
 
-        { onSuccess: async () => await queryClient.invalidateQueries(`/hobby/${hobbySlug}`) }
+        { onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`) }
     );
 
     const setFollowing = useCallback(
@@ -34,5 +33,5 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
         [follow, unfollow]
     );
 
-    return setFollowing;
+    return { setFollowing, isLoading: isUnfollowLoading || isFollowLoading };
 };
