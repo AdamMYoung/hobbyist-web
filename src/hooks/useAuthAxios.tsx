@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { useCallback } from 'react';
+import { useMemo } from 'react';
 
 const options = {
     audience: `api.hobbyist.app`,
@@ -11,7 +11,7 @@ const options = {
 export function useAuthAxios() {
     const { isAuthenticated, getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
 
-    const getAxios = useCallback(async () => {
+    return useMemo(async () => {
         let accessToken;
 
         if (isAuthenticated) {
@@ -26,7 +26,5 @@ export function useAuthAxios() {
             baseURL: process.env.REACT_APP_API_URL,
             headers: accessToken && { Authorization: `Bearer ${accessToken}` },
         });
-    }, [getAccessTokenSilently, getAccessTokenWithPopup, isAuthenticated]);
-
-    return getAxios;
+    }, [isAuthenticated, getAccessTokenSilently, getAccessTokenWithPopup]);
 }

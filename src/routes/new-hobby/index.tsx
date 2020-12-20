@@ -23,9 +23,9 @@ const schema = yup.object().shape({
 });
 
 const NewHobby = () => {
-    const getAxios = useAuthAxios();
+    const axios = useAuthAxios();
     const { mutate, isLoading, isSuccess } = useMutation<void, void, CreateHobbyRequest>(async (data) => {
-        return await getAxios().then((axios) => axios.post('/hobbies', data));
+        return await axios.then((a) => a.post('/hobbies', data));
     });
 
     const history = useHistory();

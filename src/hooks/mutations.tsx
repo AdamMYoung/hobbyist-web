@@ -7,18 +7,18 @@ import { useAuthAxios } from './useAuthAxios';
  * @param hobbySlug Slug to follow.
  */
 export const useMutateHobbyFollowState = (hobbySlug: string) => {
-    const getAxios = useAuthAxios();
+    const axios = useAuthAxios();
     const queryClient = useQueryClient();
 
     const { mutate: follow, isLoading: isFollowLoading } = useMutation(
-        async () => await getAxios().then((axios) => axios.put(`/users/follow/${hobbySlug}`)),
+        async () => await axios.then((a) => a.put(`/users/follow/${hobbySlug}`)),
         {
             onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`),
         }
     );
 
     const { mutate: unfollow, isLoading: isUnfollowLoading } = useMutation(
-        async () => await getAxios().then((axios) => axios.put(`/users/unfollow/${hobbySlug}`)),
+        async () => await axios.then((a) => a.put(`/users/unfollow/${hobbySlug}`)),
         {
             onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`),
         }

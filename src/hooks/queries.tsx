@@ -9,13 +9,13 @@ import { useAuthAxios } from './useAuthAxios';
  * @param slug Slug of the hobby to fetch.
  */
 export const useHobby = (slug: string) => {
-    const getAxios = useAuthAxios();
+    const axios = useAuthAxios();
     const history = useHistory();
 
     const query = useQuery<HobbyDetail>(
         `hobby/${slug}`,
         async () => {
-            const { data } = await getAxios().then((axios) => axios.get<HobbyDetail>(`/hobbies/${slug}`));
+            const { data } = await axios.then((a) => a.get<HobbyDetail>(`/hobbies/${slug}`));
             return data;
         },
         { retry: false, refetchOnWindowFocus: false, onError: () => history.replace('/not-found') }
