@@ -45,16 +45,6 @@ const Home = () => {
                                         Why not post something new, or create somewhere to share your passions?
                                     </p>
 
-                                    <div className="ml-auto mb-4">
-                                        <Button
-                                            variant="primary"
-                                            className="mt-2 w-full"
-                                            onClick={() => history.push('/new-post')}
-                                        >
-                                            Create Post
-                                        </Button>
-                                    </div>
-
                                     <Button
                                         variant="primary"
                                         className="mt-2 w-full"

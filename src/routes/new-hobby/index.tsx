@@ -145,14 +145,6 @@ const NewHobby = () => {
                             Once you're done, click "Create" at the top of the screen, and your hobby page will be
                             created.
                         </p>
-
-                        <Button variant="primary" className="mb-4 mt-6 w-full" onClick={() => history.replace('/')}>
-                            Cancel
-                        </Button>
-
-                        <Button variant="primary" className="mt-2 w-full" onClick={() => history.push('/new-post')}>
-                            New Post
-                        </Button>
                     </SplitPage.Right>
                 </SplitPage.Body>
             )}
