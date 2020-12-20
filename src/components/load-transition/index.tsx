@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { VisibilityTransition } from './styles';
 
-const LoadTransition: React.FC = (props) => {
+const LoadTransition: React.FC<{ className?: string }> = (props) => {
     const [isVisible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -9,7 +9,11 @@ const LoadTransition: React.FC = (props) => {
         window.scrollTo({ top: 0 });
     }, []);
 
-    return <VisibilityTransition isVisible={isVisible}>{props.children}</VisibilityTransition>;
+    return (
+        <VisibilityTransition className={props.className} isVisible={isVisible}>
+            {props.children}
+        </VisibilityTransition>
+    );
 };
 
 export default LoadTransition;

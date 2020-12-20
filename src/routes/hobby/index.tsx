@@ -43,8 +43,8 @@ const Hobby: React.FC = () => {
                                     profileSrc={data?.profileSrc ?? ''}
                                     headerSrc={data?.bannerSrc ?? ''}
                                 >
-                                    <div className="flex flex-wrap sm:ml-auto sm:mr-4 lg:mr-0 mb-auto mt-2">
-                                        {data?.following && (
+                                    {data?.following !== null && (
+                                        <LoadTransition className="flex flex-wrap sm:ml-auto sm:mr-4 lg:mr-0 mb-auto mt-2">
                                             <Button
                                                 className="m-1"
                                                 variant="primary"
@@ -52,25 +52,26 @@ const Hobby: React.FC = () => {
                                             >
                                                 New Post
                                             </Button>
-                                        )}
-                                        {data?.following ? (
-                                            <IconButton
-                                                size="2x"
-                                                onClick={() => !isLoading && setFollowing(false)}
-                                                icon={faSignOutAlt}
-                                                color="#8b5cf6"
-                                                bgColor="purple"
-                                            />
-                                        ) : (
-                                            <Button
-                                                onClick={() => !isLoading && setFollowing(true)}
-                                                className="m-1"
-                                                variant="primary"
-                                            >
-                                                Follow
-                                            </Button>
-                                        )}
-                                    </div>
+
+                                            {data?.following === true ? (
+                                                <IconButton
+                                                    size="2x"
+                                                    onClick={() => !isLoading && setFollowing(false)}
+                                                    icon={faSignOutAlt}
+                                                    color="#8b5cf6"
+                                                    bgColor="purple"
+                                                />
+                                            ) : (
+                                                <Button
+                                                    onClick={() => !isLoading && setFollowing(true)}
+                                                    className="m-1"
+                                                    variant="primary"
+                                                >
+                                                    Follow
+                                                </Button>
+                                            )}
+                                        </LoadTransition>
+                                    )}
                                 </ProfileHead>
                             </SplitPage.Top>
                             <SplitPage.Body onCloseLeftDrawer={closeLeftDrawer} leftDrawerOpen={leftDrawer}>
