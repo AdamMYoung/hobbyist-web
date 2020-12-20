@@ -46,9 +46,19 @@ const Navigation = () => {
 
                     <div className="flex items-center ml-auto">
                         {isAuthenticated && (
-                            <div className="cursor-pointer">
-                                <ProfileIcon src={user.picture} alt={user.name} />
-                            </div>
+                            <>
+                                <Button
+                                    variant="primary"
+                                    className="mx-4 w-full"
+                                    onClick={() => history.push('/new-post')}
+                                >
+                                    Create Post
+                                </Button>
+
+                                <div className="cursor-pointer">
+                                    <ProfileIcon src={user.picture} alt={user.name} />
+                                </div>
+                            </>
                         )}
                         {!isAuthenticated && !isLoading && (
                             <Button variant="primary" onClick={() => loginWithRedirect()}>
