@@ -12,8 +12,8 @@ import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage, { RenderProps } from '../../views/split-page';
-import { useHobby } from '../../hooks/queryHooks';
-import { useMutateHobbyFollowState } from '../../hooks/mutationHooks';
+import { useHobby } from '../../hooks/queries';
+import { useMutateHobbyFollowState } from '../../hooks/mutations';
 
 const Hobby: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();

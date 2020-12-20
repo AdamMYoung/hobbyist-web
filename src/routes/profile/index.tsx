@@ -8,7 +8,6 @@ import { FeedSortType } from '../../types';
 import Feed from '../../views/feed';
 import FeedSortButtons from '../../views/feed-sort-buttons';
 import FeedSortDropdown from '../../views/feed-sort-dropdown';
-import ProfileHobbies from '../../views/profile-hobbies';
 import SplitPage, { RenderProps } from '../../views/split-page';
 
 const Profile = () => {
