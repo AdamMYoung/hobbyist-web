@@ -25,6 +25,7 @@ const IconButton = (props: Props) => {
     return (
         <button
             className={`${className} rounded-full p-2 flex items-center focus:outline-none hover:bg-${iconColor}-300 active:ring`}
+            onClick={onClick}
             {...rest}
         >
             <FontAwesomeIcon icon={buttonIcon} color={color ?? 'black'} size={size} />

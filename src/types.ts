@@ -35,6 +35,7 @@ export type Hobby = {
     description: string;
     profileSrc: string;
     bannerSrc: string;
+    following: boolean;
 };
 
 export type HobbyDetail = Hobby & {

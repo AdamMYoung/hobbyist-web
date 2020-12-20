@@ -1,5 +1,6 @@
 import React from 'react';
 import useFileUpload from '../../hooks/useImageUpload';
+import Image from '../image';
 import ProfileIcon from '../profile-icon';
 import { ProfileContainer } from '../profile-icon/styles';
 
@@ -41,7 +42,7 @@ const EditableProfileHead = (props: Props) => {
                         onClick={onUploadBannerImg}
                     >
                         {bannerImgBase64 && (
-                            <img
+                            <Image
                                 className="rounded-t-lg absolute inset-0 w-full h-full object-cover transition hover:opacity-60"
                                 src={bannerImgBase64}
                                 alt=""

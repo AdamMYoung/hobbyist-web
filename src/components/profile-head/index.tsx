@@ -1,3 +1,4 @@
+import Image from '../image';
 import ProfileIcon from '../profile-icon';
 
 type Props = {
@@ -15,7 +16,7 @@ const ProfileHead: React.FC<Props> = (props) => {
             <div className={`relative h-36 w-full`}>
                 <div className="absolute t-0 h-36 w-full">
                     <div className="relative h-36 w-full">
-                        <img
+                        <Image
                             className="rounded-t-lg absolute inset-0 w-full h-full object-cover"
                             src={headerSrc}
                             alt=""
