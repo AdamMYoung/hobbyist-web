@@ -3,7 +3,6 @@ import { useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
 import { Hobby, HobbyDetail } from '../types';
-import { getMetadata } from '../utils/userUtils';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
