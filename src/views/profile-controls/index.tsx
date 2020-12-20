@@ -9,78 +9,32 @@ import List from '../../components/list';
 import LoadTransition from '../../components/load-transition';
 import ProfileIcon from '../../components/profile-icon';
 import UserProfile from '../../components/user-profile';
-import { Hobby } from '../../types';
-
-const Hobbies: Hobby[] = [
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-    {
-        slug: 'one',
-        name: 'Drawing',
-        profileSrc: 'https://via.placeholder.com/400',
-        bannerSrc: 'https://via.placeholder.com/400',
-        description: 'A thing where you do a hobby',
-        following: true,
-    },
-];
+import { useUserHobbies } from '../../hooks/queries';
+import { getMetadata } from '../../utils/userUtils';
 
 type HobbiesProps = {
     title: string;
 };
 
 const ProfileHobbies = (props: HobbiesProps) => {
+    const { user } = useAuth0();
     const history = useHistory();
+
+    const { data, isSuccess } = useUserHobbies(getMetadata(user, 'username'));
 
     return (
         <>
             <h1 className="ml-2 text-xl font-semibold mb-2">{props.title}</h1>
             <List narrow active>
-                {Hobbies.map((hobby) => (
-                    <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
-                        <div className="flex items-center">
-                            <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
-                            <p className="ml-2">{hobby.name}</p>
-                        </div>
-                    </List.Item>
-                ))}
+                {isSuccess &&
+                    data?.map((hobby) => (
+                        <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
+                            <div className="flex items-center">
+                                <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
+                                <p className="ml-2">{hobby.name}</p>
+                            </div>
+                        </List.Item>
+                    ))}
             </List>
         </>
     );
