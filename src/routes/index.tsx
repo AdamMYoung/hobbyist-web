@@ -21,7 +21,7 @@ const Routes = () => {
 
             <Route path="/hobbies" exact component={Hobbies} />
             <AuthenticatedRoute path="/new-hobby" exact component={NewHobby} />
-            <AuthenticatedRoute path="/new-post" exact component={NewPost} />
+            <AuthenticatedRoute path="/new-post/:slug?" exact component={NewPost} />
             <Route path="/hobby/:slug" exact component={Hobby} />
             <Route path="/hobby/:slug/post/:postId" exact component={ViewPost} />
 
