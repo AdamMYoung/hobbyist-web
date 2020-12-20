@@ -13,6 +13,7 @@ import PlaceholderFeed from '../../views/placeholder-feed';
 import { useAuthAxios } from '../../hooks/useAuthAxios';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from 'react-query';
+import { useMutateCreateHobby } from '../../hooks/mutations';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),
@@ -23,10 +24,7 @@ const schema = yup.object().shape({
 });
 
 const NewHobby = () => {
-    const axios = useAuthAxios();
-    const { mutate, isLoading, isSuccess } = useMutation<void, void, CreateHobbyRequest>(async (data) => {
-        return await axios.then((a) => a.post('/hobbies', data));
-    });
+    const { mutate, isLoading, isSuccess } = useMutateCreateHobby();
 
     const history = useHistory();
     const [schemaValid, setSchemaValid] = useState<boolean>(false);

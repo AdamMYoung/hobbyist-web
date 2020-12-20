@@ -51,18 +51,16 @@ const Hobby: React.FC = () => {
                                         {data?.following ? (
                                             <IconButton
                                                 size="2x"
-                                                onClick={() => setFollowing(false)}
+                                                onClick={() => !isLoading && setFollowing(false)}
                                                 icon={faSignOutAlt}
                                                 color="#8b5cf6"
                                                 bgColor="purple"
-                                                disabled={isLoading}
                                             />
                                         ) : (
                                             <Button
-                                                onClick={() => setFollowing(true)}
+                                                onClick={() => !isLoading && setFollowing(true)}
                                                 className="m-1"
                                                 variant="primary"
-                                                disabled={isLoading}
                                             >
                                                 Follow
                                             </Button>
