@@ -10,6 +10,8 @@ import SplitPage, { RenderProps } from '../../views/split-page';
 import TextEditor from '../../views/text-editor';
 
 const NewPost = () => {
+    const { slug } = useParams<{ slug?: string }>();
+
     const history = useHistory();
     const [postTitle, setPostTitle] = useState<string>();
 

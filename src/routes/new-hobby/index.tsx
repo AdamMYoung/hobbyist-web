@@ -2,17 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as yup from 'yup';
 import { paramCase } from 'param-case';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/button';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import EditableProfileHead from '../../components/profile-head-edit';
 import { CreateHobbyRequest } from '../../api/hobbies';
-
 import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
-import { useAuthAxios } from '../../hooks/useAuthAxios';
-import { useHistory } from 'react-router-dom';
-import { useMutation } from 'react-query';
 import { useMutateCreateHobby } from '../../hooks/mutations';
 
 const schema = yup.object().shape({

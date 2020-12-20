@@ -15,7 +15,7 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
     const queryClient = useQueryClient();
 
     const { mutate: follow, isLoading: isFollowLoading } = useMutation(
-        async () => await axios().then((a) => a.put(`/users/follow/${hobbySlug}`)),
+        async () => await axios().then((a) => a.put(`/users/me/follow/${hobbySlug}`)),
         {
             onSettled: async () => await queryClient.invalidateQueries(queryKey),
             onMutate: async () => {
@@ -30,7 +30,7 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
     );
 
     const { mutate: unfollow, isLoading: isUnfollowLoading } = useMutation(
-        async () => await axios().then((a) => a.put(`/users/unfollow/${hobbySlug}`)),
+        async () => await axios().then((a) => a.put(`/users/me/unfollow/${hobbySlug}`)),
         {
             onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`),
             onMutate: async () => {
