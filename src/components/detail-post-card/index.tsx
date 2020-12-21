@@ -27,7 +27,7 @@ const DetailPostCard: React.FC<Props> = (props) => {
                     >{`${hobbyId} - ${dayjs(creationDate).fromNow()}`}</Button>
                 </UserProfile>
                 <div className="pl-14">
-                    <p className="mt-4 text-xl font-bold">{title}</p>
+                    <p className="mt-4 text-4xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
                 <div className="pl-14">

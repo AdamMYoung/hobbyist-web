@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Node } from 'slate';
@@ -48,19 +49,27 @@ const NewPost = () => {
         }
     };
 
+    const CreateButton = () => (
+        <Button className="w-full sm:w-auto" variant="primary" onClick={handleSubmit} disabled={!isValid}>
+            Create
+        </Button>
+    );
+
     return (
         <>
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             {isSuccess && (
-                <SplitPage title={title}>
-                    {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
+                <SplitPage title={title} rightIcon={faQuestion}>
+                    {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
                         <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                             <SplitPage.Center>
                                 <SplitPage.Center.Header title={title}>
-                                    <Button variant="primary" onClick={handleSubmit} disabled={!isValid}>
-                                        Create
-                                    </Button>
+                                    <CreateButton />
                                 </SplitPage.Center.Header>
+
+                                <div className="block sm:hidden mb-4 mx-2">
+                                    <CreateButton />
+                                </div>
 
                                 <div className="my-4">
                                     <div className="mb-8">
@@ -82,7 +91,7 @@ const NewPost = () => {
                                 </div>
                             </SplitPage.Center>
 
-                            <SplitPage.Right>
+                            <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
                                 <LoadTransition>
                                     <SplitPage.Header title="Help." />
 

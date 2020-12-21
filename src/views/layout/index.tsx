@@ -23,7 +23,7 @@ const Layout = () => {
     const { locked } = useScrollLock();
 
     return (
-        <LockableDiv locked={locked}>
+        <LockableDiv id="appBody" locked={locked}>
             <Navigation />
 
             <main className="xl:container min-h-screen">

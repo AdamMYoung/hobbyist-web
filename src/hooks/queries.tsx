@@ -34,7 +34,6 @@ export const useHobby = (slug: string) => {
 export const useUserHobbies = (username: string) => {
     const { isLoading } = useAuth0();
     const axios = useAuthAxios();
-    const history = useHistory();
 
     const query = useQuery<Hobby[]>(
         `${username}/hobbies`,
@@ -42,7 +41,7 @@ export const useUserHobbies = (username: string) => {
             const { data } = await axios().then((a) => a.get<Hobby[]>(`/users/${username}/hobbies`));
             return data;
         },
-        { retry: false, refetchOnWindowFocus: false, enabled: !isLoading, onError: () => history.replace('/not-found') }
+        { retry: false, refetchOnWindowFocus: false, enabled: !isLoading }
     );
 
     return query;

@@ -7,10 +7,11 @@ import { useIsFetching } from 'react-query';
 import Button from '../../../components/button';
 import Input from '../../../components/input';
 import { Logo, NavBar } from './styles';
-import ProfileIcon from '../../../components/profile-icon';
+import NavigationProfile from '../../navigation-profile';
+import LoadTransition from '../../../components/load-transition';
 
 const Navigation = () => {
-    const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
     const history = useHistory();
 
     const loadingBar = useRef(null);
@@ -47,17 +48,13 @@ const Navigation = () => {
                     <div className="flex items-center ml-auto">
                         {isAuthenticated && (
                             <>
-                                <Button
-                                    variant="primary"
-                                    className="mx-4 w-full"
-                                    onClick={() => history.push('/new-post')}
-                                >
-                                    Create Post
-                                </Button>
+                                <LoadTransition className="mx-4 hidden sm:block w-full">
+                                    <Button variant="primary" onClick={() => history.push('/new-post')}>
+                                        Create Post
+                                    </Button>
+                                </LoadTransition>
 
-                                <div className="cursor-pointer">
-                                    <ProfileIcon src={user.picture} alt={user.name} />
-                                </div>
+                                <NavigationProfile />
                             </>
                         )}
                         {!isAuthenticated && !isLoading && (
