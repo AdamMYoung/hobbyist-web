@@ -89,6 +89,6 @@
         "@types/react-router-dom": "^5.1.6",
         "@types/react-select": "^3.0.28",
         "@types/react-virtualized-auto-sizer": "^1.0.0",
-        "@types/styled-components": "^5.1.4"
+        "@types/styled-components": "^5.1.7"
     }
 }
