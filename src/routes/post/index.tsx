@@ -25,7 +25,7 @@ const Post = () => {
                         <>
                             <SplitPage.Body onCloseLeftDrawer={closeLeftDrawer} leftDrawerOpen={leftDrawer}>
                                 <SplitPage.Center>
-                                    <SplitPage.Center.Header title />
+                                    <SplitPage.Center.Header title={title} />
                                     <DetailPostCard {...(data as TextPost)}>
                                         <TextEditor readOnly initialValue={(data as TextPost).content} />
                                     </DetailPostCard>
