@@ -1,3 +1,5 @@
+import { Node } from 'slate';
+
 export type WizardQuestion = {
     id: string;
     image: string;
@@ -49,20 +51,17 @@ export type Profile = {
     id: string;
 };
 
-type Post = {
-    id: string;
+export type Post = {
     hobbyId: string;
-    profile: Profile;
-    created: Date;
+    token: string;
+    slug: string;
     title: string;
-    commentCount: number;
-    likes: number;
-    liked?: boolean;
+    creationDate: Date;
 };
 
 export type TextPost = Post & {
     type: 'text';
-    content: string;
+    content: Node[];
 };
 
 export type ImagePost = Post & {

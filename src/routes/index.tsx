@@ -8,7 +8,7 @@ import NotFound from './not-found';
 const NewHobby = React.lazy(() => import('./new-hobby'));
 const NewPost = React.lazy(() => import('./new-post'));
 const Hobbies = React.lazy(() => import('./hobbies'));
-const ViewPost = React.lazy(() => import('./view-post'));
+const Post = React.lazy(() => import('./post'));
 const Profile = React.lazy(() => import('./profile'));
 const About = React.lazy(() => import('./about'));
 const UserProfile = React.lazy(() => import('./user-profile'));
@@ -23,7 +23,7 @@ const Routes = () => {
             <AuthenticatedRoute path="/new-hobby" exact component={NewHobby} />
             <AuthenticatedRoute path="/new-post/:slug?" exact component={NewPost} />
             <Route path="/hobby/:slug" exact component={Hobby} />
-            <Route path="/hobby/:slug/post/:postId" exact component={ViewPost} />
+            <Route path="/hobby/:slug/:token" exact component={Post} />
 
             <AuthenticatedRoute path="/profile" exact component={UserProfile} />
             <Route path="/profile/:username" exact component={Profile} />

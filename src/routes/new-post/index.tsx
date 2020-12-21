@@ -1,11 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Node } from 'slate';
 
 import Button from '../../components/button';
 import Input from '../../components/input';
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
+import { useMutateCreatePost } from '../../hooks/mutations';
 import { useUserHobbies } from '../../hooks/queries';
 import { Hobby } from '../../types';
 import { getMetadata } from '../../utils/userUtils';
@@ -19,12 +21,14 @@ const title = 'Create Post.';
 const NewPost = () => {
     const { slug } = useParams<{ slug?: string }>();
     const { user } = useAuth0();
-    const history = useHistory();
 
     const { data: hobbies, isSuccess } = useUserHobbies(getMetadata(user, 'username'));
 
     const [postTitle, setPostTitle] = useState<string>();
     const [selectedHobby, setSelectedHobby] = useState<Hobby>();
+    const [content, setContent] = useState<Node[]>();
+
+    const { mutate: createPost } = useMutateCreatePost(selectedHobby?.slug ?? '');
 
     useEffect(() => {
         if (isSuccess) {
@@ -32,7 +36,17 @@ const NewPost = () => {
         }
     }, [isSuccess, hobbies, slug]);
 
-    const handleSubmit = () => {};
+    const isValid = useMemo(() => !!postTitle && !!selectedHobby && !!content, [postTitle, selectedHobby, content]);
+
+    const handleSubmit = () => {
+        if (isValid) {
+            createPost({
+                title: postTitle ?? '',
+                type: 'text',
+                content: content ?? [],
+            });
+        }
+    };
 
     return (
         <>
@@ -43,7 +57,7 @@ const NewPost = () => {
                         <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                             <SplitPage.Center>
                                 <SplitPage.Center.Header title={title}>
-                                    <Button variant="primary" onClick={handleSubmit} disabled={true}>
+                                    <Button variant="primary" onClick={handleSubmit} disabled={!isValid}>
                                         Create
                                     </Button>
                                 </SplitPage.Center.Header>
@@ -63,7 +77,7 @@ const NewPost = () => {
                                             placeholder="Title"
                                             onChange={(e) => setPostTitle(e.target.value)}
                                         />
-                                        <TextEditor className="mt-2" />
+                                        <TextEditor className="mt-2" onChange={setContent} />
                                     </div>
                                 </div>
                             </SplitPage.Center>

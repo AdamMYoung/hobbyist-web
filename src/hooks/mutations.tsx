@@ -1,7 +1,9 @@
+import { AxiosResponse } from 'axios';
 import { useCallback } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
-import { CreateHobbyRequest } from '../api/hobbies';
-import { Hobby } from '../types';
+import { useHistory } from 'react-router-dom';
+import { CreateHobbyRequest, CreatePostRequest } from '../api/hobbies';
+import { Hobby, Post } from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
@@ -64,4 +66,23 @@ export const useMutateCreateHobby = () => {
     return useMutation<void, void, CreateHobbyRequest>(async (data) => {
         return await axios().then((a) => a.post('/hobbies', data));
     });
+};
+
+export const useMutateCreatePost = (slug: string) => {
+    const axios = useAuthAxios();
+    const history = useHistory();
+    const queryClient = useQueryClient();
+
+    return useMutation<AxiosResponse<Post>, void, CreatePostRequest>(
+        async (data) => {
+            return await axios().then((a) => a.post(`/hobbies/${slug}`, data));
+        },
+        {
+            onSuccess: (res) => {
+                const postQueryKey = `hobby/${slug}/${res.data.token}`;
+                queryClient.setQueryData(postQueryKey, res.data);
+                history.push(postQueryKey);
+            },
+        }
+    );
 };
