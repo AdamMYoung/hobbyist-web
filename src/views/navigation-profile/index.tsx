@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 

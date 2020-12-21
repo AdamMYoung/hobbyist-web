@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
-import { Hobby, HobbyDetail, PostTypes, TextPost } from '../types';
+import { Hobby, HobbyDetail, PostTypes } from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
