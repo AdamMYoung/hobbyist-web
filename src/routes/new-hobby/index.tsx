@@ -94,19 +94,27 @@ const NewHobby = () => {
     const title = 'Create Hobby.';
 
     const CreateButton = () => (
-        <Button variant="primary" onClick={handleSubmit} disabled={!schemaValid || isLoading}>
+        <Button
+            className="w-full sm:w-auto"
+            variant="primary"
+            onClick={handleSubmit}
+            disabled={!schemaValid || isLoading}
+        >
             Create
         </Button>
     );
 
     return (
-        <SplitPage title={title} headerNavContent={<CreateButton />} rightIcon={faQuestion}>
+        <SplitPage title={title} rightIcon={faQuestion}>
             {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
                 <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                     <SplitPage.Center>
                         <SplitPage.Center.Header title={title}>
                             <CreateButton />
                         </SplitPage.Center.Header>
+                        <div className="block sm:hidden mb-4 mx-2">
+                            <CreateButton />
+                        </div>
                         <div className="my-4">
                             <EditableProfileHead
                                 name={name}
@@ -119,7 +127,7 @@ const NewHobby = () => {
                                 onBannerImgChanged={setBannerImg}
                             />
                         </div>
-                        <PlaceholderFeed />
+                        <PlaceholderFeed count={1} />
                     </SplitPage.Center>
 
                     <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>

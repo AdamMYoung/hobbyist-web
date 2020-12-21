@@ -4,11 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Button from '../../components/button';
 import List from '../../components/list';
-import LoadTransition from '../../components/load-transition';
 import ProfileIcon from '../../components/profile-icon';
-import UserProfile from '../../components/user-profile';
 import { useUserHobbies } from '../../hooks/queries';
 import { getMetadata } from '../../utils/userUtils';
 
@@ -41,21 +38,12 @@ const ProfileHobbies = (props: HobbiesProps) => {
 };
 
 const ProfileControls = () => {
-    const { isAuthenticated, isLoading, user, logout, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
     const history = useHistory();
 
     return (
         <>
             <List active>
-                {isAuthenticated && (
-                    <List.Item aria-label="My Profile" onClick={() => history.push('/profile')}>
-                        <div className="flex items-center">
-                            <LoadTransition>
-                                <UserProfile size="sm" src={user.picture} title="My Profile" />
-                            </LoadTransition>
-                        </div>
-                    </List.Item>
-                )}
                 {!isAuthenticated && !isLoading && (
                     <List.Item aria-label="Sign In" onClick={() => loginWithRedirect()}>
                         <FontAwesomeIcon className="mr-6" icon={faUser} />
@@ -76,19 +64,6 @@ const ProfileControls = () => {
             <div className="mt-6">
                 <ProfileHobbies title={isAuthenticated ? 'Your Hobbies' : 'Featured Hobbies'} />
             </div>
-
-            {isAuthenticated && (
-                <LoadTransition>
-                    <Button
-                        aria-label="Sign Out"
-                        variant="primary"
-                        className="block sm:hidden mt-4 mx-auto"
-                        onClick={() => logout()}
-                    >
-                        Sign Out
-                    </Button>
-                </LoadTransition>
-            )}
         </>
     );
 };

@@ -35,34 +35,45 @@ type EditorButtonProps = {
 
 type Props = {
     className?: string;
+    readOnly?: boolean;
+    initialValue?: Node[];
+    onChange?: (result: Node[]) => void;
 };
 
 const TextEditor = (props: Props) => {
-    const { className } = props;
+    const { className, onChange, readOnly, initialValue } = props;
 
-    const [value, setValue] = useState<Node[]>([{ type: 'paragraph', children: [{ text: '' }] }]);
+    const [value, setValue] = useState<Node[]>(initialValue ?? [{ type: 'paragraph', children: [{ text: '' }] }]);
     const renderElement = useCallback((props) => <Element {...props} />, []);
     const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
     const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
+    const handleChange = (change: Node[]) => {
+        setValue(change);
+        onChange && onChange(change);
+    };
+
     return (
         <Typography className={`${className}`}>
-            <Slate editor={editor} value={value} onChange={(value) => setValue(value)}>
-                <div className="flex items-center bg-white border">
-                    <MarkButton format="bold" icon={faBold} />
-                    <MarkButton format="italic" icon={faItalic} />
-                    <MarkButton format="underline" icon={faUnderline} />
+            <Slate editor={editor} value={value} onChange={(value) => handleChange(value)}>
+                {!readOnly && (
+                    <div className="flex items-center bg-white border">
+                        <MarkButton format="bold" icon={faBold} />
+                        <MarkButton format="italic" icon={faItalic} />
+                        <MarkButton format="underline" icon={faUnderline} />
 
-                    <div className="mx-2" />
-                    <BlockButton format="heading-one" icon={faHeading} />
-                    <BlockButton format="heading-two" icon={faHeading} />
-                    <BlockButton format="block-quote" icon={faQuoteLeft} />
-                    <BlockButton format="numbered-list" icon={faListOl} />
-                    <BlockButton format="bulleted-list" icon={faListUl} />
-                </div>
+                        <div className="mx-2" />
+                        <BlockButton format="heading-one" icon={faHeading} />
+                        <BlockButton format="heading-two" icon={faHeading} />
+                        <BlockButton format="block-quote" icon={faQuoteLeft} />
+                        <BlockButton format="numbered-list" icon={faListOl} />
+                        <BlockButton format="bulleted-list" icon={faListUl} />
+                    </div>
+                )}
                 <Editable
-                    style={{ minHeight: '10rem' }}
-                    className={`bg-white border rounded p-2 `}
+                    readOnly={readOnly}
+                    style={{ minHeight: `${!readOnly ? '10rem' : '1rem'}` }}
+                    className={!readOnly ? `bg-white border rounded p-2 ` : ''}
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
                     spellCheck

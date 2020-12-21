@@ -13,33 +13,29 @@ dayjs.extend(relativeTime);
 
 type Props = Post;
 
-const PostCard: React.FC<Props> = (props) => {
-    const { token, title, creationDate, hobbyId, children } = props;
+const DetailPostCard: React.FC<Props> = (props) => {
+    const { title, creationDate, hobbyId, children } = props;
     const history = useHistory();
 
     return (
-        <Card noCursor active>
-            <article className="min-h-32 max-h-92">
+        <Card noCursor>
+            <article className={`min-h-32`}>
                 <UserProfile title={''} src={''} onClick={() => history.push(`/profile/${123}`)}>
                     <Button
                         onClick={() => history.push(`/hobby/${hobbyId}`)}
                         className="text-sm text-gray-500 hover:underline"
                     >{`${hobbyId} - ${dayjs(creationDate).fromNow()}`}</Button>
                 </UserProfile>
-                <div onClick={() => history.push(`/hobby/${hobbyId}/${token}`)} className="cursor-pointer pl-14">
-                    <p className="mt-4 text-xl font-bold">{title}</p>
+                <div className="pl-14">
+                    <p className="mt-4 text-4xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
                 <div className="pl-14">
-                    <SocialControls
-                        onCommentsClicked={() => history.push(`/hobby/${hobbyId}/${token}`)}
-                        likeCount={0}
-                        commentCount={0}
-                    />
+                    <SocialControls likeCount={0} commentCount={0} />
                 </div>
             </article>
         </Card>
     );
 };
 
-export default PostCard;
+export default DetailPostCard;

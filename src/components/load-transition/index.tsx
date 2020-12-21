@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { VisibilityTransition } from './styles';
 
-const LoadTransition: React.FC<{ className?: string }> = (props) => {
+type Props = React.ComponentPropsWithRef<'div'>;
+
+const LoadTransition: React.FC<Props> = (props) => {
     const [isVisible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -10,7 +12,7 @@ const LoadTransition: React.FC<{ className?: string }> = (props) => {
     }, []);
 
     return (
-        <VisibilityTransition className={props.className} isVisible={isVisible}>
+        <VisibilityTransition {...props} isVisible={isVisible}>
             {props.children}
         </VisibilityTransition>
     );

@@ -1,10 +1,5 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
-import Button from '../../components/button';
-import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
 import { FeedSortType } from '../../types';
 import Feed from '../../views/feed';
@@ -13,8 +8,6 @@ import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage, { RenderProps } from '../../views/split-page';
 
 const Home = () => {
-    const { isAuthenticated } = useAuth0();
-    const history = useHistory();
     const [feedSortType, setFeedSortType] = useState<FeedSortType>(FeedSortType.Feed);
     const title = 'Feed.';
 
@@ -23,10 +16,9 @@ const Home = () => {
             <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
             <SplitPage
                 title={title}
-                rightIcon={faPlusSquare}
                 headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
             >
-                {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
+                {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
                     <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
                         <SplitPage.Center>
                             <SplitPage.Center.Header title={title}>
@@ -37,24 +29,7 @@ const Home = () => {
                             </div>
                         </SplitPage.Center>
 
-                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                            {isAuthenticated && (
-                                <LoadTransition>
-                                    <SplitPage.Header title="Home." />
-                                    <p className="text-sm my-2 mb-4">
-                                        Why not post something new, or create somewhere to share your passions?
-                                    </p>
-
-                                    <Button
-                                        variant="primary"
-                                        className="mt-2 w-full"
-                                        onClick={() => history.push('/new-hobby')}
-                                    >
-                                        Create Hobby
-                                    </Button>
-                                </LoadTransition>
-                            )}
-                        </SplitPage.Right>
+                        <SplitPage.Right />
                     </SplitPage.Body>
                 )}
             </SplitPage>

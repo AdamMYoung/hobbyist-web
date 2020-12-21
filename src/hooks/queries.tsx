@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
-import { Hobby, HobbyDetail } from '../types';
+import { Hobby, HobbyDetail, PostTypes } from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
@@ -34,7 +34,6 @@ export const useHobby = (slug: string) => {
 export const useUserHobbies = (username: string) => {
     const { isLoading } = useAuth0();
     const axios = useAuthAxios();
-    const history = useHistory();
 
     const query = useQuery<Hobby[]>(
         `${username}/hobbies`,
@@ -42,8 +41,34 @@ export const useUserHobbies = (username: string) => {
             const { data } = await axios().then((a) => a.get<Hobby[]>(`/users/${username}/hobbies`));
             return data;
         },
-        { retry: false, refetchOnWindowFocus: false, enabled: !isLoading, onError: () => history.replace('/not-found') }
+        { retry: false, refetchOnWindowFocus: false, enabled: !isLoading }
     );
 
     return query;
+};
+
+/**
+ *  Returns a query for the requested post.
+ * @param slug Slug of the hobby to fetch.
+ * @param token Token of the post to fetch.
+ */
+export const usePost = (slug: string, token: string) => {
+    const { isLoading } = useAuth0();
+    const axios = useAuthAxios();
+    const history = useHistory();
+
+    const { refetch, ...rest } = useQuery<PostTypes>(
+        `hobby/${slug}/${token}`,
+        async () => {
+            const { data } = await axios().then((a) => a.get<PostTypes>(`/hobbies/${slug}/${token}`));
+            return data;
+        },
+        { retry: false, refetchOnWindowFocus: false, onError: () => history.replace('/not-found') }
+    );
+
+    useEffect(() => {
+        refetch();
+    }, [isLoading, refetch]);
+
+    return { ...rest };
 };
