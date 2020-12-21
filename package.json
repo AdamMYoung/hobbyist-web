@@ -18,7 +18,7 @@
         "@types/react-dom": "^16.9.8",
         "autoprefixer": "^9.8.6",
         "axios": "^0.21.0",
-        "dayjs": "^1.9.6",
+        "dayjs": "^1.9.7",
         "google-map-react": "^2.1.9",
         "html-react-parser": "^0.14.2",
         "imagemin": "^7.0.1",
