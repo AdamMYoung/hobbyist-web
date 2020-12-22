@@ -83,7 +83,7 @@ const Hobby: React.FC = () => {
                                         />
                                     </SplitPage.Center.Header>
 
-                                    <Feed />
+                                    <Feed hobbySlug={slug} />
                                 </SplitPage.Center>
 
                                 <SplitPage.Right />

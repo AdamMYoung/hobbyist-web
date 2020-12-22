@@ -5,8 +5,12 @@ import TextPostCard from '../../components/text-post-card';
 import { useFeed } from '../../hooks/queries';
 import PlaceholderFeed from '../placeholder-feed';
 
-const Feed = () => {
-    const { data, isLoading } = useFeed();
+type Props = {
+    hobbySlug?: string;
+};
+
+const Feed = (props: Props) => {
+    const { data, isLoading } = useFeed(props.hobbySlug);
 
     return (
         <>
