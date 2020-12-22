@@ -6,11 +6,11 @@ import { useFeed } from '../../hooks/queries';
 import PlaceholderFeed from '../placeholder-feed';
 
 const Feed = () => {
-    const { data, isSuccess } = useFeed();
+    const { data, isLoading } = useFeed();
 
     return (
         <>
-            {isSuccess ? (
+            {!isLoading ? (
                 <LoadTransition>
                     {data?.pages.map((page, i) => (
                         <React.Fragment key={i}>
