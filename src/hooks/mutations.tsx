@@ -98,7 +98,7 @@ export const useMutateCreatePost = (slug: string) => {
             onSuccess: (res) => {
                 const postQueryKey = `hobby/${slug}/${res.data.token}`;
                 queryClient.setQueryData(postQueryKey, res.data);
-                history.push(postQueryKey);
+                history.push(`/${postQueryKey}`);
             },
         }
     );
