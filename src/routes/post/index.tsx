@@ -14,7 +14,6 @@ import TextEditor from '../../views/text-editor';
 const Post = () => {
     const { slug, token } = useParams<{ slug: string; token: string }>();
 
-    const history = useHistory();
     const { data, isSuccess } = usePost(slug, token);
 
     return (
@@ -24,13 +23,6 @@ const Post = () => {
                 <SplitPage>
                     <SplitPage.Body disableProfileControls>
                         <SplitPage.Center>
-                            <IconButton
-                                className="mb-2"
-                                icon={faArrowLeft}
-                                text="Back"
-                                onClick={() => history.push(`/hobby/${slug}`)}
-                            />
-
                             <DetailPostCard {...(data as TextPost)}>
                                 <TextEditor readOnly initialValue={(data as TextPost).content} />
                             </DetailPostCard>
