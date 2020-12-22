@@ -1,9 +1,8 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import DetailPostCard from '../../components/detail-post-card';
-import IconButton from '../../components/icon-button';
+
 import LoadTransition from '../../components/load-transition';
 import SEO from '../../components/seo';
 import { usePost } from '../../hooks/queries';
