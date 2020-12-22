@@ -15,10 +15,11 @@ const ProfileHobbies = () => {
     const history = useHistory();
 
     const { data, isSuccess } = useUserHobbies(getMetadata(user, 'username'));
+    const hasEntries = !!data?.length && data?.length > 0;
 
     return (
         <>
-            {isSuccess && data?.length && data?.length > 0 && (
+            {isSuccess && hasEntries && (
                 <LoadTransition>
                     <h1 className="ml-2 text-xl font-semibold mb-2">Your Hobbies</h1>
                     <List narrow active>
