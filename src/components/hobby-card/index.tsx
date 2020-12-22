@@ -11,7 +11,7 @@ const HobbyCard = (props: Props) => {
     const history = useHistory();
 
     return (
-        <Card active className="items-center" onClick={() => history.push(`/hobby/${slug}`)}>
+        <Card className="items-center" onClick={() => history.push(`/hobby/${slug}`)}>
             <article className="block items-center">
                 <div className="w-24 mx-auto">
                     <ProfileIcon size="md" src={profileSrc} />
