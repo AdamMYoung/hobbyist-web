@@ -73,14 +73,17 @@ export const usePost = (slug: string, token: string) => {
     return { ...rest };
 };
 
-export const useFeed = () => {
+export const useFeed = (hobbySlug?: string) => {
     const axios = useAuthAxios();
 
+    const url = hobbySlug ? `/feed/hobby/${hobbySlug}` : '/feed';
+    const queryKey = hobbySlug ? `feed/${hobbySlug}` : 'feed';
+
     return useInfiniteQuery<PaginatedResult<FeedEntry[]>>(
-        'feed',
+        queryKey,
         async ({ continuationToken = null }: any) => {
             const { data } = await axios().then((a) =>
-                a.get<PaginatedResult<FeedEntry[]>>(!continuationToken ? '/feed' : `/feed/${continuationToken}`)
+                a.get<PaginatedResult<FeedEntry[]>>(!continuationToken ? url : `${url}/${continuationToken}`)
             );
             return data;
         },
