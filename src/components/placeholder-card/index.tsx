@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPlaceholder from 'react-placeholder/lib';
 
 import { RoundShape, TextBlock, TextRow } from 'react-placeholder/lib/placeholders';
 import Card from '../card';
