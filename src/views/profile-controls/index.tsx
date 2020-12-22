@@ -5,15 +5,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import List from '../../components/list';
+import LoadTransition from '../../components/load-transition';
 import ProfileIcon from '../../components/profile-icon';
 import { useUserHobbies } from '../../hooks/queries';
 import { getMetadata } from '../../utils/userUtils';
 
-type HobbiesProps = {
-    title: string;
-};
-
-const ProfileHobbies = (props: HobbiesProps) => {
+const ProfileHobbies = () => {
     const { user } = useAuth0();
     const history = useHistory();
 
@@ -21,18 +18,21 @@ const ProfileHobbies = (props: HobbiesProps) => {
 
     return (
         <>
-            <h1 className="ml-2 text-xl font-semibold mb-2">{props.title}</h1>
-            <List narrow active>
-                {isSuccess &&
-                    data?.map((hobby) => (
-                        <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
-                            <div className="flex items-center">
-                                <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
-                                <p className="ml-2">{hobby.name}</p>
-                            </div>
-                        </List.Item>
-                    ))}
-            </List>
+            {isSuccess && (
+                <LoadTransition>
+                    <h1 className="ml-2 text-xl font-semibold mb-2">Your Hobbies</h1>
+                    <List narrow active>
+                        {data?.map((hobby) => (
+                            <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
+                                <div className="flex items-center">
+                                    <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
+                                    <p className="ml-2">{hobby.name}</p>
+                                </div>
+                            </List.Item>
+                        ))}
+                    </List>
+                </LoadTransition>
+            )}
         </>
     );
 };
@@ -50,7 +50,7 @@ const ProfileControls = () => {
                         Sign In
                     </List.Item>
                 )}
-                {isLoading && <List.Item aria-label="Loading">Loading...</List.Item>}
+
                 <List.Item aria-label="Feed" onClick={() => history.push('/')}>
                     <FontAwesomeIcon className="mr-5" icon={faComments} />
                     Feed
@@ -61,9 +61,11 @@ const ProfileControls = () => {
                 </List.Item>
             </List>
 
-            <div className="mt-6">
-                <ProfileHobbies title={isAuthenticated ? 'Your Hobbies' : 'Featured Hobbies'} />
-            </div>
+            {isAuthenticated && (
+                <div className="mt-6">
+                    <ProfileHobbies />
+                </div>
+            )}
         </>
     );
 };

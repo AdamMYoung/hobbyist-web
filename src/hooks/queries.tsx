@@ -1,9 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
-import { Hobby, HobbyDetail, PostTypes } from '../types';
+import { FeedEntry, Hobby, HobbyDetail, PaginatedResult, PostTypes } from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
@@ -71,4 +71,24 @@ export const usePost = (slug: string, token: string) => {
     }, [isLoading, refetch]);
 
     return { ...rest };
+};
+
+export const useFeed = () => {
+    const { isLoading } = useAuth0();
+    const axios = useAuthAxios();
+
+    return useInfiniteQuery<PaginatedResult<FeedEntry[]>>(
+        'feed',
+        async ({ continuationToken = null }: any) => {
+            const { data } = await axios().then((a) =>
+                a.get<PaginatedResult<FeedEntry[]>>(!continuationToken ? '/feed' : `/feed/${continuationToken}`)
+            );
+            return data;
+        },
+        {
+            retry: false,
+            refetchOnWindowFocus: false,
+            getNextPageParam: (lastPage: PaginatedResult<FeedEntry[]>) => lastPage.continuationToken,
+        }
+    );
 };

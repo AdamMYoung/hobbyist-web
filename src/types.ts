@@ -25,6 +25,8 @@ export type Meetup = {
     lng: number;
 };
 
+// Hobby
+
 export type HobbyCategory = {
     id: string;
     name: string;
@@ -44,12 +46,29 @@ export type HobbyDetail = Hobby & {
     admins: string[];
 };
 
-export type Profile = {
-    username: string;
-    profileSrc: string;
-    bannerSrc: string;
-    id: string;
+//Feed
+
+export type FeedEntry = {
+    slug: string;
+    hobbyName: string;
+    token: string;
+    title: string;
+    content: Node[];
+    type: 'text' | 'image';
+    creationDate: Date;
+    profile: Profile;
 };
+
+export type Profile = {
+    profileSrc: string;
+    username: string;
+};
+
+export type ProfileDetail = {
+    bannerSrc?: string;
+};
+
+//Post
 
 export type Post = {
     hobbyId: string;
@@ -71,6 +90,8 @@ export type ImagePost = Post & {
 
 export type PostTypes = TextPost | ImagePost;
 
+//Generic
+
 export enum FeedSortType {
     Feed = 'Feed',
     New = 'New',
@@ -78,6 +99,12 @@ export enum FeedSortType {
     Month = 'Month',
     Year = 'Year',
 }
+
+export type PaginatedResult<T> = {
+    hasMoreResults: boolean;
+    continuationToken: string;
+    items: T;
+};
 
 const EnjoySportsQuestion: WizardQuestion = {
     id: 'sports',

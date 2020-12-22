@@ -1,27 +1,23 @@
-import { PostTypes } from '../../types';
-import TextPostCard from '../../components/text-post-card';
-import ImagePostCard from '../../components/image-post-card';
+import React from 'react';
 
-const posts: PostTypes[] = [
-    {
-        token: '1',
-        hobbyId: 'knitting',
-        type: 'text',
-        creationDate: new Date(),
-        slug: '',
-        title: 'Test Post',
-        content: [],
-    },
-];
+import TextPostCard from '../../components/text-post-card';
+import { useFeed } from '../../hooks/queries';
 
 const Feed = () => {
+    const { data } = useFeed();
+
     return (
         <div>
-            {posts.map((post) => (
-                <div key={post.token} className="mb-4">
-                    {post.type === 'text' ? <TextPostCard {...post} /> : <ImagePostCard {...post} />}
-                </div>
+            {data?.pages.map((page, i) => (
+                <React.Fragment key={i}>
+                    {page.items.map((feedItem) => (
+                        <div className="my-2" key={`${feedItem.slug}/${feedItem.token}`}>
+                            <TextPostCard {...feedItem} />
+                        </div>
+                    ))}
+                </React.Fragment>
             ))}
+            <div />
         </div>
     );
 };
