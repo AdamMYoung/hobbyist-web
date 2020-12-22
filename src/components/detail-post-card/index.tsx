@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
 
-import Button from '../button';
 import { Post } from '../../types';
 import UserProfile from '../user-profile';
 import Card from '../card';
@@ -13,7 +12,7 @@ dayjs.extend(relativeTime);
 type Props = Post;
 
 const DetailPostCard: React.FC<Props> = (props) => {
-    const { title, creationDate, hobbySlug, hobbyName, profile, children } = props;
+    const { title, creationDate, profile, children } = props;
     const history = useHistory();
 
     return (
@@ -27,10 +26,7 @@ const DetailPostCard: React.FC<Props> = (props) => {
                         src={profile.profileSrc}
                         onClick={() => history.push(`/profile/${profile.username}`)}
                     >
-                        <Button
-                            onClick={() => history.push(`/hobby/${hobbySlug}`)}
-                            className="text-sm text-gray-500 hover:underline "
-                        >{`${hobbyName} - ${dayjs(creationDate).fromNow()}`}</Button>
+                        <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
                     </UserProfile>
 
                     <div className="flex mt-4 w-full">{children}</div>

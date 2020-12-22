@@ -49,7 +49,7 @@ export type HobbyDetail = Hobby & {
 //Feed
 
 export type FeedEntry = {
-    slug: string;
+    hobbySlug: string;
     hobbyName: string;
     token: string;
     title: string;
@@ -72,8 +72,6 @@ export type ProfileDetail = {
 
 export type Post = {
     profile: Profile;
-    hobbySlug: string;
-    hobbyName: string;
     token: string;
     slug: string;
     title: string;

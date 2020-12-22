@@ -14,7 +14,7 @@ dayjs.extend(relativeTime);
 type Props = FeedEntry;
 
 const PostCard: React.FC<Props> = (props) => {
-    const { token, title, creationDate, slug, hobbyName, children, profile } = props;
+    const { token, title, creationDate, hobbySlug: slug, hobbyName, children, profile } = props;
     const history = useHistory();
 
     return (
