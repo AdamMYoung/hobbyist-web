@@ -18,7 +18,7 @@ const ProfileHobbies = () => {
 
     return (
         <>
-            {isSuccess && (
+            {isSuccess && data?.length && data?.length > 0 && (
                 <LoadTransition>
                     <h1 className="ml-2 text-xl font-semibold mb-2">Your Hobbies</h1>
                     <List narrow active>

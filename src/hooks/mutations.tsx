@@ -1,9 +1,12 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { AxiosResponse } from 'axios';
 import { useCallback } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
+
 import { CreateHobbyRequest, CreatePostRequest } from '../api/hobbies';
 import { Hobby, Post } from '../types';
+import { getMetadata } from '../utils/userUtils';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
@@ -13,13 +16,17 @@ import { useAuthAxios } from './useAuthAxios';
 export const useMutateHobbyFollowState = (hobbySlug: string) => {
     const queryKey = `hobby/${hobbySlug}`;
 
-    const axios = useAuthAxios();
+    const { user } = useAuth0();
     const queryClient = useQueryClient();
+    const axios = useAuthAxios();
 
     const { mutate: follow, isLoading: isFollowLoading } = useMutation(
         async () => await axios().then((a) => a.put(`/users/me/follow/${hobbySlug}`)),
         {
-            onSettled: async () => await queryClient.invalidateQueries(queryKey),
+            onSettled: async () => {
+                await queryClient.invalidateQueries(queryKey);
+                await queryClient.invalidateQueries(`${getMetadata(user, 'username')}/hobbies`);
+            },
             onMutate: async () => {
                 await queryClient.cancelQueries(queryKey);
 
@@ -34,7 +41,10 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
     const { mutate: unfollow, isLoading: isUnfollowLoading } = useMutation(
         async () => await axios().then((a) => a.put(`/users/me/unfollow/${hobbySlug}`)),
         {
-            onSuccess: async () => await queryClient.invalidateQueries(`hobby/${hobbySlug}`),
+            onSuccess: async () => {
+                await queryClient.invalidateQueries(`hobby/${hobbySlug}`);
+                await queryClient.invalidateQueries(`${getMetadata(user, 'username')}/hobbies`);
+            },
             onMutate: async () => {
                 await queryClient.cancelQueries(queryKey);
 
@@ -61,11 +71,18 @@ export const useMutateHobbyFollowState = (hobbySlug: string) => {
 };
 
 export const useMutateCreateHobby = () => {
+    const { user } = useAuth0();
+    const queryClient = useQueryClient();
     const axios = useAuthAxios();
 
-    return useMutation<void, void, CreateHobbyRequest>(async (data) => {
-        return await axios().then((a) => a.post('/hobbies', data));
-    });
+    return useMutation<void, void, CreateHobbyRequest>(
+        async (data) => {
+            return await axios().then((a) => a.post('/hobbies', data));
+        },
+        {
+            onSuccess: async () => await queryClient.invalidateQueries(`${getMetadata(user, 'username')}/hobbies`),
+        }
+    );
 };
 
 export const useMutateCreatePost = (slug: string) => {
