@@ -18,7 +18,7 @@ const PostCard: React.FC<Props> = (props) => {
     const history = useHistory();
 
     return (
-        <Card noCursor active>
+        <Card noCursor>
             <article className="min-h-32 max-h-92">
                 <UserProfile
                     title={profile.username}

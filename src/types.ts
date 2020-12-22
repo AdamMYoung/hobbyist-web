@@ -71,13 +71,15 @@ export type ProfileDetail = {
 //Post
 
 export type Post = {
-    hobbyId: string;
+    profile: Profile;
+    hobbySlug: string;
+    hobbyName: string;
     token: string;
     slug: string;
     title: string;
+    type: 'text' | 'image';
     creationDate: Date;
 };
-
 export type TextPost = Post & {
     type: 'text';
     content: Node[];
