@@ -15,7 +15,7 @@ const Feed = () => {
                     {data?.pages.map((page, i) => (
                         <React.Fragment key={i}>
                             {page.items.map((feedItem) => (
-                                <div className="my-2" key={`${feedItem.slug}/${feedItem.token}`}>
+                                <div className="my-2" key={`${feedItem.hobbySlug}/${feedItem.token}`}>
                                     <TextPostCard {...feedItem} />
                                 </div>
                             ))}

@@ -50,7 +50,7 @@ const NewPost = () => {
     };
 
     const CreateButton = () => (
-        <Button className="w-full sm:w-auto" variant="primary" onClick={handleSubmit} disabled={!isValid && !isLoading}>
+        <Button className="w-full sm:w-auto" variant="primary" onClick={handleSubmit} disabled={!isValid || isLoading}>
             Create
         </Button>
     );
