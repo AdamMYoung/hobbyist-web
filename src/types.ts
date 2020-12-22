@@ -77,7 +77,6 @@ export type Post = {
     token: string;
     slug: string;
     title: string;
-    content: string;
     type: 'text' | 'image';
     creationDate: Date;
 };

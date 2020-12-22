@@ -29,7 +29,7 @@ const NewPost = () => {
     const [selectedHobby, setSelectedHobby] = useState<Hobby>();
     const [content, setContent] = useState<Node[]>();
 
-    const { mutate: createPost } = useMutateCreatePost(selectedHobby?.slug ?? '');
+    const { mutate: createPost, isLoading } = useMutateCreatePost(selectedHobby?.slug ?? '');
 
     useEffect(() => {
         if (isSuccess) {
@@ -50,7 +50,7 @@ const NewPost = () => {
     };
 
     const CreateButton = () => (
-        <Button className="w-full sm:w-auto" variant="primary" onClick={handleSubmit} disabled={!isValid}>
+        <Button className="w-full sm:w-auto" variant="primary" onClick={handleSubmit} disabled={!isValid && !isLoading}>
             Create
         </Button>
     );
