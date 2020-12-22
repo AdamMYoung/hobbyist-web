@@ -1,15 +1,19 @@
-import { TextPost } from '../../types';
+import React from 'react';
+import { FeedEntry } from '../../types';
 import TextEditor from '../../views/text-editor';
 import PostCard from '../post-card';
+import { OverflowWrapper } from './styles';
 
-type Props = TextPost;
+type Props = FeedEntry;
 
 const TextPostCard = (props: Props) => {
-    const { content, ...rest } = props;
+    const { content } = props;
 
     return (
-        <PostCard {...rest}>
-            <TextEditor readOnly initialValue={content} />
+        <PostCard {...props}>
+            <OverflowWrapper>
+                <TextEditor readOnly initialValue={content} className={'w-full'} />
+            </OverflowWrapper>
         </PostCard>
     );
 };

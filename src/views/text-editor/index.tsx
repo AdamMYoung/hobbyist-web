@@ -77,7 +77,6 @@ const TextEditor = (props: Props) => {
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
                     spellCheck
-                    autoFocus
                     onKeyDown={(event) => {
                         for (const hotkey in HOTKEYS) {
                             if (isHotkey(hotkey, event as any)) {
