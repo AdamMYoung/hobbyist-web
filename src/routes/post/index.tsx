@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import DetailPostCard from '../../components/detail-post-card';
-import IconButton from '../../components/icon-button';
 import LoadTransition from '../../components/load-transition';
 import ProfileHead from '../../components/profile-head';
 import SEO from '../../components/seo';
@@ -10,8 +9,6 @@ import { useHobby, usePost } from '../../hooks/queries';
 import { PostTypes, TextPost } from '../../types';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import TextEditor from '../../views/text-editor';
-
-const title = 'Post.';
 
 const Post = () => {
     const { slug, token } = useParams<{ slug: string; token: string }>();

@@ -1,24 +1,33 @@
 import React from 'react';
+import LoadTransition from '../../components/load-transition';
 
 import TextPostCard from '../../components/text-post-card';
 import { useFeed } from '../../hooks/queries';
+import PlaceholderFeed from '../placeholder-feed';
 
 const Feed = () => {
-    const { data } = useFeed();
+    const { data, isSuccess } = useFeed();
 
     return (
-        <div>
-            {data?.pages.map((page, i) => (
-                <React.Fragment key={i}>
-                    {page.items.map((feedItem) => (
-                        <div className="my-2" key={`${feedItem.slug}/${feedItem.token}`}>
-                            <TextPostCard {...feedItem} />
-                        </div>
+        <>
+            {isSuccess ? (
+                <LoadTransition>
+                    {data?.pages.map((page, i) => (
+                        <React.Fragment key={i}>
+                            {page.items.map((feedItem) => (
+                                <div className="my-2" key={`${feedItem.slug}/${feedItem.token}`}>
+                                    <TextPostCard {...feedItem} />
+                                </div>
+                            ))}
+                        </React.Fragment>
                     ))}
-                </React.Fragment>
-            ))}
-            <div />
-        </div>
+                </LoadTransition>
+            ) : (
+                <LoadTransition>
+                    <PlaceholderFeed count={10} animated />
+                </LoadTransition>
+            )}
+        </>
     );
 };
 

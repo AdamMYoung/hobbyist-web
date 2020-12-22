@@ -74,7 +74,6 @@ export const usePost = (slug: string, token: string) => {
 };
 
 export const useFeed = () => {
-    const { isLoading } = useAuth0();
     const axios = useAuthAxios();
 
     return useInfiniteQuery<PaginatedResult<FeedEntry[]>>(
