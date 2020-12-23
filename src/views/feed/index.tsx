@@ -6,11 +6,14 @@ import { useFeed } from '../../hooks/queries';
 import PlaceholderFeed from '../placeholder-feed';
 
 type Props = {
-    hobbySlug?: string;
+    type?: 'feed' | 'hobby' | 'user';
+    slug?: string;
 };
 
 const Feed = (props: Props) => {
-    const { data, isLoading } = useFeed(props.hobbySlug);
+    const { type = 'feed', slug } = props;
+
+    const { data, isLoading } = useFeed(type, slug);
 
     return (
         <>

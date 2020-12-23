@@ -28,11 +28,9 @@ const ProfileHead: React.FC<Props> = (props) => {
                     <ProfileIcon size="lg" src={profileSrc} alt={title}></ProfileIcon>
                 </div>
             </div>
-            <div className="flex flex-col sm:flex-row flex-wrap items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-2">
-                <div className="sm:ml-8 xl:ml-8 sm:mx-none">
-                    <h1 className="text-5xl pb-2 font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">
-                        {title}
-                    </h1>
+            <div className="flex flex-col sm:flex-row flex-wrap items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-2 truncate">
+                <div className="sm:ml-8 xl:ml-8 sm:mx-none truncate">
+                    <h1 className="text-5xl pb-2 font-bold truncate">{title}</h1>
                     {description && <p className=" text-gray-400">{description}</p>}
                 </div>
                 {children}

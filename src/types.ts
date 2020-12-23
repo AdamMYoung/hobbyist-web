@@ -65,7 +65,8 @@ export type Profile = {
     username: string;
 };
 
-export type ProfileDetail = {
+export type ProfileDetail = Profile & {
+    description?: string;
     bannerSrc?: string;
 };
 

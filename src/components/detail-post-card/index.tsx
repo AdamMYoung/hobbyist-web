@@ -21,23 +21,27 @@ const DetailPostCard: React.FC<Props> = (props) => {
         <Card noCursor>
             <article className="py-4">
                 <div className="px-12">
-                    <UserProfile
-                        size="md"
-                        title={hobby.name}
-                        src={hobby.profileSrc}
-                        onClick={() => history.push(`/hobby/${hobby.slug}`)}
-                    />
+                    <p className="text-6xl font-bold">{title}</p>
 
-                    <p className="mb-4 mt-4 text-6xl font-bold">{title}</p>
-
-                    <UserProfile
-                        title={profile.username}
-                        src={profile.profileSrc}
-                        onClick={() => history.push(`/profile/${profile.username}`)}
-                    >
-                        <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
-                    </UserProfile>
-
+                    <div className="mt-8 flex items-center">
+                        <UserProfile
+                            title={profile.username}
+                            src={profile.profileSrc}
+                            onClick={() => history.push(`/profile/${profile.username}`)}
+                        >
+                            <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
+                        </UserProfile>
+                        <div className="ml-auto">
+                            <UserProfile
+                                size="sm"
+                                title={hobby.name}
+                                src={hobby.profileSrc}
+                                textClassName="text-2xl font-bold hover:underline"
+                                onClick={() => history.push(`/hobby/${hobby.slug}`)}
+                            />
+                        </div>
+                    </div>
+                    <hr className="my-4" />
                     <div className="flex mt-4 w-full">{children}</div>
                 </div>
 

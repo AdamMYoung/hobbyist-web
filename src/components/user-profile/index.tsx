@@ -27,7 +27,7 @@ const UserProfile: React.FC<Props> = (props) => {
                 className={onClick && 'cursor-pointer'}
                 onClick={() => onClick && onClick()}
             />
-            <div className="block ml-2">
+            <div className="block ml-4">
                 <Button
                     className={textClassName ?? 'font-semibold hover:underline'}
                     onClick={() => onClick && onClick()}

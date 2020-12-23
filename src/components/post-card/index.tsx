@@ -32,11 +32,11 @@ const PostCard: React.FC<Props> = (props) => {
                     </UserProfile>
                 </div>
 
-                <div onClick={() => history.push(`/hobby/${hobbySlug}/${token}`)} className="cursor-pointer pl-14">
+                <div onClick={() => history.push(`/hobby/${hobbySlug}/${token}`)} className="cursor-pointer pl-20">
                     <p className="mt-4 text-xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
-                <div className="pl-14 flex items-center">
+                <div className="pl-20 flex items-center">
                     <UserProfile
                         title={hobbyName}
                         src={hobbyProfileSrc}
