@@ -3,23 +3,32 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
 
-import { Post } from '../../types';
+import { Hobby, Post } from '../../types';
 import UserProfile from '../user-profile';
 import Card from '../card';
 
 dayjs.extend(relativeTime);
 
-type Props = Post;
+type Props = Post & {
+    hobby: Hobby;
+};
 
 const DetailPostCard: React.FC<Props> = (props) => {
-    const { title, creationDate, profile, children } = props;
+    const { title, creationDate, profile, children, hobby } = props;
     const history = useHistory();
 
     return (
         <Card noCursor>
             <article className="py-4">
                 <div className="px-12">
-                    <p className="mb-4 text-6xl font-bold">{title}</p>
+                    <UserProfile
+                        size="md"
+                        title={hobby.name}
+                        src={hobby.profileSrc}
+                        onClick={() => history.push(`/hobby/${hobby.slug}`)}
+                    />
+
+                    <p className="mb-4 mt-4 text-6xl font-bold">{title}</p>
 
                     <UserProfile
                         title={profile.username}

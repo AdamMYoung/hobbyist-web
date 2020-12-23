@@ -49,6 +49,7 @@ export type HobbyDetail = Hobby & {
 //Feed
 
 export type FeedEntry = {
+    hobbyProfileSrc: string;
     hobbySlug: string;
     hobbyName: string;
     token: string;

@@ -10,17 +10,28 @@ type Props = {
     onClick?: () => void;
     hasNotification?: boolean;
     active?: boolean;
+    textClassName?: string;
     size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 const UserProfile: React.FC<Props> = (props) => {
-    const { onClick, active, children, size = 'sm', title, ...rest } = props;
+    const { onClick, active, children, size = 'sm', title, textClassName, ...rest } = props;
 
     return (
         <UserContainer>
-            <ProfileIcon size={size} alt={title} {...rest} active={active} />
+            <ProfileIcon
+                size={size}
+                alt={title}
+                {...rest}
+                active={active}
+                className={onClick && 'cursor-pointer'}
+                onClick={() => onClick && onClick()}
+            />
             <div className="block ml-2">
-                <Button className="font-semibold hover:underline" onClick={() => onClick && onClick()}>
+                <Button
+                    className={textClassName ?? 'font-semibold hover:underline'}
+                    onClick={() => onClick && onClick()}
+                >
                     {title}
                 </Button>
                 {children}
