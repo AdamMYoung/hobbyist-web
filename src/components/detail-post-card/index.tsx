@@ -3,32 +3,45 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
 
-import { Post } from '../../types';
+import { Hobby, Post } from '../../types';
 import UserProfile from '../user-profile';
 import Card from '../card';
 
 dayjs.extend(relativeTime);
 
-type Props = Post;
+type Props = Post & {
+    hobby: Hobby;
+};
 
 const DetailPostCard: React.FC<Props> = (props) => {
-    const { title, creationDate, profile, children } = props;
+    const { title, creationDate, profile, children, hobby } = props;
     const history = useHistory();
 
     return (
         <Card noCursor>
             <article className="py-4">
                 <div className="px-12">
-                    <p className="mb-4 text-6xl font-bold">{title}</p>
+                    <p className="text-6xl font-bold">{title}</p>
 
-                    <UserProfile
-                        title={profile.username}
-                        src={profile.profileSrc}
-                        onClick={() => history.push(`/profile/${profile.username}`)}
-                    >
-                        <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
-                    </UserProfile>
-
+                    <div className="mt-8 flex items-center">
+                        <UserProfile
+                            title={profile.username}
+                            src={profile.profileSrc}
+                            onClick={() => history.push(`/profile/${profile.username}`)}
+                        >
+                            <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
+                        </UserProfile>
+                        <div className="ml-auto">
+                            <UserProfile
+                                size="sm"
+                                title={hobby.name}
+                                src={hobby.profileSrc}
+                                textClassName="text-2xl font-bold hover:underline"
+                                onClick={() => history.push(`/hobby/${hobby.slug}`)}
+                            />
+                        </div>
+                    </div>
+                    <hr className="my-4" />
                     <div className="flex mt-4 w-full">{children}</div>
                 </div>
 

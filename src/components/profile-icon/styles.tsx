@@ -6,9 +6,9 @@ export const ProfileContainer = styled.div<{ active?: boolean; size: 'xs' | 'sm'
     ${tw`relative p-0 lg:mx-0 border-white border-2 rounded-full`}    
 
     ${(props) => props.size === 'xs' && tw`w-8 h-8`}
-    ${(props) => props.size === 'sm' && tw`w-12 h-12`}
-    ${(props) => props.size === 'md' && tw`w-24 h-24`}
-    ${(props) => props.size === 'lg' && tw`w-36 h-36`}
+    ${(props) => props.size === 'sm' && tw`w-10 h-10`}
+    ${(props) => props.size === 'md' && tw`w-16 h-16`}
+    ${(props) => props.size === 'lg' && tw`w-24 h-24`}
 
     ${(props) =>
         props.active &&

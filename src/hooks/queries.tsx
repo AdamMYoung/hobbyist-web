@@ -1,9 +1,20 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
-import { useInfiniteQuery, useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery, useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
+import UserProfile from '../routes/user-profile';
 
-import { FeedEntry, Hobby, HobbyDetail, PaginatedResult, PostTypes } from '../types';
+import {
+    FeedEntry,
+    Hobby,
+    HobbyDetail,
+    PaginatedResult,
+    Post,
+    PostTypes,
+    Profile,
+    ProfileDetail,
+    TextPost,
+} from '../types';
 import { useAuthAxios } from './useAuthAxios';
 
 /**
@@ -36,7 +47,7 @@ export const useUserHobbies = (username: string) => {
     const axios = useAuthAxios();
 
     const query = useQuery<Hobby[]>(
-        `${username}/hobbies`,
+        `user/${username}/hobbies`,
         async () => {
             const { data } = await axios().then((a) => a.get<Hobby[]>(`/users/${username}/hobbies`));
             return data;
@@ -63,7 +74,12 @@ export const usePost = (slug: string, token: string) => {
             const { data } = await axios().then((a) => a.get<PostTypes>(`/hobbies/${slug}/${token}`));
             return data;
         },
-        { retry: false, refetchOnWindowFocus: false, onError: () => history.replace('/not-found') }
+        {
+            retry: false,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+            onError: () => history.replace('/not-found'),
+        }
     );
 
     useEffect(() => {
@@ -73,24 +89,67 @@ export const usePost = (slug: string, token: string) => {
     return { ...rest };
 };
 
-export const useFeed = (hobbySlug?: string) => {
+export const useProfile = (username: string) => {
     const axios = useAuthAxios();
+    const history = useHistory();
 
-    const url = hobbySlug ? `/feed/hobby/${hobbySlug}` : '/feed';
-    const queryKey = hobbySlug ? `feed/${hobbySlug}` : 'feed';
+    const query = useQuery<ProfileDetail>(
+        `user/${username}`,
+        async () => {
+            const { data } = await axios().then((a) => a.get<ProfileDetail>(`/users/${username}`));
+            return data;
+        },
+        {
+            retry: false,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+            onError: () => history.replace('/not-found'),
+        }
+    );
+
+    return query;
+};
+
+export const useFeed = (type: 'feed' | 'hobby' | 'user', slug?: string) => {
+    const axios = useAuthAxios();
+    const queryClient = useQueryClient();
+
+    const urls = {
+        feed: '/feed',
+        hobby: `/feed/hobby/${slug}`,
+        user: `/feed/user/${slug}`,
+    };
 
     return useInfiniteQuery<PaginatedResult<FeedEntry[]>>(
-        queryKey,
+        urls[type],
         async ({ continuationToken = null }: any) => {
             const { data } = await axios().then((a) =>
-                a.get<PaginatedResult<FeedEntry[]>>(!continuationToken ? url : `${url}/${continuationToken}`)
+                a.get<PaginatedResult<FeedEntry[]>>(
+                    `${urls[type]}${!!continuationToken ? `/${continuationToken}` : ''}`
+                )
             );
             return data;
         },
         {
             retry: false,
+            refetchOnMount: false,
             refetchOnWindowFocus: false,
             getNextPageParam: (lastPage: PaginatedResult<FeedEntry[]>) => lastPage.continuationToken,
+            onSuccess: async (result) => {
+                result.pages.forEach((page) => {
+                    page.items.forEach((item) => {
+                        queryClient.setQueryData<TextPost>(`hobby/${item.hobbySlug}/${item.token}`, {
+                            profile: item.profile,
+                            token: item.token,
+                            slug: '',
+                            title: item.title,
+                            type: 'text',
+                            content: item.content,
+                            creationDate: item.creationDate,
+                        });
+                    });
+                });
+            },
         }
     );
 };
