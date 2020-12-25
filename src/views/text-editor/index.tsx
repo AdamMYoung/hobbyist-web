@@ -36,13 +36,14 @@ type EditorButtonProps = {
 type Props = {
     className?: string;
     readOnly?: boolean;
+    value?: Node[];
     disableToolbar?: boolean;
     initialValue?: Node[];
     onChange?: (result: Node[]) => void;
 };
 
 const TextEditor = (props: Props) => {
-    const { className, onChange, readOnly, disableToolbar, initialValue } = props;
+    const { className, onChange, readOnly, disableToolbar, initialValue, value: controlledValue } = props;
 
     const [value, setValue] = useState<Node[]>(initialValue ?? [{ type: 'paragraph', children: [{ text: '' }] }]);
     const renderElement = useCallback((props) => <Element {...props} />, []);
@@ -56,7 +57,7 @@ const TextEditor = (props: Props) => {
 
     return (
         <Typography className={`${className}`}>
-            <Slate editor={editor} value={value} onChange={(value) => handleChange(value)}>
+            <Slate editor={editor} value={controlledValue ?? value} onChange={(value) => handleChange(value)}>
                 {!(readOnly || disableToolbar) && (
                     <div className="flex items-center bg-white border">
                         <MarkButton format="bold" icon={faBold} />

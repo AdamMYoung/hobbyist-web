@@ -33,7 +33,7 @@ const CommentBox = (props: Props) => {
         <div className="w-full mt-4">
             <div className="flex">
                 <ProfileIcon src={user.picture} alt={user.name} />
-                <TextEditor disableToolbar className="ml-2 w-full" onChange={setContent} />
+                <TextEditor disableToolbar className="ml-2 w-full" onChange={setContent} value={content} />
             </div>
             <Button variant="primary" className="mt-4 ml-auto" disabled={isLoading} onClick={handleSubmit}>
                 Submit

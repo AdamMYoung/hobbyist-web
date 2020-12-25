@@ -20,7 +20,7 @@ const DetailPostCard: React.FC<Props> = (props) => {
     const history = useHistory();
 
     return (
-        <Card noCursor>
+        <Card noCursor className="mb-32">
             <article className="py-4">
                 <div className="px-12">
                     <p className="text-6xl font-bold">{title}</p>
@@ -52,6 +52,9 @@ const DetailPostCard: React.FC<Props> = (props) => {
                 <div className="px-12">
                     <p className="text-3xl font-semibold">Discussion</p>
                     <CommentBox hobbySlug={hobby.slug} postToken={token} />
+
+                    <hr className="my-4" />
+
                     <Comments hobbySlug={hobby.slug} postToken={token} />
                 </div>
             </article>
