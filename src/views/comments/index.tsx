@@ -13,11 +13,9 @@ const Comment = ({ entry }: { entry: CommentEntry }) => {
         <div>
             <UserProfile src={entry.profile?.profileSrc} title={entry.profile?.username} />
             <TextEditor readOnly initialValue={entry.content} />
-            <div>
+            <div className="mt-2 ml-2">
                 {entry.replies.map((r) => (
-                    <div className={entry.uid === entry.rootUid ? 'ml-2' : ''}>
-                        <Comment entry={r} />
-                    </div>
+                    <Comment entry={r} />
                 ))}
             </div>
         </div>
