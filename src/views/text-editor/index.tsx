@@ -36,12 +36,13 @@ type EditorButtonProps = {
 type Props = {
     className?: string;
     readOnly?: boolean;
+    disableToolbar?: boolean;
     initialValue?: Node[];
     onChange?: (result: Node[]) => void;
 };
 
 const TextEditor = (props: Props) => {
-    const { className, onChange, readOnly, initialValue } = props;
+    const { className, onChange, readOnly, disableToolbar, initialValue } = props;
 
     const [value, setValue] = useState<Node[]>(initialValue ?? [{ type: 'paragraph', children: [{ text: '' }] }]);
     const renderElement = useCallback((props) => <Element {...props} />, []);
@@ -56,7 +57,7 @@ const TextEditor = (props: Props) => {
     return (
         <Typography className={`${className}`}>
             <Slate editor={editor} value={value} onChange={(value) => handleChange(value)}>
-                {!readOnly && (
+                {!(readOnly || disableToolbar) && (
                     <div className="flex items-center bg-white border">
                         <MarkButton format="bold" icon={faBold} />
                         <MarkButton format="italic" icon={faItalic} />
@@ -72,7 +73,7 @@ const TextEditor = (props: Props) => {
                 )}
                 <Editable
                     readOnly={readOnly}
-                    style={{ minHeight: `${!readOnly ? '10rem' : '1rem'}` }}
+                    style={{ minHeight: `${!readOnly ? (disableToolbar ? '5rem' : '10rem') : '1rem'}` }}
                     className={!readOnly ? `bg-white border rounded p-2 ` : ''}
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}

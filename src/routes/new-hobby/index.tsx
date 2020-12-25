@@ -7,10 +7,10 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../components/button';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import EditableProfileHead from '../../components/profile-head-edit';
-import { CreateHobbyRequest } from '../../api/hobbies';
 import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
 import { useMutateCreateHobby } from '../../hooks/mutations';
+import { CreateHobbyRequest } from '../../types';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),

@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { Hobby, Post } from '../../types';
 import UserProfile from '../user-profile';
 import Card from '../card';
+import CommentBox from '../../views/comment-box';
+import Comments from '../../views/comments';
 
 dayjs.extend(relativeTime);
 
@@ -14,7 +16,7 @@ type Props = Post & {
 };
 
 const DetailPostCard: React.FC<Props> = (props) => {
-    const { title, creationDate, profile, children, hobby } = props;
+    const { token, title, creationDate, profile, children, hobby } = props;
     const history = useHistory();
 
     return (
@@ -49,6 +51,8 @@ const DetailPostCard: React.FC<Props> = (props) => {
 
                 <div className="px-12">
                     <p className="text-3xl font-semibold">Discussion</p>
+                    <CommentBox hobbySlug={hobby.slug} postToken={token} />
+                    <Comments hobbySlug={hobby.slug} postToken={token} />
                 </div>
             </article>
         </Card>

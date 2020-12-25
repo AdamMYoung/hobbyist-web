@@ -2,16 +2,14 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
 import { useInfiniteQuery, useQuery, useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
-import UserProfile from '../routes/user-profile';
 
 import {
+    CommentEntry,
     FeedEntry,
     Hobby,
     HobbyDetail,
     PaginatedResult,
-    Post,
     PostTypes,
-    Profile,
     ProfileDetail,
     TextPost,
 } from '../types';
@@ -150,6 +148,28 @@ export const useFeed = (type: 'feed' | 'hobby' | 'user', slug?: string) => {
                     });
                 });
             },
+        }
+    );
+};
+
+export const useComments = (hobbySlug: string, postToken: string) => {
+    const axios = useAuthAxios();
+
+    return useInfiniteQuery<PaginatedResult<CommentEntry[]>>(
+        `comments/${hobbySlug}/${postToken}`,
+        async ({ continuationToken = null }: any) => {
+            const { data } = await axios().then((a) =>
+                a.get<PaginatedResult<CommentEntry[]>>(
+                    `/comments/${hobbySlug}/${postToken}${!!continuationToken ? `/${continuationToken}` : ''}`
+                )
+            );
+            return data;
+        },
+        {
+            retry: false,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+            getNextPageParam: (lastPage: PaginatedResult<CommentEntry[]>) => lastPage.continuationToken,
         }
     );
 };
