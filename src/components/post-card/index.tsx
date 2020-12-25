@@ -3,11 +3,9 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
 
-import Button from '../button';
 import { FeedEntry } from '../../types';
 import Card from '../card';
 import SocialControls from '../social-controls';
-import ProfileIcon from '../profile-icon';
 import UserProfile from '../user-profile';
 
 dayjs.extend(relativeTime);
@@ -36,7 +34,7 @@ const PostCard: React.FC<Props> = (props) => {
                     <p className="mt-4 text-xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
-                <div className="pl-20 flex items-center">
+                <div className="pl-20 flex items-center mt-4">
                     <UserProfile
                         title={hobbyName}
                         src={hobbyProfileSrc}

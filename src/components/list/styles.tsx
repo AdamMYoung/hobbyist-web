@@ -6,7 +6,7 @@ export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean; n
 
     li {
         
-        ${tw`transition hover:text-blue-700 pb-3 px-2`}
+        ${tw`transition  pb-3 px-2`}
 
         ${(props) =>
             props.noTopPadding
@@ -20,7 +20,7 @@ export const ListGroup = styled.ul<{ active?: boolean; noTopPadding?: boolean; n
                 : tw`py-3`}
         
 
-        ${(props) => props.active && tw`hover:cursor-pointer hover:bg-gray-200 active:bg-gray-300`}
+        ${(props) => props.active && tw`hover:cursor-pointer hover:text-blue-700 hover:bg-gray-200 active:bg-gray-300`}
     }
 `;
 

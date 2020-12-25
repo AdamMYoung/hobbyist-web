@@ -25,6 +25,28 @@ export type Meetup = {
     lng: number;
 };
 
+//Submission Types
+
+export type CreateHobbyRequest = {
+    slug: string;
+    name: string;
+    description: string;
+    profileImgBase64: string;
+    bannerImgBase64: string;
+};
+
+export type CreatePostRequest = {
+    title: string;
+    type: 'text' | 'image';
+    content: Node[];
+};
+
+export type CreateCommentRequest = {
+    content: Node[];
+    parentUid?: string;
+    rootUid?: string;
+};
+
 // Hobby
 
 export type HobbyCategory = {
@@ -91,6 +113,17 @@ export type ImagePost = Post & {
 };
 
 export type PostTypes = TextPost | ImagePost;
+
+//Comments
+
+export type CommentEntry = {
+    uid: string;
+    rootUid: string;
+    profile: Profile;
+    content: any;
+    creationDate: Date;
+    replies: CommentEntry[];
+};
 
 //Generic
 

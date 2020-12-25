@@ -23,10 +23,10 @@ const Profile = () => {
 
     const { data, isLoading } = useProfile(username);
 
-    // if (username === getMetadata(user, 'username')) {
-    //     history.replace('/profile');
-    //     return null;
-    // }
+    if (username === getMetadata(user, 'username')) {
+        history.replace('/profile');
+        return null;
+    }
 
     return (
         <LoadTransition>
