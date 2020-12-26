@@ -20,7 +20,7 @@ const CommentBox = (props: Props) => {
     const [content, setContent] = useState<Node[]>();
 
     useEffect(() => {
-        if (isSuccess) setContent(undefined);
+        if (isSuccess) setContent([{ type: 'paragraph', children: [{ text: '' }] }]);
     }, [isSuccess]);
 
     const handleSubmit = () => {

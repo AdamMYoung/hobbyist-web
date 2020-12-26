@@ -14,6 +14,7 @@ import FeedSortDropdown from '../../views/feed-sort-dropdown';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import { useHobby } from '../../hooks/queries';
 import { useMutateHobbyFollowState } from '../../hooks/mutations';
+import PlaceholderHead from '../../views/placeholder-head';
 
 const Hobby: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -28,15 +29,13 @@ const Hobby: React.FC = () => {
         <LoadTransition>
             <SEO title={data?.name ?? 'Loading'} />
 
-            {isSuccess && (
-                <SplitPage
-                    headerNavContent={
-                        <FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />
-                    }
-                >
-                    {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
-                        <>
-                            <SplitPage.Top>
+            <SplitPage
+                headerNavContent={<FeedSortDropdown currentSortType={feedSortType} onSortChanged={setFeedSortType} />}
+            >
+                {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
+                    <>
+                        <SplitPage.Top>
+                            {isSuccess ? (
                                 <ProfileHead
                                     title={data?.name ?? 'Not Found'}
                                     description={data?.description}
@@ -73,25 +72,24 @@ const Hobby: React.FC = () => {
                                         </LoadTransition>
                                     )}
                                 </ProfileHead>
-                            </SplitPage.Top>
-                            <SplitPage.Body onCloseLeftDrawer={closeLeftDrawer} leftDrawerOpen={leftDrawer}>
-                                <SplitPage.Center>
-                                    <SplitPage.Center.Header>
-                                        <FeedSortButtons
-                                            currentSortType={feedSortType}
-                                            onSortChanged={setFeedSortType}
-                                        />
-                                    </SplitPage.Center.Header>
+                            ) : (
+                                <PlaceholderHead />
+                            )}
+                        </SplitPage.Top>
+                        <SplitPage.Body onCloseLeftDrawer={closeLeftDrawer} leftDrawerOpen={leftDrawer}>
+                            <SplitPage.Center>
+                                <SplitPage.Center.Header>
+                                    <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
+                                </SplitPage.Center.Header>
 
-                                    <Feed slug={slug} />
-                                </SplitPage.Center>
+                                <Feed slug={slug} />
+                            </SplitPage.Center>
 
-                                <SplitPage.Right />
-                            </SplitPage.Body>
-                        </>
-                    )}
-                </SplitPage>
-            )}
+                            <SplitPage.Right />
+                        </SplitPage.Body>
+                    </>
+                )}
+            </SplitPage>
         </LoadTransition>
     );
 };

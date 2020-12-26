@@ -133,9 +133,9 @@ export const useFeed = (type: 'feed' | 'hobby' | 'user', slug?: string) => {
             refetchOnMount: false,
             refetchOnWindowFocus: false,
             getNextPageParam: (lastPage: PaginatedResult<FeedEntry[]>) => lastPage.continuationToken,
-            onSuccess: async (result) => {
-                result.pages.forEach((page) => {
-                    page.items.forEach((item) => {
+            onSuccess: (result) =>
+                result.pages.forEach((page) =>
+                    page.items.forEach((item) =>
                         queryClient.setQueryData<TextPost>(`hobby/${item.hobbySlug}/${item.token}`, {
                             profile: item.profile,
                             token: item.token,
@@ -144,10 +144,9 @@ export const useFeed = (type: 'feed' | 'hobby' | 'user', slug?: string) => {
                             type: 'text',
                             content: item.content,
                             creationDate: item.creationDate,
-                        });
-                    });
-                });
-            },
+                        })
+                    )
+                ),
         }
     );
 };

@@ -1,4 +1,5 @@
 import Image from '../image';
+import LoadTransition from '../load-transition';
 import ProfileIcon from '../profile-icon';
 
 type Props = {
@@ -12,7 +13,7 @@ const ProfileHead: React.FC<Props> = (props) => {
     const { profileSrc, headerSrc, title, description, children } = props;
 
     return (
-        <div>
+        <LoadTransition>
             <div className={`relative h-36 w-full`}>
                 <div className="absolute t-0 h-36 w-full">
                     <div className="relative h-36 w-full">
@@ -35,7 +36,7 @@ const ProfileHead: React.FC<Props> = (props) => {
                 </div>
                 {children}
             </div>
-        </div>
+        </LoadTransition>
     );
 };
 
