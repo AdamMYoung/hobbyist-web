@@ -23,9 +23,9 @@ const DetailPostCard: React.FC<Props> = (props) => {
         <Card noCursor className="mb-32">
             <article className="py-4">
                 <div className="px-12">
-                    <p className="text-6xl font-bold">{title}</p>
+                    <p className="text-6xl font-bold text-center sm:text-left">{title}</p>
 
-                    <div className="mt-8 flex items-center">
+                    <div className="mt-8 flex flex-wrap flex-col sm:flex-row justify-items-center items-center">
                         <UserProfile
                             title={profile.username}
                             src={profile.profileSrc}
@@ -33,7 +33,8 @@ const DetailPostCard: React.FC<Props> = (props) => {
                         >
                             <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
                         </UserProfile>
-                        <div className="ml-auto">
+                        <div className="flex-grow" />
+                        <div className="mt-4 sm:mt-0">
                             <UserProfile
                                 size="sm"
                                 title={hobby.name}
