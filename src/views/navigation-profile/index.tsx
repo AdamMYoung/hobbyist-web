@@ -42,24 +42,24 @@ const NavigationProfile = () => {
                     <List active noTopPadding>
                         <ListItem onClick={() => handleNavigate('/profile')}>
                             <div>
-                                <p className="text-sm">{user.name}</p>
+                                <p className="text-sm font-bold">{user.name}</p>
                                 <p className="text-xs">{getMetadata(user, 'username')}</p>
                             </div>
                         </ListItem>
                         <hr className="my-1" />
                         <ListItem>
-                            <p className="text-sm" onClick={() => handleNavigate('/new-post')}>
+                            <p className="text-sm font-semibold" onClick={() => handleNavigate('/new-post')}>
                                 Create Post
                             </p>
                         </ListItem>
                         <ListItem>
-                            <p className="text-sm" onClick={() => handleNavigate('/new-hobby')}>
+                            <p className="text-sm font-semibold" onClick={() => handleNavigate('/new-hobby')}>
                                 Create Hobby
                             </p>
                         </ListItem>
                         <hr className="my-1" />
                         <ListItem onClick={() => logout()}>
-                            <p className="text-sm">Sign Out</p>
+                            <p className="text-sm font-semibold">Sign Out</p>
                         </ListItem>
                     </List>
                 </Card>
