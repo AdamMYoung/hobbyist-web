@@ -57,18 +57,20 @@ const Comment = ({ entry }: { entry: CommentEntry }) => {
 const Comments = (props: Props) => {
     const { hobbySlug, postToken } = props;
 
-    const { data: comments, isLoading } = useComments(hobbySlug, postToken);
+    const { data: comments, isLoading, isSuccess } = useComments(hobbySlug, postToken);
 
-    if (isLoading) return null;
+    if (isLoading || !isSuccess) return null;
 
     return (
         <List>
-            {comments?.pages.map((p) =>
-                p.items.map((comment) => (
-                    <List.Item key={comment.uid}>
-                        <Comment entry={comment} />
-                    </List.Item>
-                ))
+            {comments?.pages.map(
+                (p) =>
+                    p.items &&
+                    p.items.map((comment) => (
+                        <List.Item key={comment.uid}>
+                            <Comment entry={comment} />
+                        </List.Item>
+                    ))
             )}
         </List>
     );
