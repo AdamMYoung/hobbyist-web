@@ -13,15 +13,15 @@ import TextEditor from '../../views/text-editor';
 const Post = () => {
     const { slug, token } = useParams<{ slug: string; token: string }>();
 
-    const { data: post, isLoading: getPostLoading } = usePost(slug, token);
-    const { data: hobby, isLoading: getHobbyLoading } = useHobby(slug);
+    const { data: post, isSuccess: isPostLoaded } = usePost(slug, token);
+    const { data: hobby, isSuccess: isHobbyLoaded } = useHobby(slug);
 
-    const isLoading = getPostLoading && getHobbyLoading;
+    const isLoaded = !!isPostLoaded && !!isHobbyLoaded;
 
     return (
         <LoadTransition>
-            <SEO title={!isLoading ? (post as PostTypes).title : 'Loading'} />
-            {!isLoading ? (
+            <SEO title={!isLoaded ? (post as PostTypes)?.title : 'Loading'} />
+            {isLoaded ? (
                 <SplitPage>
                     <SplitPage.Body disableProfileControls>
                         <SplitPage.Center>

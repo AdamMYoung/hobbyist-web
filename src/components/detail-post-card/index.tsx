@@ -22,7 +22,7 @@ const DetailPostCard: React.FC<Props> = (props) => {
     return (
         <Card noCursor className="mb-32">
             <article className="py-4">
-                <div className="px-12">
+                <div className="px-4 sm:px-12">
                     <p className="text-6xl font-bold text-center sm:text-left">{title}</p>
 
                     <div className="mt-8 flex flex-wrap flex-col sm:flex-row justify-items-center items-center">
@@ -50,7 +50,7 @@ const DetailPostCard: React.FC<Props> = (props) => {
 
                 <hr className="my-6" />
 
-                <div className="px-12">
+                <div className="px-4 sm:px-12">
                     <p className="text-3xl font-semibold">Discussion</p>
                     <CommentBox hobbySlug={hobby.slug} postToken={token} />
 
