@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import DetailPostCard from '../../components/detail-post-card';
 import LoadTransition from '../../components/load-transition';
+import PostProfileCard from '../../components/post-profile-card';
 import SEO from '../../components/seo';
 import { useHobby, usePost } from '../../hooks/queries';
 import { HobbyDetail, PostTypes, TextPost } from '../../types';
@@ -20,7 +21,7 @@ const Post = () => {
 
     return (
         <LoadTransition>
-            <SEO title={!isLoaded ? (post as PostTypes)?.title : 'Loading'} />
+            <SEO title={isLoaded ? (post as PostTypes)?.title : 'Loading'} />
             {isLoaded ? (
                 <SplitPage>
                     <SplitPage.Body disableProfileControls>
@@ -29,7 +30,9 @@ const Post = () => {
                                 <TextEditor readOnly initialValue={(post as TextPost).content} />
                             </DetailPostCard>
                         </SplitPage.Center>
-                        <SplitPage.Right />
+                        <SplitPage.Right>
+                            <PostProfileCard className="mt-8" profile={(post as PostTypes).profile} />
+                        </SplitPage.Right>
                     </SplitPage.Body>
                 </SplitPage>
             ) : (
@@ -38,7 +41,7 @@ const Post = () => {
                         <SplitPage.Center>
                             <PlaceholderPost animated />
                         </SplitPage.Center>
-                        <SplitPage.Right />
+                        <SplitPage.Right></SplitPage.Right>
                     </SplitPage.Body>
                 </SplitPage>
             )}
