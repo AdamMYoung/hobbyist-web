@@ -88,7 +88,7 @@
         "@types/imagemin": "^7.0.0",
         "@types/imagemin-jpegtran": "^5.0.0",
         "@types/react-helmet": "^6.1.0",
-        "@types/react-router-dom": "^5.1.6",
+        "@types/react-router-dom": "^5.1.7",
         "@types/react-select": "^3.0.28",
         "@types/react-virtualized-auto-sizer": "^1.0.0",
         "@types/styled-components": "^5.1.7"
