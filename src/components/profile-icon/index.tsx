@@ -6,7 +6,7 @@ type Props = React.ComponentPropsWithoutRef<'div'> & {
     onClick?: () => void;
     active?: boolean;
     hasNotification?: boolean;
-    size?: 'xs' | 'sm' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 const ProfileIcon = (props: Props) => {

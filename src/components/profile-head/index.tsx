@@ -20,18 +20,18 @@ const ProfileHead: React.FC<Props> = (props) => {
                         <Image
                             className="rounded-t-lg absolute inset-0 w-full h-full object-cover"
                             src={headerSrc}
-                            alt=""
+                            alt={`Header for ${title}`}
                         />
                     </div>
                 </div>
                 <hr className="absolute top-36 w-full border-gray-300" />
                 <div className="absolute top-36 left-1/2 sm:left-1/4 transform -translate-y-1/2 -translate-x-1/2">
-                    <ProfileIcon size="lg" src={profileSrc} alt={title}></ProfileIcon>
+                    <ProfileIcon size="xl" src={profileSrc} alt={title}></ProfileIcon>
                 </div>
             </div>
             <div className="flex flex-col sm:flex-row flex-wrap items-center text-center sm:text-left sm:w-2/3 sm:ml-auto w-auto mt-20 sm:mt-2 truncate">
-                <div className="ml-2 sm:ml-8 sm:mx-none truncate">
-                    <h1 className="text-5xl pb-2 font-bold truncate">{title}</h1>
+                <div className="mx-2 sm:ml-8 sm:mx-none truncate">
+                    <h1 className="text-3xl sm:text-5xl pb-2 font-bold truncate">{title}</h1>
                     {description && <p className="text-gray-400 whitespace-normal overflow-auto">{description}</p>}
                 </div>
                 {children}

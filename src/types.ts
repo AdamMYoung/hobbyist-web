@@ -85,10 +85,10 @@ export type FeedEntry = {
 export type Profile = {
     profileSrc: string;
     username: string;
+    description?: string;
 };
 
 export type ProfileDetail = Profile & {
-    description?: string;
     bannerSrc?: string;
 };
 
