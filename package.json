@@ -9,6 +9,8 @@
         "@fortawesome/free-regular-svg-icons": "^5.15.1",
         "@fortawesome/free-solid-svg-icons": "^5.15.1",
         "@fortawesome/react-fontawesome": "^0.1.14",
+        "@microsoft/applicationinsights-react-js": "^3.0.5",
+        "@microsoft/applicationinsights-web": "^2.5.10",
         "@popperjs/core": "^2.6.0",
         "@tailwindcss/postcss7-compat": "^2.0.2",
         "@testing-library/jest-dom": "^5.11.4",
