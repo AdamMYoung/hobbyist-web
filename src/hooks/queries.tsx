@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import {
     CommentEntry,
+    CurrentProfileDetail,
     FeedEntry,
     Hobby,
     HobbyDetail,
@@ -94,7 +95,7 @@ export const useProfile = (username: string) => {
     const query = useQuery<ProfileDetail>(
         `user/${username}`,
         async () => {
-            const { data } = await axios().then((a) => a.get<ProfileDetail>(`/users/${username}`));
+            const { data } = await axios().then((a) => a.get<ProfileDetail>(`/users/user/${username}`));
             return data;
         },
         {
@@ -102,6 +103,25 @@ export const useProfile = (username: string) => {
             refetchOnMount: false,
             refetchOnWindowFocus: false,
             onError: () => history.replace('/not-found'),
+        }
+    );
+
+    return query;
+};
+
+export const useUserProfile = () => {
+    const axios = useAuthAxios();
+
+    const query = useQuery<CurrentProfileDetail>(
+        `user/me`,
+        async () => {
+            const { data } = await axios().then((a) => a.get<ProfileDetail>(`/users/me`));
+            return data;
+        },
+        {
+            retry: false,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
         }
     );
 

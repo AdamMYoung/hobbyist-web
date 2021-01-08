@@ -30,6 +30,9 @@ const NavContent = (props: { popupRef: React.MutableRefObject<any> }) => {
                             <p className="text-xs">{getMetadata(user, 'username')}</p>
                         </div>
                     </ListItem>
+                    <ListItem onClick={() => handleNavigate('/profile/settings')}>
+                        <p className="text-sm font-semibold">Settings</p>
+                    </ListItem>
                     <hr className="my-1" />
                     <ListItem>
                         <p className="text-sm font-semibold" onClick={() => handleNavigate('/new-post')}>

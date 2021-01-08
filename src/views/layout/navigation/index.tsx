@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoadingBar from 'react-top-loading-bar';
@@ -9,21 +9,29 @@ import Input from '../../../components/input';
 import { Logo, NavBar } from './styles';
 import NavigationProfile from '../../navigation-profile';
 import LoadTransition from '../../../components/load-transition';
+import { useUserHobbies } from '../../../hooks/queries';
+import { getMetadata } from '../../../utils/userUtils';
 
 const Navigation = () => {
-    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+    const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+    const [isLoadingBarActive, setLoadingBarActive] = useState<boolean>(false);
     const history = useHistory();
+    const { data: hobbies } = useUserHobbies(getMetadata(user, 'username'));
 
     const loadingBar = useRef(null);
     const isFetching = useIsFetching();
 
     useEffect(() => {
         if (isFetching > 0) {
-            (loadingBar.current as any)?.continuousStart();
+            if (!isLoadingBarActive) {
+                setLoadingBarActive(true);
+                (loadingBar.current as any)?.continuousStart();
+            }
         } else {
             (loadingBar.current as any)?.complete();
+            setLoadingBarActive(false);
         }
-    }, [isFetching]);
+    }, [isFetching, isLoadingBarActive]);
 
     return (
         <div className="flex items-center w-full sticky top-0 bg-white z-20 border-b-2 border-gray-200 h-16">
@@ -46,7 +54,7 @@ const Navigation = () => {
                     />
 
                     <div className="flex items-center ml-auto">
-                        {isAuthenticated && (
+                        {isAuthenticated && hobbies && hobbies.length > 0 && (
                             <>
                                 <LoadTransition className="mx-4 hidden sm:block w-full">
                                     <Button variant="primary" onClick={() => history.push('/new-post')}>

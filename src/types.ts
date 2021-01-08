@@ -47,6 +47,13 @@ export type CreateCommentRequest = {
     rootUid?: string;
 };
 
+export type UpdateProfileRequest = {
+    name: string;
+    description: string;
+    profileImgBase64: string;
+    bannerImgBase64: string;
+};
+
 export type UpdateHobbyRequest = {
     description: string;
     profileImgBase64: string;
@@ -105,6 +112,10 @@ export type Profile = {
 
 export type ProfileDetail = Profile & {
     bannerSrc?: string;
+};
+
+export type CurrentProfileDetail = ProfileDetail & {
+    emailAddress?: string;
 };
 
 //Post

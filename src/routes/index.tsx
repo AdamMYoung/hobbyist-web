@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthenticatedRoute } from './custom';
 import Home from './home';
 import NotFound from './not-found';
+import ProfileSettings from './profile-settings';
 
 const NewHobby = React.lazy(() => import('./new-hobby'));
 const NewPost = React.lazy(() => import('./new-post'));
@@ -28,6 +29,7 @@ const Routes = () => {
             <Route path="/hobby/:slug/:token" exact component={Post} />
 
             <AuthenticatedRoute path="/profile" exact component={UserProfile} />
+            <AuthenticatedRoute path="/profile/settings" exact component={ProfileSettings} />
             <Route path="/profile/:username" exact component={Profile} />
 
             <Route path="/about" exact component={About} />
