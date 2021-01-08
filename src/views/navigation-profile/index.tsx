@@ -54,6 +54,16 @@ const NavContent = (props: { popupRef: React.MutableRefObject<any> }) => {
     );
 };
 
+const PopupTrigger = (props: { image: string; name: string }) => {
+    return (
+        <button type="button">
+            <LoadTransition className="cursor-pointer my-auto">
+                <ProfileIcon className="my-auto" src={props.image} alt={props.name} />
+            </LoadTransition>
+        </button>
+    );
+};
+
 const NavigationProfile = () => {
     const { user, isAuthenticated } = useAuth0();
     const ref = useRef<any>();
@@ -65,13 +75,7 @@ const NavigationProfile = () => {
             <div className="block sm:hidden">
                 <Popup
                     ref={ref}
-                    trigger={
-                        <button type="button">
-                            <LoadTransition className="cursor-pointer">
-                                <ProfileIcon src={user.picture} alt={user.name} />
-                            </LoadTransition>
-                        </button>
-                    }
+                    trigger={<PopupTrigger image={user.picture} name={user.name} />}
                     position="bottom right"
                     on={['click']}
                     closeOnDocumentClick
@@ -82,13 +86,7 @@ const NavigationProfile = () => {
             <div className="hidden sm:block">
                 <Popup
                     ref={ref}
-                    trigger={
-                        <button type="button">
-                            <LoadTransition className="cursor-pointer">
-                                <ProfileIcon src={user.picture} alt={user.name} />
-                            </LoadTransition>
-                        </button>
-                    }
+                    trigger={<PopupTrigger image={user.picture} name={user.name} />}
                     position="bottom right"
                     on={['hover']}
                     closeOnDocumentClick
