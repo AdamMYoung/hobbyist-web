@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../components/button';
 import Card from '../../components/card';
 import List from '../../components/list';
-import UserProfile from '../../components/user-profile';
+import ProfileLink from '../../components/profile-link';
 import { HobbyCategory } from '../../types';
 
 const Groups: HobbyCategory[] = [
@@ -82,9 +82,9 @@ const CuratedHobbies = () => {
                             {group.hobbies.map((hobby) => (
                                 <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
                                     <div className="flex items-center">
-                                        <UserProfile title={hobby.name} src={hobby.profileSrc}>
+                                        <ProfileLink title={hobby.name} src={hobby.profileSrc}>
                                             <p className="text-gray-400">{`${1} members`}</p>
-                                        </UserProfile>
+                                        </ProfileLink>
 
                                         <Button className="ml-auto" variant="primary">
                                             Follow

@@ -4,6 +4,7 @@ type Props = {
     active?: boolean;
     noTopPadding?: boolean;
     narrow?: boolean;
+    className?: string;
     children: React.ReactNode;
 };
 

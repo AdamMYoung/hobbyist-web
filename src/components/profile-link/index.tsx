@@ -14,7 +14,7 @@ type Props = {
     size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
-const UserProfile: React.FC<Props> = (props) => {
+const ProfileLink: React.FC<Props> = (props) => {
     const { onClick, active, children, size = 'sm', title, textClassName, ...rest } = props;
 
     return (
@@ -40,4 +40,4 @@ const UserProfile: React.FC<Props> = (props) => {
     );
 };
 
-export default UserProfile;
+export default ProfileLink;

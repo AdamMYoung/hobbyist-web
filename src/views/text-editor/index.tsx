@@ -59,7 +59,7 @@ const TextEditor = (props: Props) => {
         <Typography className={`${className}`}>
             <Slate editor={editor} value={controlledValue ?? value} onChange={(value) => handleChange(value)}>
                 {!(readOnly || disableToolbar) && (
-                    <div className="flex items-center bg-white border">
+                    <div className="flex items-center bg-white border ">
                         <MarkButton format="bold" icon={faBold} />
                         <MarkButton format="italic" icon={faItalic} />
                         <MarkButton format="underline" icon={faUnderline} />
@@ -75,7 +75,7 @@ const TextEditor = (props: Props) => {
                 <Editable
                     readOnly={readOnly}
                     style={{ minHeight: `${!readOnly ? (disableToolbar ? '5rem' : '10rem') : '1rem'}` }}
-                    className={!readOnly ? `bg-white border rounded p-2 ` : ''}
+                    className={!readOnly ? `bg-white border rounded p-2` : ''}
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
                     spellCheck

@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { FeedEntry } from '../../types';
 import Card from '../card';
 import SocialControls from '../social-controls';
-import UserProfile from '../user-profile';
+import ProfileLink from '../profile-link';
 
 dayjs.extend(relativeTime);
 
@@ -20,14 +20,14 @@ const PostCard: React.FC<Props> = (props) => {
         <Card noCursor>
             <article className="min-h-32 max-h-92">
                 <div className="flex items-center">
-                    <UserProfile
+                    <ProfileLink
                         size="md"
                         title={profile.username}
                         src={profile.profileSrc}
                         onClick={() => history.push(`/profile/${profile.username}`)}
                     >
                         <p className="text-left text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
-                    </UserProfile>
+                    </ProfileLink>
                 </div>
 
                 <div onClick={() => history.push(`/hobby/${hobbySlug}/${token}`)} className="cursor-pointer pl-20">
@@ -35,7 +35,7 @@ const PostCard: React.FC<Props> = (props) => {
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
                 <div className="pl-20 flex items-center mt-4">
-                    <UserProfile
+                    <ProfileLink
                         title={hobbyName}
                         src={hobbyProfileSrc}
                         onClick={() => history.push(`/hobby/${hobbySlug}`)}

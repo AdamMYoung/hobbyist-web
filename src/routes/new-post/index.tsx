@@ -32,9 +32,7 @@ const NewPost = () => {
     const { mutate: createPost, isLoading } = useMutateCreatePost(selectedHobby?.slug ?? '');
 
     useEffect(() => {
-        if (isSuccess) {
-            setSelectedHobby(hobbies?.filter((h) => h.slug === slug)[0]);
-        }
+        if (isSuccess) setSelectedHobby(hobbies?.filter((h) => h.slug === slug)[0]);
     }, [isSuccess, hobbies, slug]);
 
     const isValid = useMemo(() => !!postTitle && !!selectedHobby && !!content, [postTitle, selectedHobby, content]);
@@ -57,7 +55,10 @@ const NewPost = () => {
 
     return (
         <>
-            <SEO description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions." />
+            <SEO
+                title="New Post"
+                description="Hobbyist is a community around your interests, connecting you to like-minded people with the same passions."
+            />
             {isSuccess && (
                 <SplitPage title={title} rightIcon={faQuestion}>
                     {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
