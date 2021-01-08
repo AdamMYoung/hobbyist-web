@@ -11,7 +11,7 @@ const PlaceholderFeed = (props: Props) => {
     const cards = [];
 
     for (let i = 0; i < count; i++) {
-        cards.push(<PlaceholderCard animated={animated} />);
+        cards.push(<PlaceholderCard key={i} animated={animated} />);
     }
 
     return <>{cards}</>;
