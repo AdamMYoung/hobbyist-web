@@ -2,12 +2,15 @@ import React from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useHistory } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import { Hobby, Post } from '../../types';
-import UserProfile from '../user-profile';
+import ProfileLink from '../profile-link';
 import Card from '../card';
+import Button from '../button';
 import CommentBox from '../../views/comment-box';
 import Comments from '../../views/comments';
+import { getMetadata } from '../../utils/userUtils';
 
 dayjs.extend(relativeTime);
 
@@ -18,6 +21,7 @@ type Props = Post & {
 const DetailPostCard: React.FC<Props> = (props) => {
     const { token, title, creationDate, profile, children, hobby } = props;
     const history = useHistory();
+    const { user } = useAuth0();
 
     return (
         <Card noCursor className="mb-32">
@@ -26,16 +30,16 @@ const DetailPostCard: React.FC<Props> = (props) => {
                     <p className="text-6xl font-bold text-center sm:text-left">{title}</p>
 
                     <div className="mt-8 flex flex-wrap flex-col sm:flex-row justify-items-center items-center">
-                        <UserProfile
+                        <ProfileLink
                             title={profile.username}
                             src={profile.profileSrc}
                             onClick={() => history.push(`/profile/${profile.username}`)}
                         >
                             <p className="text-sm text-gray-500">{dayjs(creationDate).fromNow()}</p>
-                        </UserProfile>
+                        </ProfileLink>
                         <div className="flex-grow" />
                         <div className="mt-4 sm:mt-0">
-                            <UserProfile
+                            <ProfileLink
                                 size="sm"
                                 title={hobby.name}
                                 src={hobby.profileSrc}
@@ -44,10 +48,24 @@ const DetailPostCard: React.FC<Props> = (props) => {
                             />
                         </div>
                     </div>
+
                     <hr className="my-4" />
                     <div className="flex mt-4 w-full">{children}</div>
-                </div>
 
+                    {profile?.username === getMetadata(user, 'username') && (
+                        <>
+                            <div className="flex items-center mt-4">
+                                <Button
+                                    className="text-gray-500 text-sm mr-2 hover:underline"
+                                    onClick={() => history.push(`/hobby/${hobby.slug}/${token}/edit`)}
+                                >
+                                    Edit
+                                </Button>
+                                <Button className="text-gray-500 text-sm ml-2 hover:underline">Delete</Button>
+                            </div>
+                        </>
+                    )}
+                </div>
                 <hr className="my-6" />
 
                 <div className="px-4 sm:px-12">

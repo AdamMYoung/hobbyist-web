@@ -36,7 +36,7 @@ const ValueOptions = (props: ValueOptionsProps) => {
 };
 
 type Props = {
-    onHobbyChange: (hobby: Hobby) => void;
+    onHobbyChange?: (hobby: Hobby) => void;
     selectedHobby?: Hobby;
     hobbies: Hobby[];
     readOnly?: boolean;
@@ -58,7 +58,7 @@ const HobbiesDropdown = (props: Props) => {
             options={options}
             value={currentValue}
             components={{ Option: IconOption, SingleValue: ValueOptions }}
-            onChange={(entry) => entry && onHobbyChange(entry.value)}
+            onChange={(entry) => entry && onHobbyChange && onHobbyChange(entry.value)}
         />
     );
 };

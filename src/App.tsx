@@ -2,11 +2,14 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Auth0Provider } from '@auth0/auth0-react';
 import ReactGA from 'react-ga';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { hotjar } from 'react-hotjar';
+import { withAITracking } from '@microsoft/applicationinsights-react-js';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 
 import { ScrollLockProvider } from './providers/ScrollLockProvider';
 import Layout from './views/layout';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 ReactGA.initialize('G-00M9LYJ67J');
 hotjar.initialize(2162518, 6);
@@ -15,6 +18,16 @@ const history = createBrowserHistory();
 history.listen((location) => {
     ReactGA.pageview(location.pathname);
 });
+
+const reactPlugin = new ReactPlugin();
+const appInsights = new ApplicationInsights({
+    config: {
+        instrumentationKey: process.env.REACT_APP_APP_INSIGHTS_KEY,
+        extensions: [reactPlugin],
+        extensionConfig: { [reactPlugin.identifier]: { history } },
+    },
+});
+appInsights.loadAppInsights();
 
 const queryClient = new QueryClient();
 
@@ -36,4 +49,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default withAITracking(reactPlugin, App);

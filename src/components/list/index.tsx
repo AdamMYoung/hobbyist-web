@@ -4,19 +4,21 @@ type Props = {
     active?: boolean;
     noTopPadding?: boolean;
     narrow?: boolean;
+    className?: string;
     children: React.ReactNode;
 };
 
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
     onClick?: () => void;
+    isActive?: boolean;
 };
 
 const Item: React.FC<ButtonProps> = (props) => {
-    const { children, onClick, className, ...rest } = props;
+    const { children, onClick, className, isActive, ...rest } = props;
 
     return (
         <ListItem onClick={onClick}>
-            <button className={`focus:outline-none ${className}`} {...rest}>
+            <button className={`focus:outline-none ${className} ${isActive && 'text-blue-700'}`} {...rest}>
                 {props.children}
             </button>
         </ListItem>

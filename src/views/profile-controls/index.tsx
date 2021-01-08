@@ -24,7 +24,11 @@ const ProfileHobbies = () => {
                     <h1 className="ml-2 text-xl font-semibold mb-2">Your Hobbies</h1>
                     <List narrow active>
                         {data?.map((hobby) => (
-                            <List.Item key={hobby.slug} onClick={() => history.push(`/hobby/${hobby.slug}`)}>
+                            <List.Item
+                                key={hobby.slug}
+                                isActive={history.location.pathname.includes(hobby.slug)}
+                                onClick={() => history.push(`/hobby/${hobby.slug}`)}
+                            >
                                 <div className="flex items-center">
                                     <ProfileIcon size="xs" src={hobby.profileSrc} alt={hobby.name} />
                                     <p className="ml-2">{hobby.name}</p>
@@ -52,11 +56,19 @@ const ProfileControls = () => {
                     </List.Item>
                 )}
 
-                <List.Item aria-label="Feed" onClick={() => history.push('/')}>
+                <List.Item
+                    aria-label="Feed"
+                    isActive={history.location.pathname === '/'}
+                    onClick={() => history.push('/')}
+                >
                     <FontAwesomeIcon className="mr-5" icon={faComments} />
                     Feed
                 </List.Item>
-                <List.Item aria-label="Hobbies" onClick={() => history.push('/hobbies')}>
+                <List.Item
+                    aria-label="Hobbies"
+                    isActive={history.location.pathname.includes('hobbies')}
+                    onClick={() => history.push('/hobbies')}
+                >
                     <FontAwesomeIcon className="mr-6" icon={faBook} />
                     Hobbies
                 </List.Item>

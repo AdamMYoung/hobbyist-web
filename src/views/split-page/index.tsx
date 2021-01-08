@@ -19,6 +19,7 @@ type Props = {
     children?: React.ReactNode;
     disableNavBar?: boolean;
     rightIcon?: IconProp;
+    leftIcon?: IconProp;
 };
 
 type HeaderProps = {
@@ -134,7 +135,7 @@ const CenterHeader: React.FC<HeaderProps> = (props) => {
 const SplitPage = (props: Props) => {
     const [leftDrawerOpen, setLeftDrawerOpen] = useState<boolean>(false);
     const [rightDrawerOpen, setRightDrawerOpen] = useState<boolean>(false);
-    const { title, rightIcon, children, disableNavBar, headerNavContent } = props;
+    const { title, rightIcon, leftIcon, children, disableNavBar, headerNavContent } = props;
 
     const renderProps: RenderProps = {
         leftDrawer: leftDrawerOpen,
@@ -142,6 +143,11 @@ const SplitPage = (props: Props) => {
         closeLeftDrawer: () => setLeftDrawerOpen(false),
         closeRightDrawer: () => setRightDrawerOpen(false),
     };
+
+    let currentLeftIcon = leftIcon;
+    if (!currentLeftIcon) {
+        currentLeftIcon = faUser;
+    }
 
     return (
         <div className="relative">
@@ -152,7 +158,12 @@ const SplitPage = (props: Props) => {
                         !rightIcon && 'sm:hidden'
                     } `}
                 >
-                    <IconButton size="lg" className="sm:hidden" icon={faUser} onClick={() => setLeftDrawerOpen(true)} />
+                    <IconButton
+                        size="lg"
+                        className="sm:hidden"
+                        icon={currentLeftIcon}
+                        onClick={() => setLeftDrawerOpen(true)}
+                    />
 
                     <div className="ml-2 items-center text-2xl font-bold sm:hidden">{title}</div>
                     <span className="flex-grow" />

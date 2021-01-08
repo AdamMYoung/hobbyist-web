@@ -47,6 +47,28 @@ export type CreateCommentRequest = {
     rootUid?: string;
 };
 
+export type UpdateProfileRequest = {
+    name: string;
+    description: string;
+    profileImgBase64: string;
+    bannerImgBase64: string;
+};
+
+export type UpdateHobbyRequest = {
+    description: string;
+    profileImgBase64: string;
+    bannerImgBase64: string;
+};
+
+export type UpdatePostRequest = {
+    content: Node[];
+};
+
+export type UpdateCommentRequest = {
+    content: Node[];
+    rootUid: string;
+};
+
 // Hobby
 
 export type HobbyCategory = {
@@ -92,6 +114,10 @@ export type ProfileDetail = Profile & {
     bannerSrc?: string;
 };
 
+export type CurrentProfileDetail = ProfileDetail & {
+    emailAddress?: string;
+};
+
 //Post
 
 export type Post = {
@@ -120,7 +146,7 @@ export type CommentEntry = {
     uid: string;
     rootUid: string;
     profile: Profile;
-    content: any;
+    content: Node[];
     creationDate: Date;
     replies: CommentEntry[];
 };
