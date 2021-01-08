@@ -48,24 +48,24 @@ const DetailPostCard: React.FC<Props> = (props) => {
                             />
                         </div>
                     </div>
+
+                    <hr className="my-4" />
+                    <div className="flex mt-4 w-full">{children}</div>
+
                     {profile?.username === getMetadata(user, 'username') && (
                         <>
-                            <hr className="my-4" />
-                            <div className="flex items-center">
+                            <div className="flex items-center mt-4">
                                 <Button
-                                    className="text-gray-500 mx-2 hover:underline"
+                                    className="text-gray-500 text-sm mr-2 hover:underline"
                                     onClick={() => history.push(`/hobby/${hobby.slug}/${token}/edit`)}
                                 >
                                     Edit
                                 </Button>
-                                <Button className="text-gray-500 mx-2 hover:underline">Delete</Button>
+                                <Button className="text-gray-500 text-sm ml-2 hover:underline">Delete</Button>
                             </div>
                         </>
                     )}
-                    <hr className="my-4" />
-                    <div className="flex mt-4 w-full">{children}</div>
                 </div>
-
                 <hr className="my-6" />
 
                 <div className="px-4 sm:px-12">

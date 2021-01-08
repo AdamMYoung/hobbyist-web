@@ -82,7 +82,7 @@ const Hobby: React.FC = () => {
                                     <FeedSortButtons currentSortType={feedSortType} onSortChanged={setFeedSortType} />
                                 </SplitPage.Center.Header>
 
-                                <Feed slug={slug} />
+                                <Feed slug={slug} type="hobby" />
                             </SplitPage.Center>
 
                             <SplitPage.Right />

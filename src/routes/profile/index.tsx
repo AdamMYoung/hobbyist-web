@@ -67,7 +67,7 @@ const Profile = () => {
                                         </div>
                                     </SplitPage.Center.Header>
 
-                                    <Feed />
+                                    <Feed type="user" slug={username} />
                                 </SplitPage.Center>
                                 <SplitPage.Right />
                             </SplitPage.Body>
