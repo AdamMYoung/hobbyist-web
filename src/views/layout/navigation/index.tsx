@@ -54,13 +54,15 @@ const Navigation = () => {
                     />
 
                     <div className="flex items-center ml-auto">
-                        {isAuthenticated && hobbies && hobbies.length > 0 && (
+                        {isAuthenticated && (
                             <>
-                                <LoadTransition className="mx-4 hidden sm:block w-full">
-                                    <Button variant="primary" onClick={() => history.push('/new-post')}>
-                                        Create Post
-                                    </Button>
-                                </LoadTransition>
+                                {hobbies && hobbies.length > 0 && (
+                                    <LoadTransition className="mx-4 hidden sm:block w-full">
+                                        <Button variant="primary" onClick={() => history.push('/new-post')}>
+                                            Create Post
+                                        </Button>
+                                    </LoadTransition>
+                                )}
 
                                 <NavigationProfile />
                             </>
