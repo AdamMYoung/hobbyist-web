@@ -38,17 +38,7 @@ const PostCard: React.FC<Props> = (props) => {
                     <p className="mt-4 text-xl font-bold">{title}</p>
                     <div className="flex my-2 w-full">{children}</div>
                 </div>
-                {profile?.username === getMetadata(user, 'username') && (
-                    <div className="flex items-center ml-20 w-full mt-4">
-                        <Button
-                            className="text-gray-500 text-sm mr-2 hover:underline"
-                            onClick={() => history.push(`/hobby/${hobbySlug}/${token}/edit`)}
-                        >
-                            Edit
-                        </Button>
-                        <Button className="text-gray-500 text-sm ml-2 hover:underline">Delete</Button>
-                    </div>
-                )}
+
                 <div className="pl-20 flex items-center mt-4">
                     <ProfileLink
                         title={hobbyName}
@@ -64,6 +54,17 @@ const PostCard: React.FC<Props> = (props) => {
                         />
                     </div>
                 </div>
+                {profile?.username === getMetadata(user, 'username') && (
+                    <div className="flex items-center ml-20 w-full mt-4 -mb-1">
+                        <Button
+                            className="text-gray-500 text-xs mr-2 hover:underline"
+                            onClick={() => history.push(`/hobby/${hobbySlug}/${token}/edit`)}
+                        >
+                            Edit
+                        </Button>
+                        <Button className="text-gray-500 text-xs ml-2 hover:underline">Delete</Button>
+                    </div>
+                )}
             </article>
         </Card>
     );

@@ -1,8 +1,11 @@
+import { useHistory } from 'react-router-dom';
+
 import { Profile } from '../../types';
 import Card from '../card';
 import ProfileIcon from '../profile-icon';
 import Button from '../button';
-import { useHistory } from 'react-router-dom';
+import List from '../list';
+import { useFeed } from '../../hooks/queries';
 
 type Props = {
     profile: Profile;
@@ -14,6 +17,7 @@ const PostProfileCard = (props: Props) => {
     const { username, profileSrc, description } = profile;
 
     const history = useHistory();
+    const { data: userPosts, isSuccess } = useFeed('user', username);
 
     return (
         <div className={`relative w-full ${className}`}>
@@ -24,10 +28,29 @@ const PostProfileCard = (props: Props) => {
                 <p className="text-lg font-bold mt-14">{username}</p>
                 <p className="text-sm mt-2 text-gray-300">{description}</p>
                 <Button variant="primary" className="mx-auto mt-4" onClick={() => history.push(`/profile/${username}`)}>
-                    View
+                    View Profile
                 </Button>
-                <hr className="my-2" />
-                <p className="text-lg font-semibold">Other posts</p>
+                {isSuccess && (
+                    <>
+                        <hr className="my-4" />
+                        <p className="text-lg font-semibold">Other posts</p>
+
+                        <List>
+                            {userPosts?.pages[0].items.slice(0, 5).map((post) => (
+                                <List.Item className="w-full text-left" key={`${post.hobbySlug}/${post.token}`}>
+                                    <div className="block ml-4 ">
+                                        <Button
+                                            className={'font-semibold hover:underline text-left w-full'}
+                                            onClick={() => history.push(`/hobby/${post.hobbySlug}/${post.token}`)}
+                                        >
+                                            {post.title}
+                                        </Button>
+                                    </div>
+                                </List.Item>
+                            ))}
+                        </List>
+                    </>
+                )}
             </Card>
         </div>
     );
