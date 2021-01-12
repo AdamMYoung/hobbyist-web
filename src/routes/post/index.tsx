@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import DetailPostCard from '../../components/detail-post-card';
+import PostDetailCard from '../../components/post-detail-card';
 import LoadTransition from '../../components/load-transition';
 import PostProfileCard from '../../components/post-profile-card';
 import SEO from '../../components/seo';
@@ -26,9 +26,9 @@ const Post = () => {
                 <SplitPage>
                     <SplitPage.Body disableProfileControls>
                         <SplitPage.Center>
-                            <DetailPostCard {...(post as TextPost)} hobby={hobby as HobbyDetail}>
+                            <PostDetailCard {...(post as TextPost)} hobby={hobby as HobbyDetail}>
                                 <TextEditor readOnly initialValue={(post as TextPost).content} />
-                            </DetailPostCard>
+                            </PostDetailCard>
                         </SplitPage.Center>
                         <SplitPage.Right>
                             <PostProfileCard className="mt-8" profile={(post as PostTypes).profile} />

@@ -12,6 +12,10 @@ import { useUserProfile } from '../../hooks/queries';
 import { CurrentProfileDetail, UpdateProfileRequest } from '../../types';
 import { toBase64 } from '../../utils/imageUtils';
 import SplitPage, { RenderProps } from '../../views/split-page';
+import PlaceholderFeed from '../../views/placeholder-feed';
+import { useAuth0 } from '@auth0/auth0-react';
+import Input from '../../components/input';
+import axios from 'axios';
 
 enum SettingsPage {
     'Profile',
@@ -26,15 +30,15 @@ const schema = yup.object().shape({
     bannerImgBase64: yup.string().required(),
 });
 
+const title = {
+    [SettingsPage.Account]: 'Account.',
+    [SettingsPage.Profile]: 'Profile.',
+    [SettingsPage.Support]: 'Support.',
+};
+
 const ProfileSettings = () => {
     const [currentPage, setCurrentPage] = useState<SettingsPage>(SettingsPage.Profile);
     const { data, isLoading } = useUserProfile();
-
-    const title = {
-        [SettingsPage.Account]: 'Account.',
-        [SettingsPage.Profile]: 'Profile.',
-        [SettingsPage.Support]: 'Support.',
-    };
 
     return (
         <LoadTransition>
@@ -74,17 +78,14 @@ const ProfileSettings = () => {
                                 </List>
                             </SplitPage.Left>
                             <SplitPage.Center>
-                                <SplitPage.Center.Header title={title[currentPage]} />
+                                <h1 className="text-2xl font-bold">{title[currentPage]}</h1>
 
-                                <div className="mt-4">
-                                    {currentPage === SettingsPage.Profile && (
-                                        <Profile profile={data as CurrentProfileDetail} />
-                                    )}
-                                    {currentPage === SettingsPage.Account && <Account />}
-                                    {currentPage === SettingsPage.Support && <Support />}
-                                </div>
+                                {currentPage === SettingsPage.Profile && (
+                                    <Profile profile={data as CurrentProfileDetail} />
+                                )}
+                                {currentPage === SettingsPage.Account && <Account />}
+                                {currentPage === SettingsPage.Support && <Support />}
                             </SplitPage.Center>
-                            <SplitPage.Right />
                         </SplitPage.Body>
                     )}
                 </SplitPage>
@@ -149,6 +150,7 @@ const Profile = (props: { profile: CurrentProfileDetail }) => {
 
     return (
         <>
+            <h2 className="mb-8">Adjust your profile page content and more.</h2>
             <EditableProfileHead
                 name={username}
                 description={description}
@@ -162,16 +164,110 @@ const Profile = (props: { profile: CurrentProfileDetail }) => {
             <Button className="ml-auto mt-4" variant="primary" disabled={!schemaValid}>
                 Save
             </Button>
+
+            <PlaceholderFeed count={2} />
         </>
     );
 };
 
 const Account = () => {
-    return <div />;
+    const { user } = useAuth0();
+    const [passwordResetStatus, setPasswordResetStatus] = useState<'initial' | 'loading' | 'success'>('initial');
+
+    const handleResetPassword = async () => {
+        setPasswordResetStatus('loading');
+
+        await axios
+            .post(
+                'https://hobbyist.eu.auth0.com/dbconnections/change_password',
+                {
+                    client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
+                    email: user.email,
+                    connection: 'Username-Password-Authentication',
+                },
+                { headers: { 'content-type': 'application/json' } }
+            )
+            .then((res) => res.status === 200 && setPasswordResetStatus('success'));
+    };
+
+    return (
+        <>
+            <h2 className="mb-8">Edit account details such as your email address, password or mail preferences.</h2>
+
+            <div>
+                <label>
+                    Name:
+                    <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.name} />
+                </label>
+                <Button
+                    disabled={passwordResetStatus !== 'initial'}
+                    className="mt-3"
+                    variant="primary"
+                    onClick={() => handleResetPassword()}
+                >
+                    Change Name
+                </Button>
+            </div>
+
+            <hr className="my-6" />
+
+            <div>
+                <label>
+                    Email Address:
+                    <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.email} />
+                </label>
+            </div>
+
+            <div className="mt-6">
+                <label>
+                    Password:
+                    <Input disabled className="block mt-2 w-full" id="emailAddress" value="****************" />
+                </label>
+
+                {user.sub.includes('auth0|') && (
+                    <Button
+                        disabled={passwordResetStatus !== 'initial'}
+                        className="mt-3"
+                        variant="primary"
+                        onClick={() => handleResetPassword()}
+                    >
+                        Change Password
+                    </Button>
+                )}
+                {passwordResetStatus === 'success' && (
+                    <LoadTransition>
+                        <p className="p-3 mt-2  bg-green-200 border rounded-lg">
+                            Password reset sent. Please check your inbox for further instructions.
+                        </p>
+                    </LoadTransition>
+                )}
+            </div>
+
+            <hr className="my-6" />
+        </>
+    );
 };
 
 const Support = () => {
-    return <div />;
+    return (
+        <>
+            <h2 className="mb-8">Consider supporting the maintenance and active development of the site.</h2>
+
+            <p>
+                Thanks for using hobbyist. This site is developed by one developer in their spare time. If you fancy
+                giving a coffee or contributing towards hosting the site, consider becoming a supporter below. You'll
+                get a <b>cool badge</b> on your profile, <b>zero ads</b> and potentially more (I'm always open to
+                feature suggestions).
+            </p>
+
+            <p className="text-xl mt-4">
+                Supporter Status: <span className="text-yellow-500">Not Active</span>
+            </p>
+            <Button className="mt-4" variant="primary">
+                Become a supporter!
+            </Button>
+        </>
+    );
 };
 
 export default ProfileSettings;

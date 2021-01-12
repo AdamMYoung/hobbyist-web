@@ -18,7 +18,7 @@ type Props = Post & {
     hobby: Hobby;
 };
 
-const DetailPostCard: React.FC<Props> = (props) => {
+const PostDetailCard: React.FC<Props> = (props) => {
     const { token, title, creationDate, profile, children, hobby } = props;
     const history = useHistory();
     const { user } = useAuth0();
@@ -62,19 +62,16 @@ const DetailPostCard: React.FC<Props> = (props) => {
                     )}
                 </div>
 
-                <hr className="my-6" />
-
-                <div className="px-4 sm:px-12">
+                <div className="px-4 sm:px-12 mt-6">
                     <p className="text-3xl font-semibold">Discussion</p>
                     <CommentBox hobbySlug={hobby.slug} postToken={token} />
-
-                    <hr className="my-4" />
-
-                    <Comments hobbySlug={hobby.slug} postToken={token} />
+                    <div className="mt-4">
+                        <Comments hobbySlug={hobby.slug} postToken={token} />
+                    </div>
                 </div>
             </article>
         </Card>
     );
 };
 
-export default DetailPostCard;
+export default PostDetailCard;
