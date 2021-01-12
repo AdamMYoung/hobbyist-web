@@ -28,7 +28,6 @@ const DetailPostCard: React.FC<Props> = (props) => {
             <article className="py-4">
                 <div className="px-4 sm:px-12">
                     <p className="text-6xl font-bold text-center sm:text-left">{title}</p>
-
                     <div className="mt-8 flex flex-wrap flex-col sm:flex-row justify-items-center items-center">
                         <ProfileLink
                             title={profile.username}
@@ -48,24 +47,21 @@ const DetailPostCard: React.FC<Props> = (props) => {
                             />
                         </div>
                     </div>
-
                     <hr className="my-4" />
                     <div className="flex mt-4 w-full">{children}</div>
-
                     {profile?.username === getMetadata(user, 'username') && (
-                        <>
-                            <div className="flex items-center mt-4">
-                                <Button
-                                    className="text-gray-500 text-sm mr-2 hover:underline"
-                                    onClick={() => history.push(`/hobby/${hobby.slug}/${token}/edit`)}
-                                >
-                                    Edit
-                                </Button>
-                                <Button className="text-gray-500 text-sm ml-2 hover:underline">Delete</Button>
-                            </div>
-                        </>
+                        <div className="flex items-center w-full mt-4">
+                            <Button
+                                className="text-gray-500 text-xs mr-2 hover:underline"
+                                onClick={() => history.push(`/hobby/${hobby.slug}/${token}/edit`)}
+                            >
+                                Edit
+                            </Button>
+                            <Button className="text-gray-500 text-xs ml-2 hover:underline">Delete</Button>
+                        </div>
                     )}
                 </div>
+
                 <hr className="my-6" />
 
                 <div className="px-4 sm:px-12">
