@@ -24,7 +24,7 @@
         "axios": "^0.21.1",
         "dayjs": "^1.10.2",
         "google-map-react": "^2.1.9",
-        "html-react-parser": "^1.1.1",
+        "html-react-parser": "^1.1.2",
         "imagemin": "^7.0.1",
         "imagemin-jpegtran": "^7.0.0",
         "imagemin-pngquant": "^9.0.1",
