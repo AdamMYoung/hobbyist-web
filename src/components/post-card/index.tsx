@@ -60,22 +60,22 @@ const PostCard: React.FC<Props> = (props) => {
                             />
                         </div>
                     </div>
-                    {profile?.username === getMetadata(user, 'username') && (
-                        <div className="flex items-center ml-20 w-full mt-4 -mb-1">
-                            <Button
-                                className="text-gray-500 text-xs mr-2 hover:underline"
-                                onClick={() => history.push(`/hobby/${hobbySlug}/${token}/edit`)}
-                            >
-                                Edit
-                            </Button>
-                            <Button
-                                className="text-gray-500 text-xs ml-2 hover:underline"
-                                onClick={() => setOpen(true)}
-                            >
-                                Delete
-                            </Button>
-                        </div>
-                    )}
+
+                    <div
+                        className={`items-center mt-2 ml-20 w-full -mb-2 ${
+                            profile?.username === getMetadata(user, 'username') ? 'flex' : 'hidden'
+                        }`}
+                    >
+                        <Button
+                            className="text-gray-400 text-xs mr-2 hover:underline"
+                            onClick={() => history.push(`/hobby/${hobbySlug}/${token}/edit`)}
+                        >
+                            Edit
+                        </Button>
+                        <Button className="text-gray-400 text-xs mx-2 hover:underline" onClick={() => setOpen(true)}>
+                            Delete
+                        </Button>
+                    </div>
                 </article>
             </Card>
             <Modal title="Delete Post" open={isOpen} onClose={() => setOpen(false)}>
