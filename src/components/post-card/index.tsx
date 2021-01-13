@@ -11,7 +11,7 @@ import SocialControls from '../social-controls';
 import ProfileLink from '../profile-link';
 import { getMetadata } from '../../utils/userUtils';
 import Modal from '../modal';
-import { useMutateDeletePost } from '../../hooks/mutations';
+import DeletePostModal from '../../views/modals/delete-post-modal';
 
 dayjs.extend(relativeTime);
 
@@ -21,7 +21,6 @@ const PostCard: React.FC<Props> = (props) => {
     const { token, title, creationDate, hobbySlug, hobbyName, hobbyProfileSrc, children, profile } = props;
 
     const [isOpen, setOpen] = useState<boolean>(false);
-    const { mutate: deletePost, isLoading } = useMutateDeletePost(hobbySlug, token);
     const history = useHistory();
     const { user } = useAuth0();
 
@@ -62,7 +61,7 @@ const PostCard: React.FC<Props> = (props) => {
                     </div>
 
                     <div
-                        className={`items-center mt-2 ml-20 w-full -mb-2 ${
+                        className={`items-center mt-2 ml-20 w-full -mb-1 ${
                             profile?.username === getMetadata(user, 'username') ? 'flex' : 'hidden'
                         }`}
                     >
@@ -78,17 +77,7 @@ const PostCard: React.FC<Props> = (props) => {
                     </div>
                 </article>
             </Card>
-            <Modal title="Delete Post" open={isOpen} onClose={() => setOpen(false)}>
-                <p className="mb-4">Are you sure you want to delete this post? This cannot be undone.</p>
-                <div className="flex">
-                    <Button variant="secondary" onClick={() => deletePost()} disabled={isLoading}>
-                        Delete
-                    </Button>
-                    <Button className="ml-auto" variant="primary" onClick={() => setOpen(false)} disabled={isLoading}>
-                        Cancel
-                    </Button>
-                </div>
-            </Modal>
+            {isOpen && <DeletePostModal hobbySlug={hobbySlug} postToken={token} onClose={() => setOpen(false)} />}
         </>
     );
 };

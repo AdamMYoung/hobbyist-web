@@ -4,23 +4,21 @@ import { useScrollLock } from '../../providers/ScrollLockProvider';
 import LoadTransition from '../load-transition';
 
 type Props = {
-    open?: boolean;
-    onClose?: () => void;
     title?: string;
 };
 
 const Modal: React.FC<Props> = (props) => {
-    const { open, title, onClose, children } = props;
+    const { title, children } = props;
 
     const { setLocked } = useScrollLock();
 
     useEffect(() => {
-        setLocked(!!open);
+        setLocked(true);
 
         return () => setLocked(false);
-    }, [open, setLocked]);
+    }, [setLocked]);
 
-    return open ? (
+    return (
         <>
             <div className="fixed z-50 top-0 left-0 w-full h-full bg-gray-400 opacity-70 pointer-events-none" />
 
@@ -33,7 +31,7 @@ const Modal: React.FC<Props> = (props) => {
                 </div>
             </LoadTransition>
         </>
-    ) : null;
+    );
 };
 
 export default Modal;
