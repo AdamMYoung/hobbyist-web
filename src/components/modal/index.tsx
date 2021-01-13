@@ -24,10 +24,7 @@ const Modal: React.FC<Props> = (props) => {
         <>
             <div className="fixed z-50 top-0 left-0 w-full h-full bg-gray-400 opacity-70 pointer-events-none" />
 
-            <LoadTransition
-                className="fixed flex flex-col justify-center z-50 top-0 left-0 w-full h-full"
-                onClick={() => onClose && onClose()}
-            >
+            <LoadTransition className="fixed flex flex-col justify-center z-50 top-0 left-0 w-full h-full">
                 <div className="m-auto rounded-lg border bg-white p-4 w-100 opacity-100">
                     <section>
                         {title && <p className="text-2xl font-bold mb-2">{title}</p>}

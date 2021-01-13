@@ -12,7 +12,7 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
         tw`px-4 py-2 bg-purple-500 hover:bg-purple-700 transition text-white font-bold focus:outline-none focus:ring`}
     ${(props) =>
         props.variant === 'secondary' &&
-        tw`px-4 py-2 bg-yellow-500 bg-yellow-700 transition text-white font-bold focus:outline-none focus:ring`}
+        tw`px-4 py-2 bg-red-500 transition text-white font-bold focus:outline-none focus:ring`}
     ${(props) => props.variant === 'icon' && tw`px-4 py-2 rounded font-bold hover:bg-gray-300`}
     ${(props) => props.variant === 'link' && tw`underline cursor-pointer`}
 
@@ -24,7 +24,7 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
                 case 'primary':
                     return tw`bg-purple-700`;
                 case 'secondary':
-                    return tw`bg-yellow-700`;
+                    return tw`bg-red-700`;
                 case 'link':
                     return 'text-gray-600';
             }
@@ -36,6 +36,6 @@ export const ThemedButton = styled.button<{ variant?: 'primary' | 'secondary' | 
         filter: brightness(100%);
 
         ${(props) => props.variant === 'primary' && tw` text-purple-200 bg-purple-400`}
-        ${(props) => props.variant === 'secondary' && tw`text-yellow-200 bg-yellow-400`}
+        ${(props) => props.variant === 'secondary' && tw`text-red-200 bg-red-400`}
     }
 `;
