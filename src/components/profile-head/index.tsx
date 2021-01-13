@@ -14,7 +14,7 @@ const ProfileHead: React.FC<Props> = (props) => {
 
     return (
         <LoadTransition>
-            <div className={`relative h-36 w-full`}>
+            <div className={`relative h-36 w-full ${!headerSrc && 'bg-blue-200 rounded-t-lg'}`}>
                 <div className="absolute t-0 h-36 w-full">
                     <div className="relative h-36 w-full">
                         <Image
@@ -24,7 +24,7 @@ const ProfileHead: React.FC<Props> = (props) => {
                         />
                     </div>
                 </div>
-                <hr className="absolute top-36 w-full border-gray-300" />
+                {headerSrc && <hr className="absolute top-36 w-full border-gray-300" />}
                 <div className="absolute top-36 left-1/2 sm:left-1/4 transform -translate-y-1/2 -translate-x-1/2">
                     <ProfileIcon size="xl" src={profileSrc} alt={title}></ProfileIcon>
                 </div>

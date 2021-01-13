@@ -31,7 +31,12 @@ const Post = () => {
                             </PostDetailCard>
                         </SplitPage.Center>
                         <SplitPage.Right>
-                            <PostProfileCard className="mt-8" profile={(post as PostTypes).profile} />
+                            <PostProfileCard
+                                className="mt-8"
+                                profile={(post as PostTypes).profile}
+                                hobbySlug={slug}
+                                token={token}
+                            />
                         </SplitPage.Right>
                     </SplitPage.Body>
                 </SplitPage>
