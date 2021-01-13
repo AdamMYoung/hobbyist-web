@@ -10,7 +10,6 @@ import Button from '../button';
 import SocialControls from '../social-controls';
 import ProfileLink from '../profile-link';
 import { getMetadata } from '../../utils/userUtils';
-import Modal from '../modal';
 import DeletePostModal from '../../views/modals/delete-post-modal';
 
 dayjs.extend(relativeTime);
