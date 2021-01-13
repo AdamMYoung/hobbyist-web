@@ -46,6 +46,7 @@
         "slate": "^0.59.0",
         "slate-history": "^0.59.0",
         "slate-react": "^0.59.0",
+        "stripe": "^8.130.0",
         "styled-components": "^5.2.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
         "twin.macro": "^2.0.8",

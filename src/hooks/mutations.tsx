@@ -177,3 +177,22 @@ export const useMutateUpdateComment = (hobbySlug: string, postToken: string, com
         }
     );
 };
+
+export const useMutateDeletePost = (slug: string, postToken: string) => {
+    const axios = useAuthAxios();
+    const history = useHistory();
+    const queryClient = useQueryClient();
+
+    return useMutation<AxiosResponse<Post>, void, void>(
+        async () => {
+            return await axios().then((a) => a.delete(`/hobbies/${slug}/${postToken}`));
+        },
+        {
+            onSuccess: () => {
+                const postQueryKey = `hobby/${slug}/${postToken}`;
+                queryClient.invalidateQueries(postQueryKey);
+                history.push(`/`);
+            },
+        }
+    );
+};
