@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 type InputOptions = {
     multiple: boolean;
@@ -10,7 +10,8 @@ const defaultInputOptions: InputOptions = {
     fileTypes: [],
 };
 
-const useFileUpload = (onUpload: (files: File[]) => void, options?: Partial<InputOptions>) => {
+const useFileUpload = (options?: Partial<InputOptions>) => {
+    const [files, setFiles] = useState<File[]>();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const { fileTypes, multiple } = { ...defaultInputOptions, ...options };
@@ -20,10 +21,10 @@ const useFileUpload = (onUpload: (files: File[]) => void, options?: Partial<Inpu
             const target = event?.target as any;
 
             if (target && target.files) {
-                onUpload(target.files);
+                setFiles(target.files);
             }
         },
-        [onUpload]
+        [setFiles]
     );
 
     if (!inputRef.current) {
@@ -38,7 +39,7 @@ const useFileUpload = (onUpload: (files: File[]) => void, options?: Partial<Inpu
         }
     }
 
-    return () => inputRef.current?.click();
+    return { files, selectFiles: () => inputRef.current?.click() };
 };
 
 export default useFileUpload;
