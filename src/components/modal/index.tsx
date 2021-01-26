@@ -19,9 +19,9 @@ const Modal: React.FC<Props> = (props) => {
     }, [setLocked]);
 
     return (
-        <LoadTransition className="fixed flex flex-col justify-center z-50 top-0 left-0 p-2 sm:p-4 h-full">
+        <LoadTransition className="fixed flex flex-col justify-center z-50 top-0 left-0 p-2 sm:p-4 h-full w-full">
             <div className="fixed z-40 top-0 left-0 w-full h-full bg-gray-400 opacity-70 pointer-events-none" />
-            <div className="justify-center z-50 rounded-lg border bg-white p-4 opacity-100 max-w-6xl">
+            <div className="z-50 rounded-lg border bg-white p-4 opacity-100 max-w-5xl mx-auto">
                 <section>
                     {title && <p className="text-2xl font-bold mb-2">{title}</p>}
                     {children}
