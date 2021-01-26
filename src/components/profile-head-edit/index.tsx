@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFileUpload from '../../hooks/useImageUpload';
 import Image from '../image';
 import ProfileIcon from '../profile-icon';
@@ -30,8 +30,11 @@ const EditableProfileHead = (props: Props) => {
         onBannerImgChanged,
     } = props;
 
-    const onUploadProfileImg = useFileUpload((files) => onProfileImgChanged(files[0]), uploadOptions);
-    const onUploadBannerImg = useFileUpload((files) => onBannerImgChanged(files[0]), uploadOptions);
+    const { files: profileImg, selectFiles: onSelectProfileImg } = useFileUpload(uploadOptions);
+    const { files: bannerImg, selectFiles: onSelectBannerImg } = useFileUpload(uploadOptions);
+
+    useEffect(() => profileImg && onProfileImgChanged(profileImg[0]), [profileImg, onProfileImgChanged]);
+    useEffect(() => bannerImg && onBannerImgChanged(bannerImg[0]), [bannerImg, onBannerImgChanged]);
 
     return (
         <div>
@@ -39,7 +42,7 @@ const EditableProfileHead = (props: Props) => {
                 <div className="absolute t-0 h-36 w-full">
                     <div
                         className="relative h-36 w-full rounded-t-lg cursor-pointer bg-purple-500 transition hover:bg-purple-700 active:bg-purple-800"
-                        onClick={onUploadBannerImg}
+                        onClick={onSelectBannerImg}
                     >
                         {bannerImgBase64 && (
                             <Image
@@ -53,12 +56,12 @@ const EditableProfileHead = (props: Props) => {
                 <hr className="absolute top-36 w-full border-gray-300" />
                 <div className="absolute top-36 left-1/2 sm:left-1/4 transform -translate-y-1/2 -translate-x-1/2">
                     {!profileImgBase64 ? (
-                        <ProfileContainer active size="lg" className="bg-purple-500" onClick={onUploadProfileImg} />
+                        <ProfileContainer active size="lg" className="bg-purple-500" onClick={onSelectProfileImg} />
                     ) : (
                         <ProfileIcon
                             active
                             className="cursor-pointer"
-                            onClick={onUploadProfileImg}
+                            onClick={onSelectProfileImg}
                             size="lg"
                             src={profileImgBase64}
                             alt=""

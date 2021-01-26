@@ -11,6 +11,7 @@ import { toBase64 } from '../../utils/imageUtils';
 import PlaceholderFeed from '../../views/placeholder-feed';
 import { useMutateCreateHobby } from '../../hooks/mutations';
 import { CreateHobbyRequest } from '../../types';
+import ImageCropModal from '../../views/modals/image-crop-modal';
 
 const schema = yup.object().shape({
     slug: yup.string().required(),
@@ -30,6 +31,10 @@ const NewHobby = () => {
 
     const [profileImg, setProfileImg] = useState<File>();
     const [bannerImg, setBannerImg] = useState<File>();
+
+    const [isProfileCropVisible, setProfileCropVisible] = useState<boolean>(false);
+    const [isBannerCropVisible, setBannerCropVisible] = useState<boolean>(false);
+
     const [profileImgBase64, setProfileImgBase64] = useState<string>();
     const [bannerImgBase64, setBannerImgBase64] = useState<string>();
 
@@ -59,27 +64,22 @@ const NewHobby = () => {
         validateSchema();
     }, [hobbyRequest]);
 
-    /**
-     * Parses the set profile image into a compressed base64 string.
-     */
-    useEffect(() => {
-        const parseImg = async () => {
-            if (profileImg) await toBase64(profileImg).then(setProfileImgBase64);
-        };
+    useEffect(() => bannerImg && setBannerCropVisible(true), [bannerImg]);
 
-        parseImg();
-    }, [profileImg]);
+    useEffect(() => profileImg && setProfileCropVisible(true), [profileImg]);
 
-    /**
-     * Parses the set banner image into a compressed base64 string.
-     */
-    useEffect(() => {
-        const parseImg = async () => {
-            if (bannerImg) await toBase64(bannerImg).then(setBannerImgBase64);
-        };
+    const handleProfileImageSubmit = async (profile: File) => {
+        console.log(profile);
+        if (profile) await toBase64(profile).then(setProfileImgBase64);
+        setProfileImg(undefined);
+        setProfileCropVisible(false);
+    };
 
-        parseImg();
-    }, [bannerImg]);
+    const handleBannerImageSubmit = async (banner: File) => {
+        if (banner) await toBase64(banner).then(setBannerImgBase64);
+        setBannerImg(undefined);
+        setBannerCropVisible(false);
+    };
 
     /**
      * Uploads the current hobby entry to the API if the schema is valid.
@@ -105,58 +105,76 @@ const NewHobby = () => {
     );
 
     return (
-        <SplitPage title={title} rightIcon={faQuestion}>
-            {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
-                <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
-                    <SplitPage.Center>
-                        <SplitPage.Center.Header title={title}>
-                            <CreateButton />
-                        </SplitPage.Center.Header>
-                        <div className="block sm:hidden mb-4 mx-2">
-                            <CreateButton />
-                        </div>
-                        <div className="my-4">
-                            <EditableProfileHead
-                                name={name}
-                                description={description}
-                                profileImgBase64={hobbyRequest.profileImgBase64}
-                                bannerImgBase64={hobbyRequest.bannerImgBase64}
-                                onNameChanged={setName}
-                                onDescriptionChanged={setDescription}
-                                onProfileImgChanged={setProfileImg}
-                                onBannerImgChanged={setBannerImg}
-                            />
-                        </div>
-                        <PlaceholderFeed count={1} />
-                    </SplitPage.Center>
+        <>
+            <SplitPage title={title} rightIcon={faQuestion}>
+                {({ leftDrawer, rightDrawer, closeLeftDrawer, closeRightDrawer }: RenderProps) => (
+                    <SplitPage.Body leftDrawerOpen={leftDrawer} onCloseLeftDrawer={closeLeftDrawer}>
+                        <SplitPage.Center>
+                            <SplitPage.Center.Header title={title}>
+                                <CreateButton />
+                            </SplitPage.Center.Header>
+                            <div className="block sm:hidden mb-4 mx-2">
+                                <CreateButton />
+                            </div>
+                            <div className="my-4">
+                                <EditableProfileHead
+                                    name={name}
+                                    description={description}
+                                    profileImgBase64={hobbyRequest.profileImgBase64}
+                                    bannerImgBase64={hobbyRequest.bannerImgBase64}
+                                    onNameChanged={setName}
+                                    onDescriptionChanged={setDescription}
+                                    onProfileImgChanged={setProfileImg}
+                                    onBannerImgChanged={setBannerImg}
+                                />
+                            </div>
+                            <PlaceholderFeed count={1} />
+                        </SplitPage.Center>
 
-                    <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
-                        <SplitPage.Header title="Help." />
-                        <p className="mt-2 text-sm font-semibold">To create a new hobby, you'll need to provide:</p>
+                        <SplitPage.Right isDrawerOpen={rightDrawer} onCloseDrawer={closeRightDrawer}>
+                            <SplitPage.Header title="Help." />
+                            <p className="mt-2 text-sm font-semibold">To create a new hobby, you'll need to provide:</p>
 
-                        <p className="mt-4 text-lg font-bold">Name</p>
-                        <p className="text-sm">
-                            This will need to be unique, since this is how you'll find your community later on.
-                        </p>
+                            <p className="mt-4 text-lg font-bold">Name</p>
+                            <p className="text-sm">
+                                This will need to be unique, since this is how you'll find your community later on.
+                            </p>
 
-                        <p className="mt-2 text-lg font-bold">Description</p>
-                        <p className="text-sm">A brief description to tell people what your hobby is all about.</p>
+                            <p className="mt-2 text-lg font-bold">Description</p>
+                            <p className="text-sm">A brief description to tell people what your hobby is all about.</p>
 
-                        <p className="mt-2 text-lg font-bold">Header Photo</p>
-                        <p className="text-sm">A profile picture to represent your hobby.</p>
+                            <p className="mt-2 text-lg font-bold">Header Photo</p>
+                            <p className="text-sm">A profile picture to represent your hobby.</p>
 
-                        <p className="mt-2 text-lg font-bold">Banner Photo</p>
-                        <p className="text-sm">A banner photo to highlight your hobby.</p>
+                            <p className="mt-2 text-lg font-bold">Banner Photo</p>
+                            <p className="text-sm">A banner photo to highlight your hobby.</p>
 
-                        <hr className="my-4 border-gray-300" />
-                        <p className="mt-2 text-sm">
-                            Once you're done, click "Create" at the top of the screen, and your hobby page will be
-                            created.
-                        </p>
-                    </SplitPage.Right>
-                </SplitPage.Body>
+                            <hr className="my-4 border-gray-300" />
+                            <p className="mt-2 text-sm">
+                                Once you're done, click "Create" at the top of the screen, and your hobby page will be
+                                created.
+                            </p>
+                        </SplitPage.Right>
+                    </SplitPage.Body>
+                )}
+            </SplitPage>
+            {isProfileCropVisible && (
+                <ImageCropModal
+                    imageSrc={profileImg as File}
+                    aspectRatio={1}
+                    onClose={() => setProfileCropVisible(false)}
+                    onFinish={handleProfileImageSubmit}
+                />
             )}
-        </SplitPage>
+            {isBannerCropVisible && (
+                <ImageCropModal
+                    imageSrc={bannerImg as File}
+                    aspectRatio={20 / 6}
+                    onClose={() => setBannerCropVisible(false)}
+                    onFinish={handleBannerImageSubmit}
+                />
+            )}
+        </>
     );
 };
 
