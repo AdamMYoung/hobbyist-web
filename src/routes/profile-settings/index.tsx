@@ -1,4 +1,4 @@
-import { faCog, faHamburger, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useMemo, useState } from 'react';
 import * as yup from 'yup';
@@ -45,7 +45,7 @@ const ProfileSettings = () => {
             <SEO title="Profile Settings" />
 
             {!isLoading && (
-                <SplitPage title={title[currentPage]} leftIcon={faHamburger}>
+                <SplitPage title={title[currentPage]} leftIcon={faBars}>
                     {({ leftDrawer, closeLeftDrawer }: RenderProps) => {
                         const handleDrawerInput = (func: () => any) => {
                             func();
