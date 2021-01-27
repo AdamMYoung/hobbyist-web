@@ -60,7 +60,7 @@ const PostCard: React.FC<Props> = (props) => {
                     </div>
 
                     <div
-                        className={`items-center mt-2 ml-20 w-full -mb-1 ${
+                        className={`items-center mt-2 ml-20 -mb-1 ${
                             profile?.username === getMetadata(user, 'username') ? 'flex' : 'hidden'
                         }`}
                     >
