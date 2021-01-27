@@ -2,6 +2,8 @@ import { faCog, faStar, faUser, faBars } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useMemo, useState } from 'react';
 import * as yup from 'yup';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 
 import List from '../../components/list';
 import LoadTransition from '../../components/load-transition';
@@ -13,9 +15,7 @@ import { CurrentProfileDetail, UpdateProfileRequest } from '../../types';
 import { toBase64 } from '../../utils/imageUtils';
 import SplitPage, { RenderProps } from '../../views/split-page';
 import PlaceholderFeed from '../../views/placeholder-feed';
-import { useAuth0 } from '@auth0/auth0-react';
 import Input from '../../components/input';
-import axios from 'axios';
 
 enum SettingsPage {
     'Profile',
