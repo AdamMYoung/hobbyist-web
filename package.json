@@ -12,7 +12,7 @@
         "@microsoft/applicationinsights-react-js": "^3.0.5",
         "@microsoft/applicationinsights-web": "^2.5.10",
         "@tailwindcss/postcss7-compat": "^2.0.2",
-        "@testing-library/jest-dom": "^5.11.8",
+        "@testing-library/jest-dom": "^5.11.9",
         "@testing-library/react": "^11.2.3",
         "@testing-library/user-event": "^12.6.0",
         "autoprefixer": "^9.8.6",
