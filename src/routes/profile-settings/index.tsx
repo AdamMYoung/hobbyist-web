@@ -1,4 +1,4 @@
-import { faCog, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faStar, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useMemo, useState } from 'react';
 import * as yup from 'yup';
