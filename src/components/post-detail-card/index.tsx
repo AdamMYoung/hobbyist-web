@@ -54,7 +54,7 @@ const PostDetailCard: React.FC<Props> = (props) => {
                         <hr className="my-4" />
                         <div className="flex mt-4 w-full">{children}</div>
                         <div
-                            className={`items-center mt-4 w-full -mb-1 ${
+                            className={`items-center mt-4 -mb-1 ${
                                 profile?.username === getMetadata(user, 'username') ? 'flex' : 'hidden'
                             }`}
                         >

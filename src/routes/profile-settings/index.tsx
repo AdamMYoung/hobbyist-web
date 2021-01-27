@@ -46,48 +46,59 @@ const ProfileSettings = () => {
 
             {!isLoading && (
                 <SplitPage title={title[currentPage]} leftIcon={faHamburger}>
-                    {({ leftDrawer, closeLeftDrawer }: RenderProps) => (
-                        <SplitPage.Body
-                            disableProfileControls
-                            leftDrawerOpen={leftDrawer}
-                            onCloseLeftDrawer={closeLeftDrawer}
-                        >
-                            <SplitPage.Left>
-                                <List active>
-                                    <List.Item
-                                        isActive={currentPage === SettingsPage.Profile}
-                                        onClick={() => setCurrentPage(SettingsPage.Profile)}
-                                    >
-                                        <FontAwesomeIcon className="mr-6" icon={faUser} />
-                                        Profile
-                                    </List.Item>
-                                    <List.Item
-                                        isActive={currentPage === SettingsPage.Account}
-                                        onClick={() => setCurrentPage(SettingsPage.Account)}
-                                    >
-                                        <FontAwesomeIcon className="mr-6" icon={faCog} />
-                                        Account
-                                    </List.Item>
-                                    <List.Item
-                                        isActive={currentPage === SettingsPage.Support}
-                                        onClick={() => setCurrentPage(SettingsPage.Support)}
-                                    >
-                                        <FontAwesomeIcon className="mr-6" icon={faStar} />
-                                        Support
-                                    </List.Item>
-                                </List>
-                            </SplitPage.Left>
-                            <SplitPage.Center>
-                                <h1 className="text-2xl font-bold">{title[currentPage]}</h1>
+                    {({ leftDrawer, closeLeftDrawer }: RenderProps) => {
+                        const handleDrawerInput = (func: () => any) => {
+                            func();
+                            closeLeftDrawer && closeLeftDrawer();
+                        };
 
-                                {currentPage === SettingsPage.Profile && (
-                                    <Profile profile={data as CurrentProfileDetail} />
-                                )}
-                                {currentPage === SettingsPage.Account && <Account />}
-                                {currentPage === SettingsPage.Support && <Support />}
-                            </SplitPage.Center>
-                        </SplitPage.Body>
-                    )}
+                        return (
+                            <SplitPage.Body disableProfileControls>
+                                <SplitPage.Left isDrawerOpen={leftDrawer} onCloseDrawer={closeLeftDrawer}>
+                                    <List active>
+                                        <List.Item
+                                            isActive={currentPage === SettingsPage.Profile}
+                                            onClick={() =>
+                                                handleDrawerInput(() => setCurrentPage(SettingsPage.Profile))
+                                            }
+                                        >
+                                            <FontAwesomeIcon className="mr-6" icon={faUser} />
+                                            Profile
+                                        </List.Item>
+                                        <List.Item
+                                            isActive={currentPage === SettingsPage.Account}
+                                            onClick={() =>
+                                                handleDrawerInput(() => setCurrentPage(SettingsPage.Account))
+                                            }
+                                        >
+                                            <FontAwesomeIcon className="mr-6" icon={faCog} />
+                                            Account
+                                        </List.Item>
+                                        <List.Item
+                                            isActive={currentPage === SettingsPage.Support}
+                                            onClick={() =>
+                                                handleDrawerInput(() => setCurrentPage(SettingsPage.Support))
+                                            }
+                                        >
+                                            <FontAwesomeIcon className="mr-6" icon={faStar} />
+                                            Support
+                                        </List.Item>
+                                    </List>
+                                </SplitPage.Left>
+                                <SplitPage.Center>
+                                    <div className="mx-2 sm:mx-0">
+                                        <h1 className="text-2xl font-bold">{title[currentPage]}</h1>
+
+                                        {currentPage === SettingsPage.Profile && (
+                                            <Profile profile={data as CurrentProfileDetail} />
+                                        )}
+                                        {currentPage === SettingsPage.Account && <Account />}
+                                        {currentPage === SettingsPage.Support && <Support />}
+                                    </div>
+                                </SplitPage.Center>
+                            </SplitPage.Body>
+                        );
+                    }}
                 </SplitPage>
             )}
         </LoadTransition>
@@ -161,7 +172,7 @@ const Profile = (props: { profile: CurrentProfileDetail }) => {
                 onProfileImgChanged={setProfileImg}
                 onBannerImgChanged={setBannerImg}
             />
-            <Button className="ml-auto mt-4" variant="primary" disabled={!schemaValid}>
+            <Button className="ml-auto w-full sm:w-auto mt-4" variant="primary" disabled={!schemaValid}>
                 Save
             </Button>
 
@@ -194,29 +205,25 @@ const Account = () => {
         <>
             <h2 className="mb-8">Edit account details such as your email address, password or mail preferences.</h2>
 
-            <div>
-                <label>
-                    Name:
-                    <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.name} />
-                </label>
-                <Button
-                    disabled={passwordResetStatus !== 'initial'}
-                    className="mt-3"
-                    variant="primary"
-                    onClick={() => handleResetPassword()}
-                >
-                    Change Name
-                </Button>
-            </div>
+            <label>
+                Name:
+                <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.name} />
+            </label>
+            <Button
+                disabled={passwordResetStatus !== 'initial'}
+                className="mt-3"
+                variant="primary"
+                onClick={() => handleResetPassword()}
+            >
+                Change Name
+            </Button>
 
             <hr className="my-6" />
 
-            <div>
-                <label>
-                    Email Address:
-                    <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.email} />
-                </label>
-            </div>
+            <label>
+                Email Address:
+                <Input disabled className="block mt-2 w-full" id="emailAddress" value={user.email} />
+            </label>
 
             <div className="mt-6">
                 <label>
@@ -251,7 +258,7 @@ const Account = () => {
 const Support = () => {
     return (
         <>
-            <h2 className="mb-8">Consider supporting the maintenance and active development of the site.</h2>
+            <h2 className="mb-8 ">Consider supporting the maintenance and active development of the site.</h2>
 
             <p>
                 Thanks for using hobbyist. This site is developed by one developer in their spare time. If you fancy
