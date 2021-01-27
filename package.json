@@ -5,7 +5,7 @@
     "dependencies": {
         "@auth0/auth0-react": "^1.2.0",
         "@craco/craco": "^6.0.0",
-        "@fortawesome/fontawesome-svg-core": "^1.2.32",
+        "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-regular-svg-icons": "^5.15.1",
         "@fortawesome/free-solid-svg-icons": "^5.15.1",
         "@fortawesome/react-fontawesome": "^0.1.14",
@@ -40,7 +40,7 @@
         "stripe": "^8.130.0",
         "styled-components": "^5.2.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-        "twin.macro": "^2.0.8",
+        "twin.macro": "^2.1.1",
         "typescript": "^4.1.3",
         "workbox-background-sync": "^5.1.3",
         "workbox-broadcast-update": "^5.1.3",
