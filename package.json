@@ -28,7 +28,7 @@
         "react-hotjar": "^2.2.1",
         "react-image-crop": "^8.6.6",
         "react-placeholder": "^4.0.3",
-        "react-query": "^3.5.11",
+        "react-query": "^3.19.1",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.1",
         "react-select": "^4.0.2",
